@@ -1,0 +1,19 @@
+:root {
+  /* sampled from your image */
+  --stripe-top: rgba(63, 6, 118, 0); /* #3F0676 @ 0% (transparent)   */
+  --stripe-mid: rgba(102, 47, 169, 0.55); /* #662FA9 @ ~50%               */
+  --stripe-bottom: rgba(171, 58, 116, 0.50); /* #AB3A74 @ ~80%               */
+}
+
+@keyframes vl-fade {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+.vl-fade {
+  animation: vl-fade 3s ease-in-out infinite;
+}
