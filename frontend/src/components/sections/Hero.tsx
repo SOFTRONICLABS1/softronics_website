@@ -1,4 +1,3 @@
-
 import "./HeroStripes.css";
 import ServicesGrid from "./ServicesGrid";
 
