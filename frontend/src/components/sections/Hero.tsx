@@ -7,7 +7,7 @@ const Hero = () => {
       className="relative pt-24 lg:pt-28 pb-20 lg:pb-28 overflow-hidden"
       style={{ backgroundColor: "#38106F" }}
     >
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-[180px] overflow-hidden z-10 hidden md:block">
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-[180px] overflow-hidden z-0 hidden md:block">
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
@@ -34,7 +34,7 @@ const Hero = () => {
         <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="max-w-2xl">
