@@ -432,7 +432,7 @@ const FeaturedStories: React.FC = () => {
         </svg>
       </div>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes progress-fill {
           from {
             height: 0%;
@@ -441,7 +441,7 @@ const FeaturedStories: React.FC = () => {
             height: 100%;
           }
         }
-      `}</style>
+      `}</style> */}
     </section>
   );
 };

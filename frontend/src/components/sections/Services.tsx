@@ -1,4 +1,3 @@
-import React from "react";
 import "./HeroStripes.css";
 
 const Services = () => {
