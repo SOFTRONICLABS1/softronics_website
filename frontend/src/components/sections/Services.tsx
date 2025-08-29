@@ -63,7 +63,7 @@ const Services = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch mb-10">
             {/* LEFT: Microsoft recognition (single image) */}
             <div
-              className="bg-[#6740BA] rounded p-5 sm:p-6 shadow-xl
+              className="bg-[#6740BA] rounded p-5 sm:p-6 shadow
                   flex flex-col items-center justify-center
                   h-auto lg:h-[280px] xl:h-[300px]"
             >
@@ -86,7 +86,7 @@ const Services = () => {
 
             {/* RIGHT: Partner badges (single image) */}
             <div
-              className="bg-[#D9C3FF] rounded shadow-xl flex items-center justify-center
+              className="bg-[#D9C3FF] rounded shadow flex items-center justify-center
                   p-4 sm:p-6 h-auto lg:h-[280px] xl:h-[300px]"
             >
               <img

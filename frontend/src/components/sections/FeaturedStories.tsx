@@ -367,7 +367,7 @@ const FeaturedStories: React.FC = () => {
           >
             {/* Navigation (desktop) */}
             {/* Navigation (desktop) */}
-            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-10 hidden lg:flex">
+            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-10 sm:hidden lg:flex">
               <button
                 onClick={goToPrevious}
                 aria-label="Previous"
