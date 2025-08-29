@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import "./HeroStripes.css";
 
 const CaseStudies = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const autoScrollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const caseStudies = [
     {
@@ -42,37 +44,149 @@ const CaseStudies = () => {
     },
   ];
 
+  // Auto-scroll functions
+  const startAutoScroll = () => {
+    if (window.innerWidth < 1024) { // Only on screens smaller than lg
+      autoScrollRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % caseStudies.length);
+      }, 4000); // Auto-scroll every 4 seconds
+    }
+  };
+
+  const stopAutoScroll = () => {
+    if (autoScrollRef.current) {
+      clearInterval(autoScrollRef.current);
+      autoScrollRef.current = null;
+    }
+  };
+
   const nextSlide = () => {
+    stopAutoScroll(); // Stop auto-scroll on manual interaction
     setCurrentSlide((prev) => (prev + 1) % caseStudies.length);
   };
 
   const prevSlide = () => {
+    stopAutoScroll(); // Stop auto-scroll on manual interaction
     setCurrentSlide(
       (prev) => (prev - 1 + caseStudies.length) % caseStudies.length
     );
   };
 
-  const goToSlide = (index: number) => setCurrentSlide(index);
+  const goToSlide = (index: number) => {
+    stopAutoScroll(); // Stop auto-scroll on manual interaction
+    setCurrentSlide(index);
+  };
+
+  // Set up auto-scroll effect
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        startAutoScroll();
+      } else {
+        stopAutoScroll();
+      }
+    };
+
+    // Initial setup
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      stopAutoScroll();
+    };
+  }, []);
+
+  // Restart auto-scroll if component is hovered out on mobile
+  const handleMouseEnter = () => {
+    if (window.innerWidth < 1024) {
+      stopAutoScroll();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (window.innerWidth < 1024) {
+      startAutoScroll();
+    }
+  };
 
   return (
-    <section className="py-12 md:py-14" style={{ background: "#38106F" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden" style={{ background: "#38106F" }}>
+      {/* Animated Vertical Stripes - Left Side */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-[120px] sm:w-[140px] md:w-[180px] overflow-hidden z-0 hidden sm:block">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute h-full vl-fade"
+            style={{
+              left: `${i * 17}px`,
+              width: "8px",
+              background: `linear-gradient(to bottom,
+                var(--stripe-top) 0%,
+                var(--stripe-mid) 50%,
+                var(--stripe-bottom) 80%,
+                transparent 100%)`,
+              animationDuration: `${3 + i * 0.2}s`,
+              animationDelay: `${i * 0.05}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Header */}
-        <div className="mb-6 md:mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
+        <div className="mb-4 sm:mb-6 md:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3">
             Case Studies
           </h2>
-          <p className="text-base md:text-lg text-purple-100 max-w-4xl font-light">
+          <p className="text-sm sm:text-base md:text-lg text-purple-100 max-w-4xl font-light">
             Discover the many ways in which our clients have embraced the
-            benefits of the Simform way of engineering.
+            benefits of the Softroniclabs way of engineering.
           </p>
         </div>
 
-        {/* Carousel (aligned with the title padding, wider, lower height) */}
-        <div className="relative">
+        {/* Carousel Container with External Navigation */}
+        <div 
+          className="relative"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Navigation Arrows - Absolutely positioned */}
+          <div className="absolute inset-y-0 left-0 right-0 items-center justify-between pointer-events-none z-10 hidden lg:flex">
+            <button
+              onClick={prevSlide}
+              className="pointer-events-auto flex items-center justify-center rounded-lg w-8 h-6 sm:w-9 sm:h-7 md:w-10 md:h-8 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105 min-h-[24px] min-w-[32px] ml-[-40px] sm:ml-[-60px]"
+              style={{ backgroundColor: "#5F36AB" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#6B46C1";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#5F36AB";
+              }}
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="pointer-events-auto flex items-center justify-center rounded-lg w-8 h-6 sm:w-9 sm:h-7 md:w-10 md:h-8 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105 min-h-[24px] min-w-[32px] mr-[-40px] sm:mr-[-60px]"
+              style={{ backgroundColor: "#5F36AB" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#6B46C1";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#5F36AB";
+              }}
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
+            </button>
+          </div>
+
           {/* Card */}
           <div
-            className="overflow-hidden shadow-2xl rounded-2xl w-full"
+            className="overflow-hidden shadow-2xl rounded w-full"
             style={{
               background:
                 "linear-gradient(135deg, rgba(233, 213, 255, 0.95) 0%, rgba(251, 207, 232, 0.95) 100%)",
@@ -80,13 +194,13 @@ const CaseStudies = () => {
           >
             <div className="flex flex-col lg:flex-row">
               {/* Left Content */}
-              <div className="flex-1 p-6 md:p-10 lg:p-12">
+              <div className="flex-1 p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8">
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2.5 md:gap-3 mb-5 md:mb-6">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-3 mb-2 sm:mb-3 md:mb-3 lg:mb-4">
                   {caseStudies[currentSlide].tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3.5 py-1.5 bg-white/80 text-purple-900 rounded-full text-xs md:text-sm font-medium border border-purple-200"
+                      className="px-2 sm:px-3 lg:px-3.5 py-1 sm:py-1.5 bg-white/80 text-purple-900 rounded-full text-[10px] sm:text-xs md:text-sm font-medium border border-purple-200"
                     >
                       {tag}
                     </span>
@@ -94,31 +208,31 @@ const CaseStudies = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-5 leading-tight">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-3 leading-tight">
                   {caseStudies[currentSlide].title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-700 mb-5 md:mb-6 leading-relaxed text-sm md:text-base">
+                <p className="text-gray-700 mb-3 sm:mb-4 md:mb-4 leading-relaxed text-xs sm:text-sm md:text-base">
                   {caseStudies[currentSlide].description}
                 </p>
 
                 {/* Highlight Box */}
-                <div className="mb-6 md:mb-8">
-                  <p className="text-purple-700 font-semibold text-base md:text-lg leading-relaxed">
+                <div className="mb-3 sm:mb-4 md:mb-5">
+                  <p className="text-purple-700 font-semibold text-sm sm:text-base md:text-lg leading-relaxed">
                     {caseStudies[currentSlide].highlight}
                   </p>
                 </div>
 
                 {/* Read More Link */}
-                <button className="inline-flex items-center text-purple-700 hover:text-purple-900 font-medium text-sm md:text-base group">
+                <button className="inline-flex items-center text-purple-700 hover:text-purple-900 font-medium text-xs sm:text-sm md:text-base group min-h-[44px]">
                   Read More
-                  <ArrowUpRight className="ml-1 w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
               </div>
 
               {/* Right Image */}
-              <div className="lg:w-[44%] relative min-h-[280px] md:min-h-[320px] lg:min-h-[360px]">
+              <div className="lg:w-[50%] relative min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] xl:min-h-[220px]">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20"></div>
                 <img
                   src={caseStudies[currentSlide].image}
@@ -130,38 +244,22 @@ const CaseStudies = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows (inside slider, aligned) */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center rounded-full w-9 h-9 md:w-10 md:h-10 bg-white/80 hover:bg-white text-purple-900 shadow transition"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-5 h-5" strokeWidth={1.75} />
-          </button>
+        </div>
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center rounded-full w-9 h-9 md:w-10 md:h-10 bg-white/80 hover:bg-white text-purple-900 shadow transition"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-5 h-5" strokeWidth={1.75} />
-          </button>
-
-          {/* Pagination Dots */}
-          <div className="flex justify-center items-center space-x-2 mt-6">
-            {caseStudies.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 ${
-                  index === currentSlide
-                    ? "w-2 h-2 bg-white rounded-full"
-                    : "w-2 h-2 bg-purple-300/50 hover:bg-purple-300 rounded-full"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+        {/* Pagination Dots */}
+        <div className="flex justify-center items-center space-x-1 sm:space-x-2 mt-4 sm:mt-6">
+          {caseStudies.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 ${
+                index === currentSlide
+                  ? "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"
+                  : "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-300/50 hover:bg-purple-300 rounded-full"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

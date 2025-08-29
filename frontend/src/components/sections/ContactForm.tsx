@@ -1,5 +1,6 @@
 import { useState, type FC, type FormEvent } from "react";
 import { Phone } from "lucide-react";
+import "./HeroStripes.css";
 
 const ContactForm: FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -13,32 +14,74 @@ const ContactForm: FC = () => {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="w-full flex justify-center items-center bg-[#f3eafd] py-16">
-      <div className="bg-[#6740BA] text-white rounded-md shadow-xl flex flex-col md:flex-row w-[90%] max-w-5xl overflow-hidden">
+    <section className="w-full flex justify-center items-center bg-[#F0E8FA] py-8 sm:py-12 md:py-16 relative overflow-hidden">
+      {/* Animated Vertical Stripes - Left Side */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-[120px] sm:w-[140px] md:w-[180px] overflow-hidden z-0 hidden sm:block">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute h-full vl-fade"
+            style={{
+              left: `${i * 17}px`,
+              width: "8px",
+              background: `linear-gradient(to bottom,
+                var(--stripe-top) 0%,
+                var(--stripe-mid) 50%,
+                var(--stripe-bottom) 80%,
+                transparent 100%)`,
+              animationDuration: `${3 + i * 0.2}s`,
+              animationDelay: `${i * 0.05}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated Vertical Stripes - Right Side */}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-[120px] sm:w-[140px] md:w-[180px] overflow-hidden z-0 hidden sm:block">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute h-full vl-fade"
+            style={{
+              right: `${i * 17}px`,
+              width: "8px",
+              background: `linear-gradient(to bottom,
+                var(--stripe-top) 0%,
+                var(--stripe-mid) 50%,
+                var(--stripe-bottom) 80%,
+                transparent 100%)`,
+              animationDuration: `${3 + i * 0.2}s`,
+              animationDelay: `${i * 0.05}s`,
+            }}
+          />
+        ))}
+      </div>
+      
+      <div className="bg-[#6740BA] text-white rounded-lg sm:rounded-xl shadow-xl flex flex-col md:flex-row w-[95%] sm:w-[90%] max-w-5xl overflow-hidden relative z-10">
         {/* Left: Form */}
-        <div className="flex-1 p-8">
-          <h2 className="text-2xl font-bold mb-2">How can we help you?</h2>
-          <p className="text-sm text-gray-200 mb-6">
+        <div className="flex-1 p-4 sm:p-6 md:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-2">How can we help you?</h2>
+          <p className="text-xs sm:text-sm text-gray-200 mb-4 sm:mb-6">
             Get in touch with us. We'd love to hear from you.
           </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
             <input
               type="text"
               placeholder="Name*"
-              className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2"
+              className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2 text-sm sm:text-base"
               required
             />
             <input
               type="email"
               placeholder="Email*"
-              className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2"
+              className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2 text-sm sm:text-base"
               required
             />
             <input
               type="tel"
               placeholder="Phone Number*"
-              className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2"
+              className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2 text-sm sm:text-base"
               required
             />
             <textarea
@@ -48,8 +91,8 @@ const ContactForm: FC = () => {
               required
             />
 
-            <div className="hidden md:block">
-              <button className="bg-[#DF4B68] hover:bg-white text-white hover:text-[#DF4B68] border-2 border-transparent hover:border-[#DF4B68] px-6 py-2 rounded-md text-sm font-medium transition-all duration-300">
+            <div className="mt-2 sm:mt-4">
+              <button className="bg-[#DF4B68] hover:bg-white text-white hover:text-[#DF4B68] border-2 border-transparent hover:border-[#DF4B68] px-4 sm:px-6 py-2 sm:py-3 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 w-full sm:w-auto min-h-[44px]">
                 Book a Call
               </button>
             </div>
@@ -57,8 +100,8 @@ const ContactForm: FC = () => {
         </div>
 
         {/* Right: Person Info */}
-        <div className="w-full md:w-[280px] bg-[#6740BA] flex flex-col items-center justify-center p-8 text-center">
-          <div className="w-20 h-20 mb-4">
+        <div className="w-full md:w-[280px] bg-[#6740BA] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 text-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 mb-3 sm:mb-4">
             {!imageLoaded || imageError ? (
               <div className="w-full h-full rounded-full bg-gray-300 animate-pulse" />
             ) : null}
@@ -66,21 +109,21 @@ const ContactForm: FC = () => {
             <img
               src="https://via.placeholder.com/80"
               alt="Hiren Dhaduk"
-              className={`w-20 h-20 rounded-full border-2 border-white absolute transition-opacity duration-300 ${
+              className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white absolute transition-opacity duration-300 ${
                 imageLoaded ? "opacity-100" : "opacity-0"
               }`}
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageError(true)}
             />
           </div>
-          <h3 className="font-semibold text-lg">Hiren Dhaduk</h3>
-          <p className="text-sm text-gray-200 mt-2">
+          <h3 className="font-semibold text-base sm:text-lg">Hiren Dhaduk</h3>
+          <p className="text-xs sm:text-sm text-gray-200 mt-2">
             Creating a tech product roadmap and building scalable apps for your
             organization.
           </p>
 
-          <div className="mt-4 flex items-center gap-2 text-sm font-semibold">
-            <Phone size={16} />
+          <div className="mt-3 sm:mt-4 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold">
+            <Phone size={14} className="sm:w-4 sm:h-4" />
             <span>CALL US NOW</span>
           </div>
         </div>

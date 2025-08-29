@@ -4,10 +4,10 @@ import ServicesGrid from "./ServicesGrid";
 const Hero = () => {
   return (
     <section
-      className="relative pt-24 lg:pt-28 pb-20 lg:pb-28 overflow-hidden"
+      className="relative pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-12 sm:pb-16 md:pb-20 lg:pb-28 overflow-hidden"
       style={{ backgroundColor: "#38106F" }}
     >
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-[180px] overflow-hidden z-0 hidden md:block">
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-[120px] sm:w-[140px] md:w-[180px] overflow-hidden z-0 hidden sm:block">
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
@@ -35,7 +35,7 @@ const Hero = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
           {/* Content */}
           <div className="max-w-2xl">
             {/* <div className="mb-6">
@@ -44,7 +44,7 @@ const Hero = () => {
               </span>
             </div> */}
 
-            <h1 className="text-4xl md:text-5xl lg:text-[48px] font-[700] leading-tight mb-6">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-[700] leading-tight mb-4 sm:mb-6">
               <span style={{ color: "#D9C3FF" }}>
                 Engineering the next best thing for
               </span>{" "}
@@ -52,13 +52,13 @@ const Hero = () => {
               <span className="text-white">digital world</span>
             </h1>
 
-            <p className="text-[22px] text-gray-300 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-[22px] text-gray-300 mb-6 sm:mb-8 leading-relaxed">
               Agile in mind, spirit, and speed
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
-                className="group px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-white hover:opacity-90"
+                className="group px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-white hover:opacity-90 min-h-[44px]"
                 style={{ backgroundColor: "#EF5366" }}
               >
                 <span>Book a Consultation Call</span>
@@ -89,11 +89,11 @@ const Hero = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="relative lg:-mt-16 xl:-mt-24">
+          <div className="relative mt-8 sm:mt-6 md:mt-4 lg:-mt-16 xl:-mt-24">
             <img
               src="https://www.simform.com/wp-content/uploads/2024/12/hm-hero-image.svg"
-              alt="Simform Engineering Excellence"
-              className="relative z-10 lg:scale-[1.35] origin-center"
+              alt="Engineering Excellence"
+              className="relative z-10 w-full h-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-none lg:scale-[1.35] origin-center mx-auto lg:mx-0"
             />
           </div>
         </div>

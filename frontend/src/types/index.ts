@@ -1,7 +1,26 @@
+export interface MenuItem {
+  label: string;
+  href: string;
+}
+
+export interface MegaMenuColumn {
+  title: string;
+  items: MenuItem[];
+}
+
+export interface MegaMenu {
+  title: string;
+  description: string;
+  columns: MegaMenuColumn[];
+  image: string;
+  imageAlt: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
   subItems?: NavItem[];
+  megaMenu?: MegaMenu;
 }
 
 export interface ServiceCard {

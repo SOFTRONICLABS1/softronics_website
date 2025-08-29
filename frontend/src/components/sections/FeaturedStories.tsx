@@ -32,7 +32,7 @@ const FeaturedStories: React.FC = () => {
         kicker: "Supply chain giant used AI to reduce shipment costs by 20%",
         title: "Softronic Labs Ranks #1 in AI on Clutch 2025 Spring Edition",
         summary:
-          "What does it take to cut shipment costs by 20% and speed up deliveries by 25%? This case study unpacks how a top supply chain operator partnered with Simform to build a connected supply chain platform that fuses edge intelligence, IoT, and cloud-native architecture. From battery life gains to fewer connectivity disruptions, the results show what's possible when infrastructure and insight align. If you're exploring smarter operations, this succinct overview points toward actionable next steps.",
+          "What does it take to cut shipment costs by 20% and speed up deliveries by 25%? This case study unpacks how a top supply chain operator partnered with softroniclabs to build a connected supply chain platform that fuses edge intelligence, IoT, and cloud-native architecture. From battery life gains to fewer connectivity disruptions, the results show what's possible when infrastructure and insight align. If you're exploring smarter operations, this succinct overview points toward actionable next steps.",
         image:
           "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
       },
@@ -41,7 +41,7 @@ const FeaturedStories: React.FC = () => {
         kicker: "Enterprise data fabric improves SLA adherence by 35%",
         title: "How platform thinking cuts cost of change in large orgs",
         summary:
-          "Clutch's 2025 rankings are in, and Simform has been named the #1 AI services provider globally. The recognition emphasizes our strength in delivering AI expertise with measurable results. We break down how Clutch evaluated hundreds of vendors and why Simform's focus on engineering-led delivery stood out. If you're researching vendors for your AI initiatives and want to understand what credibility looks like in this space, this article provides concise insights and clear considerations to make a decision.",
+          "Clutch's 2025 rankings are in, and softroniclabs has been named the #1 AI services provider globally. The recognition emphasizes our strength in delivering AI expertise with measurable results. We break down how Clutch evaluated hundreds of vendors and why softroniclabs's focus on engineering-led delivery stood out. If you're researching vendors for your AI initiatives and want to understand what credibility looks like in this space, this article provides concise insights and clear considerations to make a decision.",
         image:
           "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
       },
@@ -50,7 +50,7 @@ const FeaturedStories: React.FC = () => {
         kicker: "Fintech scales to 10M MAU with zero-downtime releases",
         title: "Shipping faster with DevEx guardrails on Kubernetes",
         summary:
-          "Simform is now an Advanced Tier Partner in Datadog's global ecosystem. It showcases our ability to deliver full-stack observability for modern cloud-native systems. This post breaks down what the partnership level means, how it improves monitoring capabilities for our clients, and where it fits into broader platform engineering goals. If you're scaling distributed systems or seeking faster root-cause analysis across services, A quick look at how better visibility and response work in action.",
+          "softroniclabs is now an Advanced Tier Partner in Datadog's global ecosystem. It showcases our ability to deliver full-stack observability for modern cloud-native systems. This post breaks down what the partnership level means, how it improves monitoring capabilities for our clients, and where it fits into broader platform engineering goals. If you're scaling distributed systems or seeking faster root-cause analysis across services, A quick look at how better visibility and response work in action.",
         image:
           "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
       },
@@ -125,7 +125,6 @@ const FeaturedStories: React.FC = () => {
     return stopAuto;
   }, []);
 
-  // keyboard
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown") nextV();
@@ -139,11 +138,93 @@ const FeaturedStories: React.FC = () => {
   const [hIndex, setHIndex] = useState(0);
   const perView = usePerView(); // 1 / 2 / 3
   const maxIndex = Math.max(0, perspectives.length - perView);
-  const clampH = (n: number) => Math.max(0, Math.min(maxIndex, n));
+
+  // Measure slide width + gap and translate in pixels
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const firstSlideRef = useRef<HTMLDivElement | null>(null);
+  const [slideWidth, setSlideWidth] = useState(0);
+  const [gapPx, setGapPx] = useState(0);
+
+  const measure = () => {
+    const el = firstSlideRef.current;
+    const track = trackRef.current;
+    if (!el || !track) return;
+    const rect = el.getBoundingClientRect();
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || "0") || 0; // flex gap resolves to columnGap
+    setSlideWidth(rect.width);
+    setGapPx(gap);
+  };
+
+  // Re-measure on load, resize, perView change, and after fonts/images stabilize
+  useEffect(() => {
+    measure();
+    const onR = () => measure();
+    window.addEventListener("resize", onR);
+    const id = window.setTimeout(measure, 50);
+    return () => {
+      window.removeEventListener("resize", onR);
+      window.clearTimeout(id);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [perView]);
+
+  // Keep index valid after perView or viewport changes
+  useEffect(() => {
+    if (hIndex > maxIndex) setHIndex(maxIndex);
+  }, [maxIndex, hIndex]);
+
+  // Mobile-only auto-scroll for horizontal carousel
+  const horizontalAutoRef = useRef<number | null>(null);
+  const startHorizontalAuto = () => {
+    stopHorizontalAuto();
+    if (window.innerWidth < 1024) {
+      horizontalAutoRef.current = window.setInterval(() => {
+        setHIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+      }, 4000);
+    }
+  };
+  const stopHorizontalAuto = () => {
+    if (horizontalAutoRef.current) {
+      window.clearInterval(horizontalAutoRef.current);
+      horizontalAutoRef.current = null;
+    }
+  };
+  useEffect(() => {
+    const handle = () => {
+      if (window.innerWidth < 1024) startHorizontalAuto();
+      else stopHorizontalAuto();
+    };
+    handle();
+    window.addEventListener("resize", handle);
+    return () => {
+      window.removeEventListener("resize", handle);
+      stopHorizontalAuto();
+    };
+  }, [maxIndex]);
+
+  const goToPrevious = () => {
+    stopHorizontalAuto();
+    setHIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
+  };
+  const goToNext = () => {
+    stopHorizontalAuto();
+    setHIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
+  const handleHorizontalMouseEnter = () => {
+    if (window.innerWidth < 1024) stopHorizontalAuto();
+  };
+  const handleHorizontalMouseLeave = () => {
+    if (window.innerWidth < 1024) startHorizontalAuto();
+  };
+
+  // Pixel-perfect offset
+  const translateX = -(hIndex * (slideWidth + gapPx));
 
   return (
     <section className="relative w-full overflow-hidden bg-[#38106F]">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16 z-10">
         {/* ===== TITLE ===== */}
         <h2 className="text-white text-3xl md:text-[40px] font-bold tracking-tight">
           Featured Stories
@@ -155,7 +236,7 @@ const FeaturedStories: React.FC = () => {
           onMouseEnter={stopAuto}
           onMouseLeave={startAuto}
         >
-          <div className="relative grid grid-cols-1 lg:grid-cols-[auto_1fr_300px] md:grid-cols-[auto_1fr] gap-3 md:gap-6">
+          <div className="relative grid grid-cols-1 lg:grid-cols-[auto_1fr] md:grid-cols-[auto_1fr] gap-3 md:gap-6">
             {/* Progress indicator */}
             <div className="relative hidden md:flex flex-col items-center justify-center pl-1 my-2 gap-1">
               {stories.map((_, i) => (
@@ -166,16 +247,14 @@ const FeaturedStories: React.FC = () => {
                   {i === vIndex && (
                     <div
                       key={`${vIndex}-${i}`}
-                      className="w-full rounded-full bg-purple-600 animate-pulse"
+                      className="w-full rounded-full bg-[#AC8DE4]"
                       style={{
                         height: "100%",
-                        animation: `progress-fill ${AUTOPLAY_MS}ms linear`,
+                        animation: `progress-fill-${vIndex} ${AUTOPLAY_MS}ms linear`,
                       }}
                     />
                   )}
-                  {i < vIndex && (
-                    <div className="w-full h-full rounded-full " />
-                  )}
+                  {i < vIndex && <div className="w-full h-full rounded-full" />}
                 </div>
               ))}
             </div>
@@ -202,17 +281,39 @@ const FeaturedStories: React.FC = () => {
 
                       {index === vIndex && (
                         <div className="opacity-100 transition-opacity duration-300 delay-200">
-                          <p className="mt-3 text-[14px] leading-6 text-purple-800">
-                            {story.summary}
-                          </p>
+                          <div className="flex gap-6 items-start">
+                            <div className="flex-[3]">
+                              <p className="mt-3 text-[14px] leading-6 text-purple-800">
+                                {story.summary}
+                              </p>
 
-                          <a
-                            href={story.href || "#"}
-                            className="mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-purple-700 hover:bg-white transition"
-                          >
-                            Read More{" "}
-                            <span className="translate-y-[1px]">↗</span>
-                          </a>
+                              <a
+                                href={story.href || "#"}
+                                className="mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-purple-700 hover:bg-white transition"
+                              >
+                                Read More{" "}
+                                <span className="translate-y-[1px]">↗</span>
+                              </a>
+                            </div>
+
+                            {/* Integrated image on the right - 40% width */}
+                            <div className="hidden lg:block flex-[2]">
+                              <div className="relative w-full h-64 rounded overflow-hidden">
+                                <img
+                                  src={story.image}
+                                  alt={story.title}
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = `https://via.placeholder.com/192x112/8B5CF6/FFFFFF?text=Image+${
+                                      index + 1
+                                    }`;
+                                  }}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent" />
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -220,39 +321,11 @@ const FeaturedStories: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            {/* Image section - Now visible on larger screens */}
-            <div className="hidden lg:block">
-              <div className="relative h-full min-h-[300px] rounded overflow-hidden">
-                {stories.map((story, index) => (
-                  <div
-                    key={story.id}
-                    className={`absolute inset-0 transition-opacity duration-500 ${
-                      index === vIndex ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
-                    <img
-                      src={story.image}
-                      alt={story.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Fallback in case image fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.src = `https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Image+${
-                          index + 1
-                        }`;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent" />
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Mobile image section */}
+          {/* Mobile image section - simplified horizontal rectangle */}
           <div className="lg:hidden mt-4">
-            <div className="relative h-48 rounded overflow-hidden">
+            <div className="relative h-32 rounded overflow-hidden">
               {stories.map((story, index) => (
                 <div
                   key={story.id}
@@ -266,7 +339,7 @@ const FeaturedStories: React.FC = () => {
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = `https://via.placeholder.com/400x200/8B5CF6/FFFFFF?text=Image+${
+                      target.src = `https://via.placeholder.com/400x128/8B5CF6/FFFFFF?text=Image+${
                         index + 1
                       }`;
                     }}
@@ -287,40 +360,50 @@ const FeaturedStories: React.FC = () => {
             </span>
           </h3>
 
-          <div className="relative mt-6">
-            {/* Navigation controls */}
-            <div className="absolute inset-y-0 left-[-8px] right-[-8px] flex items-center justify-between pointer-events-none z-10">
+          <div
+            className="relative mt-6"
+            onMouseEnter={handleHorizontalMouseEnter}
+            onMouseLeave={handleHorizontalMouseLeave}
+          >
+            {/* Navigation (desktop) */}
+            {/* Navigation (desktop) */}
+            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-10 hidden lg:flex">
               <button
-                onClick={() => setHIndex((i) => clampH(i - 1))}
-                disabled={hIndex === 0}
+                onClick={goToPrevious}
                 aria-label="Previous"
-                className="pointer-events-auto grid h-10 w-10 place-items-center rounded-full bg-purple-200 text-purple-900 shadow hover:scale-[1.03] transition disabled:opacity-50 disabled:cursor-not-allowed ml-[-40px]"
+                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full 
+               bg-purple-200 text-purple-900 shadow hover:scale-[1.03] transition 
+               -ml-20 min-h-[44px] min-w-[44px]" // 👈 moved left
               >
                 <ArrowLeft strokeWidth={1.5} />
               </button>
               <button
-                onClick={() => setHIndex((i) => clampH(i + 1))}
-                disabled={hIndex >= maxIndex}
+                onClick={goToNext}
                 aria-label="Next"
-                className="pointer-events-auto grid h-10 w-10 place-items-center rounded-full bg-purple-200 text-purple-900 shadow hover:scale-[1.03] transition disabled:opacity-50 disabled:cursor-not-allowed mr-[-40px]"
+                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full 
+               bg-purple-200 text-purple-900 shadow hover:scale-[1.03] transition 
+               -mr-20 min-h-[44px] min-w-[44px]" // 👈 moved right
               >
                 <ArrowRight strokeWidth={1.5} />
               </button>
             </div>
 
-            <div className="overflow-hidden">
+            <div className="overflow-hidden px-2 sm:px-0">
               <div
-                className="flex gap-6 transition-transform duration-400 ease-out will-change-transform"
-                style={{
-                  transform: `translateX(calc(${hIndex * -100}% - ${
-                    hIndex * 1.5
-                  }rem))`,
-                }}
+                ref={trackRef}
+                className="flex gap-3 sm:gap-4 lg:gap-6 transition-transform duration-500 ease-out will-change-transform"
+                style={{ transform: `translateX(${translateX}px)` }}
               >
-                {perspectives.map((p) => (
+                {perspectives.map((p, idx) => (
                   <article
                     key={p.id}
-                    className="min-w-[88%] sm:min-w-[48%] lg:min-w-[32%]"
+                    ref={idx === 0 ? firstSlideRef : undefined}
+                    className="
+                      flex-shrink-0
+                      basis-full
+                      sm:basis-1/2
+                      lg:basis-1/3
+                    "
                   >
                     <div className="rounded bg-purple-100 p-3 h-full">
                       <div className="relative rounded p-5 h-full">
@@ -368,7 +451,7 @@ const FeaturedStories: React.FC = () => {
                           ) : (
                             <button
                               aria-label="Open"
-                              className="grid h-9 w-9 place-items-center rounded-full bg-white text-purple-900 shadow hover:shadow-md transition"
+                              className="grid h-9 w-9 place-items-center rounded-full bg-white text-purple-900 shadow hover:shadow-md transition mr-[24px]"
                             >
                               ↗
                             </button>
@@ -381,17 +464,21 @@ const FeaturedStories: React.FC = () => {
               </div>
             </div>
 
-            {/* mobile pagination bars */}
+            {/* mobile pagination dots */}
             <div className="mt-4 flex items-center justify-center gap-2 lg:hidden">
-              {Array.from({
-                length: Math.max(1, perspectives.length - perView + 1),
-              }).map((_, i) => (
+              {Array.from({ length: Math.max(1, maxIndex + 1) }).map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setHIndex(i)}
-                  className={`h-1.5 w-6 rounded-full transition ${
-                    i === hIndex ? "bg-purple-200" : "bg-white/30"
+                  onClick={() => {
+                    stopHorizontalAuto();
+                    setHIndex(i);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === hIndex
+                      ? "bg-purple-200 scale-125"
+                      : "bg-white/30 hover:bg-white/50"
                   }`}
+                  aria-label={`Go to slide ${i + 1}`}
                 />
               ))}
             </div>
@@ -402,46 +489,26 @@ const FeaturedStories: React.FC = () => {
       {/* Background decoration */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-[-180px] top-1/2 hidden -translate-y-1/2 lg:block"
+        className="pointer-events-none absolute left-[-120px] sm:left-[-240px] lg:left-[-120px] xl:left-[-280px] top-1/2 hidden -translate-y-1/2 md:block z-0"
       >
-        <svg width="480" height="480" viewBox="0 0 480 480" fill="none">
-          <circle
-            cx="240"
-            cy="240"
-            r="220"
-            stroke="rgb(147 51 234)"
-            strokeOpacity="0.35"
-            strokeWidth="36"
-          />
-          <circle
-            cx="240"
-            cy="240"
-            r="140"
-            stroke="rgb(147 51 234)"
-            strokeOpacity="0.35"
-            strokeWidth="36"
-          />
-          <circle
-            cx="240"
-            cy="240"
-            r="70"
-            stroke="rgb(147 51 234)"
-            strokeOpacity="0.35"
-            strokeWidth="36"
-          />
-        </svg>
+        <img
+          src="https://www.simform.com/wp-content/uploads/2024/12/hm-hero-image.svg"
+          alt=""
+          className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[480px] h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[480px] max-w-none opacity-30 object-cover"
+          loading="lazy"
+        />
       </div>
 
-      {/* <style jsx>{`
-        @keyframes progress-fill {
-          from {
-            height: 0%;
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes progress-fill-${vIndex} {
+            from { height: 0%; }
+            to   { height: 100%; }
           }
-          to {
-            height: 100%;
-          }
-        }
-      `}</style> */}
+        `,
+        }}
+      />
     </section>
   );
 };

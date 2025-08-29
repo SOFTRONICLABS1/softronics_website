@@ -1,22 +1,179 @@
 import { type NavItem, type ServiceCard, type TestimonialItem, type CaseStudyItem } from '../types';
+import {
+  FiCode,
+  FiCloud,
+  FiDatabase,
+  FiCpu,
+  FiSmartphone,
+  FiActivity,
+  FiDollarSign,
+  FiShoppingCart,
+  FiBookOpen,
+  FiUsers,
+  FiAward,
+  FiZap,
+} from "react-icons/fi";
 
+// Icon mapping for menu items
+export const iconMap: Record<string, React.ComponentType<any>> = {
+  "Digital Product Engineering": FiCode,
+  "Cloud & DevOps Engineering": FiCloud,
+  "Data Engineering": FiDatabase,
+  "AI/ML Engineering": FiCpu,
+  "Digital & Experience Engineering": FiSmartphone,
+  "Healthcare Solutions": FiActivity,
+  "Banking Solutions": FiDollarSign,
+  "E-commerce Platforms": FiShoppingCart,
+  "Blog": FiBookOpen,
+  "Developer Forum": FiUsers,
+  "Agile Methodology": FiZap,
+  "Microsoft Partner": FiAward,
+};
+
+// Navigation items with mega menu content
 export const navigationItems: NavItem[] = [
   {
-    label: 'Services',
-    href: '#services',
-    subItems: [
-      { label: 'Digital Product Engineering', href: '#digital-product' },
-      { label: 'Cloud & DevOps Engineering', href: '#cloud-devops' },
-      { label: 'Data Engineering', href: '#data-engineering' },
-      { label: 'AI/ML Engineering', href: '#ai-ml' },
-      { label: 'Digital & Experience Engineering', href: '#digital-experience' },
-    ]
+    label: "Services",
+    href: "#services",
+    megaMenu: {
+      title: "Services",
+      description: "Transform your business with our comprehensive service offerings",
+      columns: [
+        {
+          title: "Development Services",
+          items: [
+            { label: "Digital Product Engineering", href: "#digital-product" },
+            { label: "Cloud & DevOps Engineering", href: "#cloud-devops" },
+            { label: "Data Engineering", href: "#data-engineering" },
+          ],
+        },
+        {
+          title: "Advanced Technologies",
+          items: [
+            { label: "AI/ML Engineering", href: "#ai-ml" },
+            {
+              label: "Digital & Experience Engineering",
+              href: "#digital-experience",
+            },
+            { label: "Blockchain Development", href: "#blockchain" },
+          ],
+        },
+        {
+          title: "Consulting",
+          items: [
+            { label: "Digital Transformation", href: "#digital-transform" },
+            { label: "Technology Consulting", href: "#tech-consulting" },
+            { label: "Product Strategy", href: "#product-strategy" },
+          ],
+        },
+      ],
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop",
+      imageAlt: "Services",
+    },
   },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Case Studies', href: '#case-studies' },
-  { label: 'Resources', href: '#resources' },
-  { label: 'Why softrnoics', href: '#why-softrnoics' },
-  { label: 'About Us', href: '#about' },
+  {
+    label: "Industries",
+    href: "#industries",
+    megaMenu: {
+      title: "Industries",
+      description: "Industry-specific solutions tailored to your needs",
+      columns: [
+        {
+          title: "Healthcare & Life Sciences",
+          items: [
+            { label: "Healthcare Solutions", href: "#healthcare" },
+            { label: "Telemedicine Platforms", href: "#telemedicine" },
+            { label: "Medical Device Integration", href: "#medical-device" },
+          ],
+        },
+        {
+          title: "Financial Services",
+          items: [
+            { label: "Banking Solutions", href: "#banking" },
+            { label: "Insurance Tech", href: "#insurance" },
+            { label: "Fintech Innovations", href: "#fintech" },
+          ],
+        },
+        {
+          title: "Retail & Manufacturing",
+          items: [
+            { label: "E-commerce Platforms", href: "#ecommerce" },
+            { label: "Supply Chain Management", href: "#supply-chain" },
+            { label: "Industry 4.0", href: "#industry4" },
+          ],
+        },
+      ],
+      image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=300&fit=crop",
+      imageAlt: "Industries",
+    },
+  },
+  {
+    label: "Resources",
+    href: "#resources",
+    megaMenu: {
+      title: "Resources",
+      description: "Explore our knowledge hub and learning materials",
+      columns: [
+        {
+          title: "Knowledge Hub",
+          items: [
+            { label: "Blog", href: "#blog" },
+            { label: "Whitepapers", href: "#whitepapers" },
+            { label: "Case Studies", href: "#case-studies" },
+          ],
+        },
+        {
+          title: "Learning",
+          items: [
+            { label: "Webinars", href: "#webinars" },
+            { label: "Tech Talks", href: "#tech-talks" },
+            { label: "Documentation", href: "#docs" },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            { label: "Developer Forum", href: "#forum" },
+            { label: "Newsletter", href: "#newsletter" },
+            { label: "Events", href: "#events" },
+          ],
+        },
+      ],
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop",
+      imageAlt: "Resources",
+    },
+  },
+  {
+    label: "Why SoftronicLabs",
+    href: "#why-softroniclabs",
+    megaMenu: {
+      title: "Why Softroniclabs",
+      description: "Discover what makes us your ideal technology partner",
+      columns: [
+        {
+          title: "Our Approach",
+          items: [
+            { label: "Agile Methodology", href: "#agile" },
+            { label: "Co-Engineering", href: "#co-engineering" },
+            { label: "Innovation Lab", href: "#innovation" },
+            { label: "TalentOps", href: "#talent" },
+          ],
+        },
+        {
+          title: "Our Partnerships",
+          items: [
+            { label: "Microsoft Partner", href: "#microsoft" },
+            { label: "AWS Partner", href: "#aws" },
+            { label: "Google Cloud Partner", href: "#gcp" },
+            { label: "Databricks Partner", href: "#databricks" },
+          ],
+        },
+      ],
+      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop",
+      imageAlt: "Why Softroniclabs",
+    },
+  },
+  { label: "About Us", href: "#about" },
 ];
 
 export const services: ServiceCard[] = [
