@@ -39,7 +39,7 @@ export const iconMap: Record<string, React.ComponentType<any>> = {
 export const navigationItems: NavItem[] = [
   {
     label: "Services",
-    href: "#services",
+    href: "/services",
     megaMenu: {
       title: "Services",
       description:
@@ -80,7 +80,7 @@ export const navigationItems: NavItem[] = [
   },
   {
     label: "Industries",
-    href: "#industries",
+    href: "/industries",
     megaMenu: {
       title: "Industries",
       description: "Industry-specific solutions tailored to your needs",
@@ -115,7 +115,7 @@ export const navigationItems: NavItem[] = [
       imageAlt: "Industries",
     },
   },
-  { label: "Case Studies", href: "#case-studies" },
+  { label: "Case Studies", href: "/case-studies" },
   // {
   //   label: "Resources",
   //   href: "#resources",
@@ -155,7 +155,7 @@ export const navigationItems: NavItem[] = [
   // },
   {
     label: "Why SoftronicLabs",
-    href: "#why-softroniclabs",
+    href: "/why-softroniclabs",
     megaMenu: {
       title: "Why Softroniclabs",
       description: "Discover what makes us your ideal technology partner",
@@ -184,7 +184,7 @@ export const navigationItems: NavItem[] = [
       imageAlt: "Why Softroniclabs",
     },
   },
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about" },
 ];
 
 export const services: ServiceCard[] = [

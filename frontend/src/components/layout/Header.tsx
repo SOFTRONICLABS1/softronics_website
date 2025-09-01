@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { FiMenu, FiX, FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { navigationItems, iconMap } from "../../utils/constants";
 import { useAnalytics } from "../../hooks/useAnalytics";
@@ -12,6 +13,7 @@ const Header = () => {
   >(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { trackNavigation, trackCTAClick } = useAnalytics();
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -89,7 +91,7 @@ const Header = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <a href="/" className="flex items-center group">
+              <Link to="/" className="flex items-center group">
                 <div className="relative">
                   <img
                     src={softLogo}
@@ -98,7 +100,7 @@ const Header = () => {
                   />
                   {/* <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-orange-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -113,11 +115,11 @@ const Header = () => {
                     }
                     onMouseLeave={handleMouseLeave}
                   >
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       onClick={() => handleNavClick(item.label, item.href)}
                       className={`text-white hover:text-gray-200 px-3 py-2 text-sm font-medium flex items-center space-x-1 transition-all duration-200 relative ${
-                        activeDropdown === item.label ? "text-[#DF4B68]" : ""
+                        activeDropdown === item.label || location.pathname === item.href ? "text-[#DF4B68]" : ""
                       }`}
                     >
                       <span>{item.label}</span>
@@ -128,10 +130,10 @@ const Header = () => {
                           }`}
                         />
                       )}
-                      {activeDropdown === item.label && (
+                      {(activeDropdown === item.label || location.pathname === item.href) && (
                         <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-pink-500 to-orange-500 animate-pulse"></span>
                       )}
-                    </a>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -221,15 +223,15 @@ const Header = () => {
                                 iconMap[subItem.label] || FiChevronRight;
                               return (
                                 <li key={subItem.label}>
-                                  <a
-                                    href={subItem.href}
+                                  <Link
+                                    to={subItem.href}
                                     className="text-white/90 hover:text-[#DF4B68] text-sm transition-all duration-200 flex items-center group"
                                   >
                                     <Icon className="w-3 h-3 mr-3 text-white/30 group-hover:text-[#DF4B68] transition-colors" />
                                     <span className="group-hover:translate-x-1 transition-transform duration-200">
                                       {subItem.label}
                                     </span>
-                                  </a>
+                                  </Link>
                                 </li>
                               );
                             })}
@@ -278,42 +280,35 @@ const Header = () => {
           <div className="bg-gradient-to-b from-[#46178A] to-[#38106F] px-2 pt-2 pb-6 space-y-1 min-h-fit">
             {navigationItems.map((item) => (
               <div key={item.label}>
-                <button
-                  className="text-white hover:bg-white/10 px-3 py-3 text-base font-medium w-full text-left flex items-center justify-between rounded-md transition-colors min-h-[44px] touch-manipulation"
-                  onClick={() => {
-                    if (item.megaMenu) {
-                      handleMobileDropdownToggle(item.label);
-                    } else {
-                      window.location.href = item.href;
-                    }
-                  }}
-                  aria-expanded={
-                    item.megaMenu
-                      ? mobileActiveDropdown === item.label
-                      : undefined
-                  }
-                  aria-controls={
-                    item.megaMenu
-                      ? `mobile-dropdown-${item.label
-                          .toLowerCase()
-                          .replace(/\s+/g, "-")}`
-                      : undefined
-                  }
-                  aria-label={
-                    item.megaMenu
-                      ? `${item.label} submenu`
-                      : `Navigate to ${item.label}`
-                  }
-                >
-                  <span>{item.label}</span>
-                  {item.megaMenu && (
+                {item.megaMenu ? (
+                  <button
+                    className="text-white hover:bg-white/10 px-3 py-3 text-base font-medium w-full text-left flex items-center justify-between rounded-md transition-colors min-h-[44px] touch-manipulation"
+                    onClick={() => handleMobileDropdownToggle(item.label)}
+                    aria-expanded={mobileActiveDropdown === item.label}
+                    aria-controls={`mobile-dropdown-${item.label
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
+                    aria-label={`${item.label} submenu`}
+                  >
+                    <span>{item.label}</span>
                     <FiChevronDown
                       className={`w-4 h-4 transition-transform ${
                         mobileActiveDropdown === item.label ? "rotate-180" : ""
                       }`}
                     />
-                  )}
-                </button>
+                  </button>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="text-white hover:bg-white/10 px-3 py-3 text-base font-medium w-full text-left flex items-center justify-between rounded-md transition-colors min-h-[44px] touch-manipulation block"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      handleNavClick(item.label, item.href);
+                    }}
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+                )}
 
                 {/* Mobile Dropdown */}
                 <div
@@ -359,9 +354,9 @@ const Header = () => {
                             const Icon =
                               iconMap[subItem.label] || FiChevronRight;
                             return (
-                              <a
+                              <Link
                                 key={subItem.label}
-                                href={subItem.href}
+                                to={subItem.href}
                                 className={`text-white/80 hover:text-white flex items-center px-3 py-2.5 text-sm transition-all duration-200 ease-out hover:transform hover:translate-x-1 min-h-[44px] touch-manipulation ${
                                   mobileActiveDropdown === item.label
                                     ? "opacity-100 transform translate-y-0"
@@ -372,10 +367,14 @@ const Header = () => {
                                     columnIndex * 50 + itemIndex * 25
                                   }ms`,
                                 }}
+                                onClick={() => {
+                                  setIsMobileMenuOpen(false);
+                                  setMobileActiveDropdown(null);
+                                }}
                               >
                                 <Icon className="w-3 h-3 mr-2 text-white/40" />
                                 {subItem.label}
-                              </a>
+                              </Link>
                             );
                           })}
                         </div>

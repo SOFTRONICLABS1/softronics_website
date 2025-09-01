@@ -140,8 +140,8 @@ const CaseStudiesWithPagination: React.FC = () => {
           </div>
         </div>
 
-        {/* 6 per page — responsive grid (1 / 2 / 3 columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {/* 6 per page — responsive grid (1 / 2 columns) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {pageItems.map((cs) => (
             <article
               key={cs.id}

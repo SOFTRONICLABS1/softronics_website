@@ -1,20 +1,21 @@
 import "./HeroStripes.css";
 import ServicesGrid from "./ServicesGrid";
 import { useAnalytics } from "../../hooks/useAnalytics";
+// import softCircle from "../../assets/images/soft-logo.webp";
 
 const Hero = () => {
   const { trackCTAClick } = useAnalytics();
 
   const handleConsultationClick = () => {
-    trackCTAClick('Book a Consultation Call', 'hero_section', 'primary', {
-      section: 'hero',
-      page: 'home'
+    trackCTAClick("Book a Consultation Call", "hero_section", "primary", {
+      section: "hero",
+      page: "home",
     });
   };
 
   return (
     <section
-      className="relative pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-12 sm:pb-16 md:pb-20 lg:pb-28 overflow-hidden"
+      className="relative pt-16 sm:pt-20 md:pt-24 lg:-pt-28 pb-12 sm:pb-16 md:pb-20 lg:pb-28 overflow-hidden"
       style={{ backgroundColor: "#38106F" }}
     >
       <div className="pointer-events-none absolute left-0 top-0 h-full w-[120px] sm:w-[140px] md:w-[180px] overflow-hidden z-0 hidden sm:block">
@@ -103,6 +104,7 @@ const Hero = () => {
           <div className="relative mt-8 sm:mt-6 md:mt-4 lg:-mt-16 xl:-mt-24">
             <img
               src="https://www.simform.com/wp-content/uploads/2024/12/hm-hero-image.svg"
+              // src={softCircle}
               alt="Engineering Excellence"
               className="relative z-10 w-full h-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-none lg:scale-[1.35] origin-center mx-auto lg:mx-0"
             />

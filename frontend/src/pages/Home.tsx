@@ -6,7 +6,7 @@ import FeaturedStories from "../components/sections/FeaturedStories"
 import CaseStudies from '../components/sections/CaseStudies';
 import Testimonials from '../components/sections/Testimonials';
 import ContactForm from '../components/sections/ContactForm';
-import Footer from '../components/layout/Footer';
+// import Footer from '../components/layout/Footer';
 import { useAnalytics } from '../hooks/useAnalytics';
 // import Partners from '../components/sections/Partners';
 
@@ -28,7 +28,7 @@ const Home = () => {
       <Services />
       <FeaturedStories />
       <ContactForm />
-      <Footer/>
+      {/* <Footer/> */}
       {/* <Industries /> */}
       {/* <Partners /> */}
     </>
