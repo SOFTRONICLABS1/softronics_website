@@ -1,6 +1,34 @@
+import { useEffect, useRef } from "react";
 import "./HeroStripes.css";
+import { useAnalytics } from "../../hooks/useAnalytics";
 
 const Services = () => {
+  const { trackCustomEvent } = useAnalytics();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            trackCustomEvent('Section View', {
+              section: 'services',
+              section_name: 'Microsoft Partnership Services',
+              page: 'home'
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [trackCustomEvent]);
   // const microsoftPartners = [
   //   {
   //     title: "Microsoft Solutions Partner",
@@ -32,7 +60,7 @@ const Services = () => {
   // ];
 
   return (
-    <section id="services" className="relative overflow-hidden">
+    <section ref={sectionRef} id="services" className="relative overflow-hidden">
       {/* Purple gradient background */}
       <div className="absolute inset-0 bg-[#F0E8FA]"></div>
 

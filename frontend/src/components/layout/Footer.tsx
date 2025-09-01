@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { Facebook, Linkedin, Youtube, Twitter } from "lucide-react";
+import softLogo from "../../assets/images/soft-logo.png";
 
 const Footer: FC = () => {
   return (
@@ -8,7 +9,7 @@ const Footer: FC = () => {
         <div>
           <a href="/">
             <img
-              src="https://softroniclabs.com/img/logo.png"
+              src={softLogo}
               alt="Softroniclabs"
               className="h-10 sm:h-12 w-auto"
               onError={(e) => {

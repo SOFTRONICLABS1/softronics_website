@@ -270,7 +270,7 @@ const FeaturedStories: React.FC = () => {
                 >
                   <div
                     className={`cursor-pointer ${
-                      index === vIndex ? "bg-[#D9C3FF]" : "bg-purple-[#D9C3FF]"
+                      index === vIndex ? "bg-[#D9C3FF]" : "bg-[#D9C3FF]"
                     } p-4 sm:p-5`}
                     onClick={() => setVIndex(index)}
                   >

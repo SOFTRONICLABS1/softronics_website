@@ -1,12 +1,118 @@
-import { useState, type FC, type FormEvent } from "react";
+import { useState, useEffect, useRef, type FC, type FormEvent, type ChangeEvent } from "react";
 import { Phone } from "lucide-react";
+import { useAnalytics } from "../../hooks/useAnalytics";
 import "./HeroStripes.css";
 
 const ContactForm: FC = () => {
+  const { trackFormView, trackFormInteraction, trackFormSubmission } = useAnalytics();
+  const [formStartTime] = useState(() => Date.now());
+  const hasTrackedView = useRef(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  // Track form view on component mount
+  useEffect(() => {
+    if (!hasTrackedView.current) {
+      trackFormView('contact_form', {
+        page: 'home',
+        section: 'contact'
+      });
+      hasTrackedView.current = true;
+    }
+  }, [trackFormView]);
+
+  const getCompletedFields = () => {
+    return Object.entries(formData)
+      .filter(([, value]) => value.trim() !== '')
+      .map(([key]) => key);
+  };
+
+  const getFormCompletionPercentage = () => {
+    const totalFields = Object.keys(formData).length;
+    const completedFields = getCompletedFields().length;
+    return Math.round((completedFields / totalFields) * 100);
+  };
+
+  const handleFieldFocus = (fieldName: string) => {
+    trackFormInteraction('contact_form', fieldName, 'focus', {
+      page: 'home',
+      section: 'contact',
+      form_completion_percentage: getFormCompletionPercentage()
+    });
+  };
+
+  const handleFieldBlur = (fieldName: string) => {
+    trackFormInteraction('contact_form', fieldName, 'blur', {
+      page: 'home',
+      section: 'contact',
+      form_completion_percentage: getFormCompletionPercentage()
+    });
+  };
+
+  const handleFieldChange = (fieldName: string, value: string) => {
+    setFormData(prev => ({ ...prev, [fieldName]: value }));
+    
+    trackFormInteraction('contact_form', fieldName, 'change', {
+      page: 'home',
+      section: 'contact',
+      field_value_length: value.length,
+      form_completion_percentage: getFormCompletionPercentage()
+    });
+  };
+
+  const validateForm = () => {
+    const errors: string[] = [];
+    
+    if (!formData.name.trim()) errors.push('name');
+    if (!formData.email.trim()) errors.push('email');
+    if (!formData.phone.trim()) errors.push('phone');
+    if (!formData.message.trim()) errors.push('message');
+    
+    return errors;
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // handle form submit here
-    console.log("Form submitted");
+    
+    const validationErrors = validateForm();
+    const completedFields = getCompletedFields();
+    const timeToComplete = Date.now() - formStartTime;
+    
+    if (validationErrors.length > 0) {
+      trackFormSubmission('contact_form', 'validation_error', completedFields, 4, {
+        page: 'home',
+        section: 'contact',
+        time_to_complete: timeToComplete,
+        validation_errors: validationErrors
+      });
+      return;
+    }
+
+    try {
+      // Simulate form submission (replace with actual API call)
+      console.log("Form submitted", formData);
+      
+      trackFormSubmission('contact_form', 'success', completedFields, 4, {
+        page: 'home',
+        section: 'contact',
+        time_to_complete: timeToComplete
+      });
+      
+      // Reset form on success
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      
+    } catch (error) {
+      trackFormSubmission('contact_form', 'error', completedFields, 4, {
+        page: 'home',
+        section: 'contact',
+        time_to_complete: timeToComplete,
+        error_message: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
   };
 
   // State to track image load
@@ -69,23 +175,39 @@ const ContactForm: FC = () => {
             <input
               type="text"
               placeholder="Name*"
+              value={formData.name}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => handleFieldChange('name', e.target.value)}
+              onFocus={() => handleFieldFocus('name')}
+              onBlur={() => handleFieldBlur('name')}
               className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2 text-sm sm:text-base"
               required
             />
             <input
               type="email"
               placeholder="Email*"
+              value={formData.email}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => handleFieldChange('email', e.target.value)}
+              onFocus={() => handleFieldFocus('email')}
+              onBlur={() => handleFieldBlur('email')}
               className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2 text-sm sm:text-base"
               required
             />
             <input
               type="tel"
               placeholder="Phone Number*"
+              value={formData.phone}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => handleFieldChange('phone', e.target.value)}
+              onFocus={() => handleFieldFocus('phone')}
+              onBlur={() => handleFieldBlur('phone')}
               className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2 text-sm sm:text-base"
               required
             />
             <textarea
               placeholder="Message*"
+              value={formData.message}
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => handleFieldChange('message', e.target.value)}
+              onFocus={() => handleFieldFocus('message')}
+              onBlur={() => handleFieldBlur('message')}
               className="bg-transparent border-b border-gray-300 focus:outline-none focus:border-white text-white placeholder-gray-200 pb-2 resize-none"
               rows={2}
               required

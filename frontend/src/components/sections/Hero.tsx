@@ -1,7 +1,17 @@
 import "./HeroStripes.css";
 import ServicesGrid from "./ServicesGrid";
+import { useAnalytics } from "../../hooks/useAnalytics";
 
 const Hero = () => {
+  const { trackCTAClick } = useAnalytics();
+
+  const handleConsultationClick = () => {
+    trackCTAClick('Book a Consultation Call', 'hero_section', 'primary', {
+      section: 'hero',
+      page: 'home'
+    });
+  };
+
   return (
     <section
       className="relative pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-12 sm:pb-16 md:pb-20 lg:pb-28 overflow-hidden"
@@ -58,6 +68,7 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
+                onClick={handleConsultationClick}
                 className="group px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-white hover:opacity-90 min-h-[44px]"
                 style={{ backgroundColor: "#EF5366" }}
               >

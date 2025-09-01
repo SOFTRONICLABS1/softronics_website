@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { FiMenu, FiX, FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { navigationItems, iconMap } from "../../utils/constants";
+import { useAnalytics } from "../../hooks/useAnalytics";
+import softLogo from "../../assets/images/soft-logo.png";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,14 +11,22 @@ const Header = () => {
     string | null
   >(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { trackNavigation, trackCTAClick } = useAnalytics();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     setMobileActiveDropdown(null);
+    trackNavigation('mobile_menu', 'mobile', !isMobileMenuOpen ? 'open' : 'close', {
+      section: 'header'
+    });
   };
 
   const handleMobileDropdownToggle = (label: string) => {
     setMobileActiveDropdown(mobileActiveDropdown === label ? null : label);
+    trackNavigation(label, 'mobile_dropdown', mobileActiveDropdown === label ? 'close' : 'open', {
+      section: 'header',
+      interaction_type: mobileActiveDropdown === label ? 'close' : 'open'
+    });
   };
 
   // Handle mouse enter with delay clear
@@ -25,6 +35,13 @@ const Header = () => {
       clearTimeout(timeoutRef.current);
     }
     setActiveDropdown(label);
+    // Track mega menu hover/view
+    if (label && navigationItems.find(item => item.label === label)?.megaMenu) {
+      trackNavigation(label, 'mega_menu', undefined, {
+        section: 'header',
+        interaction_type: 'hover'
+      });
+    }
   };
 
   /**
@@ -38,6 +55,19 @@ const Header = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 100); // Small delay to allow moving to dropdown
+  };
+
+  const handleNavClick = (label: string, href: string) => {
+    trackNavigation(label, 'main', href, {
+      section: 'header',
+      interaction_type: 'click'
+    });
+  };
+
+  const handleContactClick = () => {
+    trackCTAClick('Contact Us', 'header', 'primary', {
+      section: 'header'
+    });
   };
 
   /**
@@ -62,7 +92,7 @@ const Header = () => {
               <a href="/" className="flex items-center group">
                 <div className="relative">
                   <img
-                    src="https://softroniclabs.com/img/logo.png"
+                    src={softLogo}
                     alt="Softronic Labs"
                     className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   />
@@ -85,6 +115,7 @@ const Header = () => {
                   >
                     <a
                       href={item.href}
+                      onClick={() => handleNavClick(item.label, item.href)}
                       className={`text-white hover:text-gray-200 px-3 py-2 text-sm font-medium flex items-center space-x-1 transition-all duration-200 relative ${
                         activeDropdown === item.label ? "text-[#DF4B68]" : ""
                       }`}
@@ -108,7 +139,10 @@ const Header = () => {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <button className="relative bg-[#DF4B68] hover:bg-white text-white hover:text-[#DF4B68] border-2 border-transparent hover:border-[#DF4B68] px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 overflow-hidden group">
+              <button 
+                onClick={handleContactClick}
+                className="relative bg-[#DF4B68] hover:bg-white text-white hover:text-[#DF4B68] border-2 border-transparent hover:border-[#DF4B68] px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 overflow-hidden group"
+              >
                 <span className="relative z-10">Contact Us</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>

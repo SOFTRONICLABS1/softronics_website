@@ -1,5 +1,6 @@
 import React from "react";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useAnalytics } from "../../hooks/useAnalytics";
 
 type Pattern = "rings-right" | "rings-right-strong" | "quads" | "diagonals";
 
@@ -79,16 +80,33 @@ export default ServicesGrid;
 
 const ServiceCard: React.FC<{ spec: CardSpec }> = ({ spec }) => {
   const { title, subtitle, from, to, pattern } = spec;
+  const { trackServiceInteraction } = useAnalytics();
 
   const bgStyle: React.CSSProperties = {
     backgroundImage: `linear-gradient(135deg, ${from} 0%, ${to} 100%)`,
   };
 
+  const handleServiceHover = () => {
+    trackServiceInteraction(subtitle, 'hover', 'services_grid', {
+      section: 'services',
+      service_title: title
+    });
+  };
+
+  const handleServiceClick = () => {
+    trackServiceInteraction(subtitle, 'click', 'services_grid', {
+      section: 'services',
+      service_title: title
+    });
+  };
+
   return (
     <article
       className="relative overflow-hidden rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex flex-col justify-between
-                 shadow-[0_10px_30px_rgba(0,0,0,0.25)]"
+                 shadow-[0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
       style={bgStyle}
+      onMouseEnter={handleServiceHover}
+      onClick={handleServiceClick}
     >
       <Pattern variant={pattern} />
 
