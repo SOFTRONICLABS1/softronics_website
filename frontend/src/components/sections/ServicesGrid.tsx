@@ -10,50 +10,57 @@ interface CardSpec {
   from: string;
   to: string;
   pattern: Pattern;
+  accentColor?: string; // For hover effects
 }
 
 const CARDS: CardSpec[] = [
   {
     title: "Accelerate product roadmaps with a Co-Engineering CoE",
     subtitle: "Digital Product Engineering",
-    from: "#6C43D9",
-    to: "#A174F6",
+    from: "#FFA500",
+    to: "#FFB84D",
     pattern: "rings-right",
+    accentColor: "#4DC8E8",
   },
   {
     title: "Adopt, optimize, modernize, and build on the cloud",
     subtitle: "Cloud and DevOps Engineering",
-    from: "#6C43D9",
-    to: "#9E6EF3",
+    from: "#FFA500",
+    to: "#FFB84D",
     pattern: "quads",
+    accentColor: "#FFA500",
   },
   {
     title: "Build AI-ready data and analytics platforms",
     subtitle: "Data Engineering",
-    from: "#8E5BF0",
-    to: "#B887FF",
+    from: "#FFA500",
+    to: "#FF9933",
     pattern: "rings-right-strong",
+    accentColor: "#FFB84D",
   },
   {
     title: "Innovate with Gen-AI and custom ML development",
     subtitle: "AI/ML Engineering",
-    from: "#6C43D9",
-    to: "#9E70F4",
+    from: "#FF9933",
+    to: "#FFB84D",
     pattern: "diagonals",
+    accentColor: "#FFA500",
   },
   {
     title: "Transform experiences and applications with UX-led engineering",
     subtitle: "Digital and Experience Engineering",
-    from: "#744BDE",
-    to: "#A478FF",
+    from: "#FFA500",
+    to: "#FFB84D",
     pattern: "rings-right",
+    accentColor: "#FFA500",
   },
   {
     title: "Co-innovate, optimize delivery, and scale with product thinking",
     subtitle: "Product & Delivery",
-    from: "#6C43D9",
-    to: "#9E70F4",
+    from: "#FFA500",
+    to: "#FF9933",
     pattern: "quads",
+    accentColor: "#FFB84D",
   },
 ];
 
@@ -61,14 +68,14 @@ const ServicesGrid: React.FC = () => {
   return (
     <section className="relative py-16 sm:py-20 md:py-28 lg:py-36">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[32px] font-semibold leading-tight max-w-5xl mb-6 sm:mb-8 md:mb-10">
+        <h2 className="text-gray-800 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[32px] font-semibold leading-tight max-w-5xl mb-6 sm:mb-8 md:mb-10">
           We consult, engineer, and design technology solutions to address
           complex business challenges with precision.
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {CARDS.map((c, i) => (
-            <ServiceCard key={i} spec={c} />
+            <ServiceCard key={i} spec={c} index={i} />
           ))}
         </div>
       </div>
@@ -78,19 +85,30 @@ const ServicesGrid: React.FC = () => {
 
 export default ServicesGrid;
 
-const ServiceCard: React.FC<{ spec: CardSpec }> = ({ spec }) => {
-  const { title, subtitle, from, to, pattern } = spec;
+const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({ spec, index }) => {
+  const { title, subtitle, from, to, pattern, accentColor } = spec;
   const { trackServiceInteraction } = useAnalytics();
+  const [isHovered, setIsHovered] = React.useState(false);
 
+  // Alternate between primary colors for visual variety
   const bgStyle: React.CSSProperties = {
     backgroundImage: `linear-gradient(135deg, ${from} 0%, ${to} 100%)`,
+    transition: 'all 0.3s ease',
+    boxShadow: isHovered 
+      ? `0 20px 40px rgba(${index % 2 === 0 ? '255, 165, 0' : '77, 200, 232'}, 0.25)` 
+      : '0 10px 30px rgba(0, 0, 0, 0.1)',
   };
 
   const handleServiceHover = () => {
+    setIsHovered(true);
     trackServiceInteraction(subtitle, 'hover', 'services_grid', {
       section: 'services',
       service_title: title
     });
+  };
+
+  const handleServiceLeave = () => {
+    setIsHovered(false);
   };
 
   const handleServiceClick = () => {
@@ -100,23 +118,43 @@ const ServiceCard: React.FC<{ spec: CardSpec }> = ({ spec }) => {
     });
   };
 
+  // All cards now use orange gradients, so no dark cards
+  const isDarkCard = false;
+
   return (
     <article
       className="relative overflow-hidden rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex flex-col justify-between
-                 shadow-[0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group"
       style={bgStyle}
       onMouseEnter={handleServiceHover}
+      onMouseLeave={handleServiceLeave}
       onClick={handleServiceClick}
     >
-      <Pattern variant={pattern} />
+      <Pattern variant={pattern} accentColor={accentColor} />
+
+      {/* Hover overlay effect */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at 50% 50%, ${accentColor}20 0%, transparent 70%)`,
+        }}
+      />
 
       <h3 className="relative z-10 text-white text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-tight">
         {title}
       </h3>
 
       <div className="relative z-10 mt-4 sm:mt-6 md:mt-8 flex items-center justify-between">
-        <p className="text-white/85 text-xs sm:text-sm md:text-[15px]">{subtitle}</p>
-        <span className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/15 backdrop-blur-[1px] border border-white/20">
+        <p className={`${isDarkCard ? 'text-white/90' : 'text-white/95'} text-xs sm:text-sm md:text-[15px]`}>
+          {subtitle}
+        </p>
+        <span 
+          className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full backdrop-blur-[1px] border transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+          style={{
+            backgroundColor: isHovered ? `${accentColor}30` : 'rgba(255, 255, 255, 0.15)',
+            borderColor: isHovered ? accentColor : 'rgba(255, 255, 255, 0.2)',
+          }}
+        >
           <FiArrowUpRight className="text-white text-sm sm:text-[16px]" />
         </span>
       </div>
@@ -124,7 +162,7 @@ const ServiceCard: React.FC<{ spec: CardSpec }> = ({ spec }) => {
   );
 };
 
-const Pattern: React.FC<{ variant: Pattern }> = ({ variant }) => {
+const Pattern: React.FC<{ variant: Pattern; accentColor?: string }> = ({ variant, accentColor = '#4DC8E8' }) => {
   if (variant === "rings-right" || variant === "rings-right-strong") {
     return (
       <>
@@ -152,11 +190,9 @@ const Pattern: React.FC<{ variant: Pattern }> = ({ variant }) => {
           }}
         />
         <div
-          className="absolute right-6 top-0 h-full w-[12px] pointer-events-none"
+          className="absolute right-6 top-0 h-full w-[12px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           style={{
-            background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.20), rgba(255,255,255,0.10), rgba(255,255,255,0.20))",
-            opacity: 0.32,
+            background: `linear-gradient(to bottom, ${accentColor}40, ${accentColor}20, ${accentColor}40)`,
             borderRadius: 4,
           }}
         />
@@ -176,7 +212,7 @@ const Pattern: React.FC<{ variant: Pattern }> = ({ variant }) => {
           }}
         />
         <div
-          className="absolute right-[-40px] top-[-30px] w-[240px] h-[240px] rounded-lg rotate-45 pointer-events-none"
+          className="absolute right-[-40px] top-[-30px] w-[240px] h-[240px] rounded-lg rotate-45 pointer-events-none group-hover:rotate-[50deg] transition-transform duration-500"
           style={{
             background:
               "linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.00))",
@@ -200,7 +236,7 @@ const Pattern: React.FC<{ variant: Pattern }> = ({ variant }) => {
           }}
         />
         <div
-          className="absolute -right-6 -bottom-10 w-[220px] h-[220px] rounded-full pointer-events-none"
+          className="absolute -right-6 -bottom-10 w-[220px] h-[220px] rounded-full pointer-events-none group-hover:scale-110 transition-transform duration-500"
           style={{
             backgroundImage:
               "radial-gradient(circle at center, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.10) 56%, rgba(0,0,0,0) 60%)",

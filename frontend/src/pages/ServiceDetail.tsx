@@ -105,7 +105,19 @@ const ServiceDetail = () => {
               
               <button
                 onClick={handleCTAClick}
-                className="inline-flex items-center bg-white text-purple-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 group"
+                className="inline-flex items-center text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-0.5 group"
+                style={{
+                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                  boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
+                  e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
+                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+                }}
               >
                 Get Started
                 <FiArrowUpRight className="ml-2 w-5 h-5 group-hover:transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />

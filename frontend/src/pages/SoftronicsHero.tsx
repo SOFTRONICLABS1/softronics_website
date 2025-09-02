@@ -100,8 +100,20 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
 
           <button
             onClick={handleCTA}
-            className="mt-7 inline-flex h-[44px] items-center rounded-md bg-[#ff6a6a] px-5 text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(255,106,106,0.35)] transition hover:brightness-[1.05] active:translate-y-[1px]"
+            className="mt-7 inline-flex h-[44px] items-center rounded-md px-5 text-[14px] font-semibold text-white transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-[1px]"
             type="button"
+            style={{
+              background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+              boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
+              e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
+              e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+            }}
           >
             Get Free Consultation
           </button>

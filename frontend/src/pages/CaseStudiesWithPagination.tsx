@@ -177,7 +177,12 @@ const CaseStudiesWithPagination: React.FC = () => {
           <button
             onClick={() => goTo(page - 1)}
             disabled={page === 1}
-            className="px-3 py-2 rounded-md border border-purple-200 bg-white text-sm text-purple-800 disabled:opacity-40"
+            className="px-3 py-2 rounded-md border text-sm text-white disabled:opacity-40 transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+              borderColor: "#FFB84D",
+              boxShadow: "0 2px 8px rgba(255, 165, 0, 0.2)"
+            }}
           >
             Prev
           </button>
@@ -192,11 +197,17 @@ const CaseStudiesWithPagination: React.FC = () => {
                   key={p}
                   onClick={() => goTo(p)}
                   aria-current={active ? "page" : undefined}
-                  className={`h-9 min-w-9 px-3 rounded-md text-sm border ${
-                    active
-                      ? "bg-purple-700 text-white border-purple-700"
-                      : "bg-white text-purple-800 border-purple-200 hover:border-purple-300"
-                  }`}
+                  className="h-9 min-w-9 px-3 rounded-md text-sm border text-white transition-all duration-300"
+                  style={{
+                    background: active 
+                      ? "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)"
+                      : "linear-gradient(135deg, #FFE5CC 0%, #FFF2E5 100%)",
+                    borderColor: active ? "#FFB84D" : "#FFA500",
+                    color: active ? "white" : "#FFA500",
+                    boxShadow: active 
+                      ? "0 4px 15px rgba(255, 165, 0, 0.3)"
+                      : "0 2px 8px rgba(255, 165, 0, 0.1)"
+                  }}
                 >
                   {p}
                 </button>
@@ -207,7 +218,12 @@ const CaseStudiesWithPagination: React.FC = () => {
           <button
             onClick={() => goTo(page + 1)}
             disabled={page === totalPages}
-            className="px-3 py-2 rounded-md border border-purple-200 bg-white text-sm text-purple-800 disabled:opacity-40"
+            className="px-3 py-2 rounded-md border text-sm text-white disabled:opacity-40 transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+              borderColor: "#FFB84D",
+              boxShadow: "0 2px 8px rgba(255, 165, 0, 0.2)"
+            }}
           >
             Next
           </button>

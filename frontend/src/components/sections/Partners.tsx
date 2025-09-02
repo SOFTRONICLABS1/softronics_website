@@ -140,10 +140,41 @@ const Partners = () => {
               Let's discuss how our expertise and partnerships can help you achieve your business goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-primary-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl">
+              <button 
+                className="text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                style={{
+                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                  boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
+                  e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
+                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+                }}
+              >
                 Schedule Consultation
               </button>
-              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+              <button 
+                className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:-translate-y-0.5 border-2"
+                style={{
+                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                  borderColor: "#FFB84D",
+                  boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
+                  e.currentTarget.style.borderColor = "#FFA500";
+                  e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
+                  e.currentTarget.style.borderColor = "#FFB84D";
+                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+                }}
+              >
                 View Portfolio
               </button>
             </div>

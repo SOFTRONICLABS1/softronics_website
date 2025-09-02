@@ -1,19 +1,78 @@
 :root {
-  /* sampled from your image */
-  --stripe-top: rgba(63, 6, 118, 0); /* #3F0676 @ 0% (transparent)   */
-  --stripe-mid: rgba(102, 47, 169, 0.55); /* #662FA9 @ ~50%               */
-  --stripe-bottom: rgba(171, 58, 116, 0.50); /* #AB3A74 @ ~80%               */
+  /* Updated with orange and cyan gradient */
+  --stripe-top: rgba(255, 165, 0, 0); /* Orange transparent at top */
+  --stripe-mid: rgba(77, 200, 232, 0.35); /* Cyan at 50% opacity */
+  --stripe-bottom: rgba(255, 184, 77, 0.3); /* Light orange at 80% */
+
+  /* Additional color variables for consistency */
+  --primary-orange: #ffa500;
+  --primary-orange-light: #ffb84d;
+  --primary-cyan: #4dc8e8;
+  --primary-cyan-dark: #5bc0de;
+  --neutral-gray: #707070;
+  --neutral-gray-dark: #404040;
+  --neutral-gray-light: #f5f5f5;
 }
 
-@keyframes vl-fade {
-  0%,
-  100% {
-    opacity: 0.3;
+.will-change-transform {
+  will-change: transform;
+}
+
+/* optional: give stripes a slow vertical shimmer */
+@keyframes vlFade {
+  0% {
+    opacity: 0.08;
+    transform: translateY(-8%);
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.22;
+    transform: translateY(4%);
+  }
+  100% {
+    opacity: 0.08;
+    transform: translateY(-8%);
   }
 }
+
+.vl-fade {
+  animation-name: vlFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 .vl-fade {
   animation: vl-fade 3s ease-in-out infinite;
+}
+
+/* Additional utility classes for the new color scheme */
+.text-primary-orange {
+  color: var(--primary-orange);
+}
+
+.text-primary-cyan {
+  color: var(--primary-cyan);
+}
+
+.bg-primary-orange {
+  background-color: var(--primary-orange);
+}
+
+.bg-primary-cyan {
+  background-color: var(--primary-cyan);
+}
+
+.gradient-orange-cyan {
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange) 0%,
+    var(--primary-cyan) 100%
+  );
+}
+
+.gradient-cyan-orange {
+  background: linear-gradient(
+    135deg,
+    var(--primary-cyan) 0%,
+    var(--primary-orange) 100%
+  );
 }

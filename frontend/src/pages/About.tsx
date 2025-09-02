@@ -38,7 +38,21 @@ const About: React.FC = () => {
                   and professional services.
                 </p>
 
-                <button className="mt-6 inline-flex items-center rounded-md bg-[#ff7b7b] px-4 py-2 text-sm font-semibold text-white shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:brightness-105 focus:outline-none">
+                <button 
+                  className="mt-6 inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold text-white transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none"
+                  style={{
+                    background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                    boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
+                    e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
+                    e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+                  }}
+                >
                   Get in Touch
                 </button>
               </div>

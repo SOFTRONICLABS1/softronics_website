@@ -111,7 +111,9 @@ const CaseStudies = () => {
   };
 
   return (
-    <section className="relative py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden" style={{ background: "#38106F" }}>
+    <section className="relative py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden" style={{
+        background: "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)",
+      }}>
       {/* Animated Vertical Stripes - Left Side */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-[120px] sm:w-[140px] md:w-[180px] overflow-hidden z-0 hidden sm:block">
         {[...Array(12)].map((_, i) => (
@@ -136,10 +138,10 @@ const CaseStudies = () => {
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Header */}
         <div className="mb-4 sm:mb-6 md:mb-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-3">
             Case Studies
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-purple-100 max-w-4xl font-light">
+          <p className="text-xl sm:text-base md:text-lg text-[#171717] max-w-4xl font-light">
             Discover the many ways in which our clients have embraced the
             benefits of the Softroniclabs way of engineering.
           </p>
@@ -156,12 +158,12 @@ const CaseStudies = () => {
             <button
               onClick={prevSlide}
               className="pointer-events-auto flex items-center justify-center rounded-lg w-8 h-6 sm:w-9 sm:h-7 md:w-10 md:h-8 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105 min-h-[24px] min-w-[32px] ml-[-40px] sm:ml-[-60px]"
-              style={{ backgroundColor: "#5F36AB" }}
+              style={{ backgroundColor: "#FFA500" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#6B46C1";
+                e.currentTarget.style.backgroundColor = "#FFB84D";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#5F36AB";
+                e.currentTarget.style.backgroundColor = "#FFA500";
               }}
               aria-label="Previous slide"
             >
@@ -171,12 +173,12 @@ const CaseStudies = () => {
             <button
               onClick={nextSlide}
               className="pointer-events-auto flex items-center justify-center rounded-lg w-8 h-6 sm:w-9 sm:h-7 md:w-10 md:h-8 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105 min-h-[24px] min-w-[32px] mr-[-40px] sm:mr-[-60px]"
-              style={{ backgroundColor: "#5F36AB" }}
+              style={{ backgroundColor: "#FFA500" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#6B46C1";
+                e.currentTarget.style.backgroundColor = "#FFB84D";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#5F36AB";
+                e.currentTarget.style.backgroundColor = "#FFA500";
               }}
               aria-label="Next slide"
             >
@@ -189,7 +191,7 @@ const CaseStudies = () => {
             className="overflow-hidden shadow-2xl rounded w-full"
             style={{
               background:
-                "linear-gradient(135deg, rgba(233, 213, 255, 0.95) 0%, rgba(251, 207, 232, 0.95) 100%)",
+                "linear-gradient(135deg, rgba(255, 247, 232, 0.95) 0%, rgba(236, 253, 255, 0.95) 100%)",
             }}
           >
             <div className="flex flex-col lg:flex-row">
@@ -200,7 +202,7 @@ const CaseStudies = () => {
                   {caseStudies[currentSlide].tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-2 sm:px-3 lg:px-3.5 py-1 sm:py-1.5 bg-white/80 text-purple-900 rounded-full text-[10px] sm:text-xs md:text-sm font-medium border border-purple-200"
+                      className="px-2 sm:px-3 lg:px-3.5 py-1 sm:py-1.5 bg-white/90 text-orange-600 rounded-full text-[10px] sm:text-xs md:text-sm font-medium border border-orange-200"
                     >
                       {tag}
                     </span>
@@ -219,13 +221,13 @@ const CaseStudies = () => {
 
                 {/* Highlight Box */}
                 <div className="mb-3 sm:mb-4 md:mb-5">
-                  <p className="text-purple-700 font-semibold text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-orange-600 font-semibold text-sm sm:text-base md:text-lg leading-relaxed">
                     {caseStudies[currentSlide].highlight}
                   </p>
                 </div>
 
                 {/* Read More Link */}
-                <button className="inline-flex items-center text-purple-700 hover:text-purple-900 font-medium text-xs sm:text-sm md:text-base group min-h-[44px]">
+                <button className="inline-flex items-center text-orange-600 hover:text-cyan-600 font-medium text-xs sm:text-sm md:text-base group min-h-[44px]">
                   Read More
                   <ArrowUpRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
@@ -233,13 +235,13 @@ const CaseStudies = () => {
 
               {/* Right Image */}
               <div className="lg:w-[50%] relative min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] xl:min-h-[220px]">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-cyan-500/20"></div>
                 <img
                   src={caseStudies[currentSlide].image}
                   alt={caseStudies[currentSlide].title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-purple-900/10"></div>
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-orange-900/10"></div>
               </div>
             </div>
           </div>
@@ -254,9 +256,12 @@ const CaseStudies = () => {
               onClick={() => goToSlide(index)}
               className={`transition-all duration-300 ${
                 index === currentSlide
-                  ? "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"
-                  : "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-300/50 hover:bg-purple-300 rounded-full"
+                  ? "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full"
+                  : "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400/50 hover:bg-gray-400 rounded-full"
               }`}
+              style={{
+                background: index === currentSlide ? "linear-gradient(90deg, #FFA500 0%, #4DC8E8 100%)" : undefined
+              }}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

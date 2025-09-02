@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import softCircle from "../../assets/images/soft-logo2.webp";
 
 type Story = {
   id: number;
@@ -66,7 +67,7 @@ const FeaturedStories: React.FC = () => {
         title: "CTO's Guide to the Total Cost of Ownership (TCO) of …",
         blurb:
           "A practical map of cloud + people + platform costs for durable product decisions.",
-        by: "Hiren Dhaduk",
+        by: "Chetan G",
         date: "Nov 20, 2023",
       },
       {
@@ -75,7 +76,7 @@ const FeaturedStories: React.FC = () => {
         title: "The Roadmap to Digital Product Development: 6 Stages…",
         blurb:
           "From discovery to growth: artifacts, activities, and ownership for execution velocity.",
-        by: "Hiren Dhaduk",
+        by: "Chetan G",
         date: "May 29, 2023",
       },
       {
@@ -87,7 +88,7 @@ const FeaturedStories: React.FC = () => {
         date: "—",
         cover:
           "https://images.unsplash.com/photo-1714146682506-d6f86fe8517a?q=80&w=1076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        cta: { label: "Download", href: "#" },
+        // cta: { label: "Download", href: "#" },
       },
       {
         id: 4,
@@ -223,16 +224,21 @@ const FeaturedStories: React.FC = () => {
   const translateX = -(hIndex * (slideWidth + gapPx));
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#38106F]">
+    <section className="relative w-full overflow-hidden" style={{
+        background: "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)"
+      }}>
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16 z-10">
         {/* ===== TITLE ===== */}
-        <h2 className="text-white text-3xl md:text-[40px] font-bold tracking-tight">
+        <h2 className="text-gray-800 text-3xl md:text-[40px] font-bold tracking-tight">
           Featured Stories
         </h2>
 
         {/* ===== VERTICAL CAROUSEL WITH IMAGES ===== */}
         <div
-          className="mt-6 rounded bg-[#D9C3FF] p-3 sm:p-4 shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
+          className="mt-6 rounded p-3 sm:p-4 shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
+          style={{
+            background: "linear-gradient(135deg, rgba(255, 247, 232, 0.95) 0%, rgba(236, 253, 255, 0.95) 100%)"
+          }}
           onMouseEnter={stopAuto}
           onMouseLeave={startAuto}
         >
@@ -247,9 +253,10 @@ const FeaturedStories: React.FC = () => {
                   {i === vIndex && (
                     <div
                       key={`${vIndex}-${i}`}
-                      className="w-full rounded-full bg-[#AC8DE4]"
+                      className="w-full rounded-full"
                       style={{
                         height: "100%",
+                        background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
                         animation: `progress-fill-${vIndex} ${AUTOPLAY_MS}ms linear`,
                       }}
                     />
@@ -269,13 +276,11 @@ const FeaturedStories: React.FC = () => {
                   }`}
                 >
                   <div
-                    className={`cursor-pointer ${
-                      index === vIndex ? "bg-[#D9C3FF]" : "bg-[#D9C3FF]"
-                    } p-4 sm:p-5`}
+                    className="cursor-pointer bg-transparent p-4 sm:p-5"
                     onClick={() => setVIndex(index)}
                   >
                     <div className="flex flex-col">
-                      <h3 className="text-[18px] md:text-[20px] font-semibold text-purple-900">
+                      <h3 className="text-[18px] md:text-[20px] font-semibold text-gray-800">
                         {story.title}
                       </h3>
 
@@ -283,13 +288,23 @@ const FeaturedStories: React.FC = () => {
                         <div className="opacity-100 transition-opacity duration-300 delay-200">
                           <div className="flex gap-6 items-start">
                             <div className="flex-[3]">
-                              <p className="mt-3 text-[14px] leading-6 text-purple-800">
+                              <p className="mt-3 text-[14px] leading-6 text-gray-700">
                                 {story.summary}
                               </p>
 
                               <a
                                 href={story.href || "#"}
-                                className="mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-purple-700 hover:bg-white transition"
+                                className="mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white hover:scale-105 transition-all duration-300"
+                                style={{
+                                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                                  boxShadow: "0 4px 12px rgba(255, 165, 0, 0.2)"
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
+                                }}
                               >
                                 Read More{" "}
                                 <span className="translate-y-[1px]">↗</span>
@@ -310,7 +325,7 @@ const FeaturedStories: React.FC = () => {
                                     }`;
                                   }}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
                               </div>
                             </div>
                           </div>
@@ -353,9 +368,9 @@ const FeaturedStories: React.FC = () => {
 
         {/* ===== OUR PERSPECTIVE (HORIZONTAL) ===== */}
         <div className="mt-12 md:mt-16">
-          <h3 className="text-white text-2xl md:text-[32px] font-bold">
+          <h3 className="text-gray-800 text-2xl md:text-[32px] font-bold">
             Our Perspective on{" "}
-            <span className="underline decoration-purple-400 underline-offset-4">
+            <span className="underline decoration-orange-400 underline-offset-4">
               Product Engineering
             </span>
           </h3>
@@ -371,18 +386,22 @@ const FeaturedStories: React.FC = () => {
               <button
                 onClick={goToPrevious}
                 aria-label="Previous"
-                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full 
-               bg-purple-200 text-purple-900 shadow hover:scale-[1.03] transition 
-               -ml-20 min-h-[44px] min-w-[44px]" // 👈 moved left
+                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full shadow hover:scale-[1.03] transition -ml-20 min-h-[44px] min-w-[44px]"
+                style={{
+                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                  color: "white"
+                }}
               >
                 <ArrowLeft strokeWidth={1.5} />
               </button>
               <button
                 onClick={goToNext}
                 aria-label="Next"
-                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full 
-               bg-purple-200 text-purple-900 shadow hover:scale-[1.03] transition 
-               -mr-20 min-h-[44px] min-w-[44px]" // 👈 moved right
+                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full shadow hover:scale-[1.03] transition -mr-20 min-h-[44px] min-w-[44px]"
+                style={{
+                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                  color: "white"
+                }}
               >
                 <ArrowRight strokeWidth={1.5} />
               </button>
@@ -405,10 +424,15 @@ const FeaturedStories: React.FC = () => {
                       lg:basis-1/3
                     "
                   >
-                    <div className="rounded bg-purple-100 p-3 h-full">
+                    <div className="rounded p-3 h-full" style={{
+                      background: "linear-gradient(135deg, rgba(255, 247, 232, 0.8) 0%, rgba(236, 253, 255, 0.8) 100%)",
+                      border: "1px solid rgba(255, 165, 0, 0.1)"
+                    }}>
                       <div className="relative rounded p-5 h-full">
                         {/* badge */}
-                        <span className="inline-block rounded-md bg-purple-500 px-3 py-1 text-[12px] font-semibold text-white">
+                        <span className="inline-block rounded-md px-3 py-1 text-[12px] font-semibold text-white" style={{
+                          background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)"
+                        }}>
                           {p.badge}
                         </span>
 
@@ -428,15 +452,15 @@ const FeaturedStories: React.FC = () => {
                           </div>
                         )}
 
-                        <h4 className="mt-4 text-[18px] font-semibold text-purple-900 leading-snug">
+                        <h4 className="mt-4 text-[18px] font-semibold text-gray-800 leading-snug">
                           {p.title}
                         </h4>
-                        <p className="mt-2 text-[14px] leading-6 text-purple-800">
+                        <p className="mt-2 text-[14px] leading-6 text-gray-700">
                           {p.blurb}
                         </p>
 
                         <div className="mt-5 flex items-center justify-between">
-                          <div className="text-[12px] text-purple-700">
+                          <div className="text-[12px] text-gray-600">
                             <div>By {p.by}</div>
                             <div className="opacity-80">{p.date}</div>
                           </div>
@@ -444,14 +468,20 @@ const FeaturedStories: React.FC = () => {
                           {p.cta ? (
                             <a
                               href={p.cta.href}
-                              className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-purple-900 shadow hover:shadow-md transition"
+                              className="rounded-full px-4 py-2 text-sm font-semibold text-white shadow hover:shadow-md transition"
+                              style={{
+                                background: "linear-gradient(135deg, #4DC8E8 0%, #5BC0DE 100%)"
+                              }}
                             >
                               {p.cta.label}
                             </a>
                           ) : (
                             <button
                               aria-label="Open"
-                              className="grid h-9 w-9 place-items-center rounded-full bg-white text-purple-900 shadow hover:shadow-md transition mr-[24px]"
+                              className="grid h-9 w-9 place-items-center rounded-full text-white shadow hover:shadow-md transition mr-[24px]"
+                              style={{
+                                background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)"
+                              }}
                             >
                               ↗
                             </button>
@@ -475,9 +505,12 @@ const FeaturedStories: React.FC = () => {
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     i === hIndex
-                      ? "bg-purple-200 scale-125"
+                      ? "scale-125"
                       : "bg-white/30 hover:bg-white/50"
                   }`}
+                  style={{
+                    background: i === hIndex ? "linear-gradient(90deg, #FFA500 0%, #4DC8E8 100%)" : undefined
+                  }}
                   aria-label={`Go to slide ${i + 1}`}
                 />
               ))}
@@ -492,7 +525,8 @@ const FeaturedStories: React.FC = () => {
         className="pointer-events-none absolute left-[-120px] sm:left-[-240px] lg:left-[-120px] xl:left-[-280px] top-1/2 hidden -translate-y-1/2 md:block z-0"
       >
         <img
-          src="https://www.simform.com/wp-content/uploads/2024/12/hm-hero-image.svg"
+          // src="https://www.simform.com/wp-content/uploads/2024/12/hm-hero-image.svg"
+          src={softCircle}
           alt=""
           className="w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[480px] h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[480px] max-w-none opacity-30 object-cover"
           loading="lazy"

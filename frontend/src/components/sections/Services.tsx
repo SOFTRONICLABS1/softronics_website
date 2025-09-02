@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./HeroStripes.css";
 import { useAnalytics } from "../../hooks/useAnalytics";
+import softCircle from "../../assets/images/soft-logo2.webp";
 
 const Services = () => {
   const { trackCustomEvent } = useAnalytics();
@@ -61,8 +62,13 @@ const Services = () => {
 
   return (
     <section ref={sectionRef} id="services" className="relative overflow-hidden">
-      {/* Purple gradient background */}
-      <div className="absolute inset-0 bg-[#F0E8FA]"></div>
+      {/* Light gradient background */}
+      <div 
+        className="absolute inset-0" 
+        style={{
+          background: "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)",
+        }}
+      ></div>
 
       {/* Vertical Lines Animation - Right Side */}
       <div className="pointer-events-none absolute right-0 top-0 h-full w-[180px] overflow-hidden z-10 hidden md:block">
@@ -91,9 +97,11 @@ const Services = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch mb-10">
             {/* LEFT: Microsoft recognition (single image) */}
             <div
-              className="bg-[#6740BA] rounded p-5 sm:p-6 shadow
-                  flex flex-col items-center justify-center
-                  h-auto lg:h-[280px] xl:h-[300px]"
+              className="rounded p-5 sm:p-6 shadow-lg flex flex-col items-center justify-center h-auto lg:h-[280px] xl:h-[300px]"
+              style={{
+                background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                boxShadow: "0 10px 30px rgba(255, 165, 0, 0.2)",
+              }}
             >
               <h3
                 className="text-white font-bold leading-snug
@@ -114,8 +122,11 @@ const Services = () => {
 
             {/* RIGHT: Partner badges (single image) */}
             <div
-              className="bg-[#D9C3FF] rounded shadow flex items-center justify-center
-                  p-4 sm:p-6 h-auto lg:h-[280px] xl:h-[300px]"
+              className="rounded shadow-lg flex items-center justify-center p-4 sm:p-6 h-auto lg:h-[280px] xl:h-[300px]"
+              style={{
+                background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                boxShadow: "0 10px 30px rgba(77, 200, 232, 0.2)",
+              }}
             >
               <img
                 src="https://www.simform.com/wp-content/uploads/2025/02/Partners-logo_side-panel_v5.svg "
@@ -127,17 +138,17 @@ const Services = () => {
           </div>
 
           {/* Bottom Section - Rare League */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-12 lg:mt-16">
             <div>
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-purple-700 mb-3 sm:mb-4 md:mb-6 leading-tight">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-3 sm:mb-4 md:mb-6 leading-tight">
                 Amongst A Rare League Of Engineering Companies
               </h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-900 mb-3 sm:mb-4 md:mb-6 font-semibold leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-gray-700 mb-3 sm:mb-4 md:mb-6 font-medium leading-relaxed">
                 Softronic Labs is best positioned to deliver on digital
                 innovation through capabilities modeled on the best of all
                 servicing companies.
               </p>
-              <p className="text-xs sm:text-sm md:text-base text-gray-900 font-semibold leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-gray-700 font-medium leading-relaxed">
                 As a predominantly engineering-focused company, we bring robust
                 technical expertise while embodying the agility, customer
                 obsession, and CX focus of agencies. Paired with the
@@ -148,74 +159,64 @@ const Services = () => {
             </div>
 
             {/* Venn Diagram */}
-            <div className="relative mt-6 sm:mt-8 lg:mt-0">
-              {/* <div className="text-center">
-                <div className="inline-block bg-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold mb-8">
-                  Engineering Company
-                  <br />
-                  Empowers you with
+            <div className="relative mt-6 sm:mt-8 lg:mt-0 flex flex-col items-center">
+              {/* <div className="text-center mb-6 sm:mb-8">
+                <div className="inline-block px-6 py-3 rounded-full text-sm font-semibold mb-4 text-white" style={{
+                  background: "linear-gradient(135deg, #FFA500 0%, #4DC8E8 100%)",
+                  boxShadow: "0 4px 12px rgba(255, 165, 0, 0.2)"
+                }}>
+                  Engineering Company Empowers you with
                 </div>
               </div> */}
 
               <svg
                 viewBox="0 0 400 360"
-                className="w-full max-w-[280px] sm:max-w-xs md:max-w-sm lg:max-w-md mx-auto"
+                className="w-full max-w-[300px] sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
               >
                 {/* Three overlapping circles */}
                 <circle
                   cx="150"
                   cy="150"
                   r="120"
-                  fill="rgba(147, 51, 234, 0.3)"
-                  stroke="rgba(147, 51, 234, 0.5)"
+                  fill="rgba(76, 203, 237, 0.25)"
+                  stroke="rgba(76, 203, 237, 0.6)"
                   strokeWidth="2"
                 />
                 <circle
                   cx="250"
                   cy="150"
                   r="120"
-                  fill="rgba(147, 51, 234, 0.3)"
-                  stroke="rgba(147, 51, 234, 0.5)"
+                  fill="rgba(119, 119, 119, 0.25)"
+                  stroke="rgba(119, 119, 119, 0.6)"
                   strokeWidth="2"
                 />
                 <circle
                   cx="200"
                   cy="230"
                   r="120"
-                  fill="rgba(147, 51, 234, 0.3)"
-                  stroke="rgba(147, 51, 234, 0.5)"
+                  fill="rgba(232, 144, 0, 0.25)"
+                  stroke="rgba(232, 144, 0, 0.6)"
                   strokeWidth="2"
                 />
 
                 {/* Center logo */}
-                <rect
-                  x="180"
+                <image
+                  x="175"
                   y="160"
-                  width="40"
-                  height="40"
-                  fill="#ef4444"
-                  rx="4"
-                  transform="rotate(45 200 180)"
+                  width="55"
+                  height="55"
+                  href={softCircle}
+                  clipPath="circle(25px at 25px 25px)"
                 />
-                <text
-                  x="200"
-                  y="185"
-                  textAnchor="middle"
-                  fill="white"
-                  fontSize="24"
-                  fontWeight="bold"
-                >
-                  S
-                </text>
 
                 {/* Labels */}
                 <text
                   x="100"
                   y="100"
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="11"
-                  fontWeight="500"
+                  fill="#44444E"
+                  fontSize="12"
+                  fontWeight="700"
                 >
                   <tspan x="100" y="100">
                     Modern
@@ -229,9 +230,9 @@ const Services = () => {
                   x="300"
                   y="100"
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="11"
-                  fontWeight="500"
+                  fill="#44444E"
+                  fontSize="12"
+                  fontWeight="700"
                 >
                   <tspan x="300" y="100">
                     Engineering
@@ -248,8 +249,9 @@ const Services = () => {
                   x="130"
                   y="180"
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="10"
+                  fill="#44444E"
+                  fontSize="11"
+                  fontWeight="600"
                 >
                   <tspan x="120" y="180">
                     CX
@@ -263,8 +265,9 @@ const Services = () => {
                   x="270"
                   y="180"
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="10"
+                  fill="#44444E"
+                  fontSize="11"
+                  fontWeight="600"
                 >
                   <tspan x="260" y="180">
                     Delivery Maturity
@@ -278,9 +281,9 @@ const Services = () => {
                   x="120"
                   y="280"
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="11"
-                  fontWeight="500"
+                  fill="#44444E"
+                  fontSize="12"
+                  fontWeight="700"
                 >
                   <tspan x="120" y="280">
                     Agency
@@ -294,8 +297,9 @@ const Services = () => {
                   x="200"
                   y="300"
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="10"
+                  fill="#44444E"
+                  fontSize="11"
+                  fontWeight="600"
                 >
                   <tspan x="200" y="300">
                     Customer
@@ -309,9 +313,9 @@ const Services = () => {
                   x="280"
                   y="280"
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="11"
-                  fontWeight="500"
+                  fill="#44444E"
+                  fontSize="12"
+                  fontWeight="700"
                 >
                   <tspan x="270" y="280">
                     Large SI
