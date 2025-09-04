@@ -16,7 +16,7 @@ const ServicesPage = () => {
   return (
     <>
       {/* Services Grid - Purple background with service offerings */}
-      <div className="bg-[#38106F]">
+      <div className="bg-hero">
         <ServicesGrid />
       </div>
       

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAnalytics } from "../hooks/useAnalytics";
 import { FiCpu, FiServer, FiActivity } from "react-icons/fi";
-
+import softLogo from "../assets/images/soft-logo2.webp";
 const About: React.FC = () => {
   const { trackPageView } = useAnalytics();
 
@@ -13,21 +13,21 @@ const About: React.FC = () => {
   }, [trackPageView]);
 
   return (
-    <div className="min-h-screen bg-[#2c0053]">
+    <div className="min-h-screen bg-hero">
       <section className="relative overflow-hidden">
-        {/* deep purple background */}
-        <div className="bg-[#2c0053]">
+        {/* brand background */}
+        <div className="bg-hero">
           <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center py-20 md:py-24 lg:py-28">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-40 items-center py-12 md:py-24 lg:py-28">
               {/* Left copy */}
-              <div className="text-white">
+              <div className="text-brand-gray-dark">
                 <h1 className="text-[28px] leading-[1.15] sm:text-[34px] md:text-[40px] lg:text-[44px] font-extrabold tracking-tight">
                   From Cloud to AI—We Help
                   <br className="hidden md:block" />
                   You Engineer with Purpose
                 </h1>
 
-                <p className="mt-5 text-sm sm:text-[15px] leading-6 md:leading-7 text-white/85 max-w-xl">
+                <p className="mt-5 text-sm sm:text-[15px] leading-6 md:leading-7 text-brand-gray-dark/85 max-w-xl">
                   With deep engineering DNA and a unique co-engineering delivery
                   model, we provide services from advising on cloud architecture
                   to building AI-driven platforms. We have a proven track record
@@ -38,19 +38,22 @@ const About: React.FC = () => {
                   and professional services.
                 </p>
 
-                <button 
+                <button
                   className="mt-6 inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold text-white transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none"
                   style={{
-                    background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                    boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+                    background: "var(--brand-orange)",
+                    boxShadow: "0 4px 15px var(--shadow-orange)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
-                    e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+                    e.currentTarget.style.background =
+                      "var(--brand-orange-light)";
+                    e.currentTarget.style.boxShadow =
+                      "0 8px 25px var(--shadow-orange)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
-                    e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+                    e.currentTarget.style.background = "var(--brand-orange)";
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 15px var(--shadow-orange)";
                   }}
                 >
                   Get in Touch
@@ -58,12 +61,12 @@ const About: React.FC = () => {
               </div>
 
               {/* Right visual (replace src)dd */}
-              <div className="relative -mt-48">
-                {/* This preserves the “diamond” area and spacing */}
+              <div className="relative mt-8 lg:-mt-24">
+                {/* This preserves the "diamond" area and spacing */}
                 <img
-                  src="https://www.simform.com/wp-content/uploads/2025/01/about-hero-image.svg"
+                  src={softLogo}
                   alt="Decorative"
-                  className="w-[1220px] max-w-full ml-auto select-none pointer-events-none"
+                  className="w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[800px] ml-auto select-none pointer-events-none lg:scale-[1.6] sm:scale-[2.5] scale-[1.3]"
                 />
               </div>
             </div>
@@ -71,16 +74,16 @@ const About: React.FC = () => {
         </div>
 
         {/* soft diagonal sheen behind hero art (subtle) */}
-        <div className="pointer-events-none absolute right-0 top-0 h-[520px] w-[520px] translate-x-16 -translate-y-10 rotate-45 rounded-3xl bg-gradient-to-br from-[#8b5cf6]/30 to-transparent blur-2xl opacity-50 hidden lg:block" />
+        <div className="pointer-events-none absolute right-0 top-0 h-[520px] w-[520px] translate-x-16 -translate-y-10 rotate-45 rounded-3xl bg-gradient-to-br from-brand-orange/30 to-transparent blur-2xl opacity-50 hidden lg:block" />
       </section>
 
       {/* ============== “Positioned to Deliver …” + Pyramid ============== */}
       <section className="relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-8 md:py-12 lg:py-14">
-          <h2 className="text-white font-extrabold text-[28px] leading-[1.15] sm:text-[34px] md:text-[40px] lg:text-[44px] tracking-tight">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-6 md:py-12 lg:py-14">
+          <h2 className="text-brand-gray-dark font-extrabold text-[28px] leading-[1.15] sm:text-[34px] md:text-[40px] lg:text-[44px] tracking-tight">
             Positioned to Deliver
             <br className="hidden sm:block" />
-            <span className="text-white/90">
+            <span className="text-brand-gray-dark/90">
               {" "}
               What Innovative Companies Demands
             </span>
@@ -89,60 +92,60 @@ const About: React.FC = () => {
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
             {/* Left list */}
             <div className="lg:col-span-7">
-              <ul className="space-y-10">
+              <ul className="space-y-6 md:space-y-10">
                 {/* Item 1 */}
                 <li className="flex items-start gap-4">
                   <div className="mt-1 shrink-0">
-                    <FiActivity className="h-6 w-6 text-[#b58cff]" />
+                    <FiActivity className="h-6 w-6 text-brand-orange" />
                   </div>
-                  <div className="text-white/90">
+                  <div className="text-brand-gray-dark/90">
                     <h3 className="font-semibold text-[15px]">
                       Customer-Led Mindset –{" "}
                       <span className="font-bold">Like an Agency</span>
                     </h3>
-                    <p className="text-sm leading-6 text-white/75 mt-1 max-w-lg">
+                    <p className="text-sm leading-6 text-brand-gray-dark/75 mt-1 max-w-lg">
                       Grounded in technical depth and product thinking.
                     </p>
                     {/* thin connector line to mimic screenshot */}
-                    <div className="mt-3 h-px w-40 bg-white/25" />
+                    <div className="mt-3 h-px w-40 bg-brand-gray/25" />
                   </div>
                 </li>
 
                 {/* Item 2 */}
                 <li className="flex items-start gap-4">
                   <div className="mt-1 shrink-0">
-                    <FiServer className="h-6 w-6 text-[#b58cff]" />
+                    <FiServer className="h-6 w-6 text-brand-cyan" />
                   </div>
-                  <div className="text-white/90">
+                  <div className="text-brand-gray-dark/90">
                     <h3 className="font-semibold text-[15px]">
                       Enterprise-Grade Execution –{" "}
                       <span className="font-bold">
                         like a System Integrator (SI)
                       </span>
                     </h3>
-                    <p className="text-sm leading-6 text-white/75 mt-1 max-w-lg">
+                    <p className="text-sm leading-6 text-brand-gray-dark/75 mt-1 max-w-lg">
                       Built for scale, complexity, and long-term success.
                     </p>
-                    <div className="mt-3 h-px w-40 bg-white/25" />
+                    <div className="mt-3 h-px w-40 bg-brand-gray/25" />
                   </div>
                 </li>
 
                 {/* Item 3 */}
                 <li className="flex items-start gap-4">
                   <div className="mt-1 shrink-0">
-                    <FiCpu className="h-6 w-6 text-[#b58cff]" />
+                    <FiCpu className="h-6 w-6 text-brand-orange" />
                   </div>
-                  <div className="text-white/90">
+                  <div className="text-brand-gray-dark/90">
                     <h3 className="font-semibold text-[15px]">
                       Engineering-First Culture –{" "}
                       <span className="font-bold">
                         Like an Engineering Company
                       </span>
                     </h3>
-                    <p className="text-sm leading-6 text-white/75 mt-1 max-w-lg">
+                    <p className="text-sm leading-6 text-brand-gray-dark/75 mt-1 max-w-lg">
                       Grounded in technical depth and product thinking.
                     </p>
-                    <div className="mt-3 h-px w-40 bg-white/25" />
+                    <div className="mt-3 h-px w-40 bg-brand-gray/25" />
                   </div>
                 </li>
               </ul>
@@ -162,10 +165,10 @@ const About: React.FC = () => {
 
       <section className="relative">
         {/* light strip behind (like screenshot bottom) */}
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-[#efe7fb]" />
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-r service-card-gradient-3" />
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <div className="relative -mb-10 lg:-mb-12">
-            <div className="mx-auto w-full max-w-4xl rounded-xl bg-[#6f47c1] text-white px-6 py-6 md:px-10 md:py-7 shadow-lg">
+            <div className="mx-auto w-full max-w-4xl rounded-xl service-card-gradient-3 text-white px-6 py-6 md:px-10 md:py-7 shadow-lg">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>
                   <div className="text-2xl md:text-3xl font-extrabold">13+</div>

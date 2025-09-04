@@ -63,32 +63,29 @@ const Services = () => {
   return (
     <section ref={sectionRef} id="services" className="relative overflow-hidden">
       {/* Light gradient background */}
-      <div 
-        className="absolute inset-0" 
-        style={{
-          background: "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)",
-        }}
-      ></div>
+      <div className="absolute inset-0 bg-services"></div>
 
       {/* Vertical Lines Animation - Right Side */}
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-[180px] overflow-hidden z-10 hidden md:block">
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute h-full vl-fade mr-12"
-            style={{
-              right: `${i * 17}px`,
-              width: "8px",
-              background: `linear-gradient(to bottom,
-          var(--stripe-top) 0%,
-          var(--stripe-mid) 50%,
-          var(--stripe-bottom) 80%,
-          transparent 100%)`,
-              animationDuration: `${3 + i * 0.2}s`,
-              animationDelay: `${i * 0.05}s`,
-            }}
-          />
-        ))}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-full overflow-hidden z-10 hidden md:block">
+        <div className="w-[180px] h-full relative ml-auto">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute h-full vl-fade mr-12"
+              style={{
+                right: `${i * 17}px`,
+                width: "8px",
+                background: `linear-gradient(to bottom,
+            var(--stripe-top) 0%,
+            var(--stripe-mid) 50%,
+            var(--stripe-bottom) 80%,
+            transparent 100%)`,
+                animationDuration: `${3 + i * 0.2}s`,
+                animationDelay: `${i * 0.05}s`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="relative z-20 py-8 sm:py-12 md:py-16 lg:py-20 xl:py-32">
@@ -96,11 +93,11 @@ const Services = () => {
           {/* Top Section — Microsoft Recognition + Right Image */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch mb-10">
             {/* LEFT: Microsoft recognition (single image) */}
-            <div
-              className="rounded p-5 sm:p-6 shadow-lg flex flex-col items-center justify-center h-auto lg:h-[280px] xl:h-[300px]"
+            <div 
+              className="rounded-lg p-5 sm:p-6 shadow-lg flex flex-col items-center justify-center h-auto lg:h-[280px] xl:h-[300px]"
               style={{
-                background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                boxShadow: "0 10px 30px rgba(255, 165, 0, 0.2)",
+                background: 'var(--gradient-orange-primary)',
+                boxShadow: '0 10px 30px rgba(255, 165, 0, 0.2)'
               }}
             >
               <h3
@@ -121,11 +118,11 @@ const Services = () => {
             </div>
 
             {/* RIGHT: Partner badges (single image) */}
-            <div
-              className="rounded shadow-lg flex items-center justify-center p-4 sm:p-6 h-auto lg:h-[280px] xl:h-[300px]"
+            <div 
+              className="rounded-lg shadow-lg flex items-center justify-center p-4 sm:p-6 h-auto lg:h-[280px] xl:h-[300px]"
               style={{
-                background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                boxShadow: "0 10px 30px rgba(77, 200, 232, 0.2)",
+                background: 'var(--gradient-orange-primary)',
+                boxShadow: '0 10px 30px rgba(77, 200, 232, 0.2)'
               }}
             >
               <img

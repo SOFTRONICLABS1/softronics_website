@@ -17,50 +17,50 @@ const CARDS: CardSpec[] = [
   {
     title: "Accelerate product roadmaps with a Co-Engineering CoE",
     subtitle: "Digital Product Engineering",
-    from: "#FFA500",
-    to: "#FFB84D",
+    from: "#66e0ff",
+    to: "#ccf7ff",
     pattern: "rings-right",
-    accentColor: "#4DC8E8",
+    accentColor: "#00bcd4",
   },
   {
     title: "Adopt, optimize, modernize, and build on the cloud",
     subtitle: "Cloud and DevOps Engineering",
-    from: "#FFA500",
-    to: "#FFB84D",
+    from: "#66e0ff",
+    to: "#99ecff",
     pattern: "quads",
-    accentColor: "#FFA500",
+    accentColor: "#0099cc",
   },
   {
     title: "Build AI-ready data and analytics platforms",
     subtitle: "Data Engineering",
-    from: "#FFA500",
-    to: "#FF9933",
+    from: "#66e0ff",
+    to: "#b3f3ff",
     pattern: "rings-right-strong",
-    accentColor: "#FFB84D",
+    accentColor: "#33d6ff",
   },
   {
     title: "Innovate with Gen-AI and custom ML development",
     subtitle: "AI/ML Engineering",
-    from: "#FF9933",
-    to: "#FFB84D",
+    from: "#66e0ff",
+    to: "#ccf7ff",
     pattern: "diagonals",
-    accentColor: "#FFA500",
+    accentColor: "#00bcd4",
   },
   {
     title: "Transform experiences and applications with UX-led engineering",
     subtitle: "Digital and Experience Engineering",
-    from: "#FFA500",
-    to: "#FFB84D",
+    from: "#66e0ff",
+    to: "#99ecff",
     pattern: "rings-right",
-    accentColor: "#FFA500",
+    accentColor: "#00bcd4",
   },
   {
     title: "Co-innovate, optimize delivery, and scale with product thinking",
     subtitle: "Product & Delivery",
-    from: "#FFA500",
-    to: "#FF9933",
+    from: "#66e0ff",
+    to: "#ccf7ff",
     pattern: "quads",
-    accentColor: "#FFB84D",
+    accentColor: "#33d6ff",
   },
 ];
 
@@ -85,25 +85,38 @@ const ServicesGrid: React.FC = () => {
 
 export default ServicesGrid;
 
-const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({ spec, index }) => {
+const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({
+  spec,
+  index,
+}) => {
   const { title, subtitle, from, to, pattern, accentColor } = spec;
   const { trackServiceInteraction } = useAnalytics();
   const [isHovered, setIsHovered] = React.useState(false);
 
-  // Alternate between primary colors for visual variety
-  const bgStyle: React.CSSProperties = {
-    backgroundImage: `linear-gradient(135deg, ${from} 0%, ${to} 100%)`,
-    transition: 'all 0.3s ease',
-    boxShadow: isHovered 
-      ? `0 20px 40px rgba(${index % 2 === 0 ? '255, 165, 0' : '77, 200, 232'}, 0.25)` 
-      : '0 10px 30px rgba(0, 0, 0, 0.1)',
+  // Get the appropriate gradient style based on the from/to colors
+  const getGradientStyle = () => {
+    if (from === "#66e0ff" && to === "#ccf7ff")
+      return "linear-gradient(135deg, #66e0ff 0%, #ccf7ff 100%)";
+    if (from === "#66e0ff" && to === "#99ecff")
+      return "linear-gradient(135deg, #66e0ff 0%, #99ecff 100%)";
+    if (from === "#66e0ff" && to === "#b3f3ff")
+      return "linear-gradient(135deg, #66e0ff 0%, #b3f3ff 100%)";
+    return "linear-gradient(135deg, #66e0ff 0%, #ccf7ff 100%)"; // default cyan
+  };
+
+  const getShadowStyle = () => {
+    return isHovered
+      ? index % 2 === 0
+        ? "0 20px 40px rgba(255, 165, 0, 0.25)"
+        : "0 20px 40px rgba(77, 200, 232, 0.25)"
+      : "0 10px 30px rgba(0, 0, 0, 0.1)";
   };
 
   const handleServiceHover = () => {
     setIsHovered(true);
-    trackServiceInteraction(subtitle, 'hover', 'services_grid', {
-      section: 'services',
-      service_title: title
+    trackServiceInteraction(subtitle, "hover", "services_grid", {
+      section: "services",
+      service_title: title,
     });
   };
 
@@ -112,9 +125,9 @@ const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({ spec, index 
   };
 
   const handleServiceClick = () => {
-    trackServiceInteraction(subtitle, 'click', 'services_grid', {
-      section: 'services',
-      service_title: title
+    trackServiceInteraction(subtitle, "click", "services_grid", {
+      section: "services",
+      service_title: title,
     });
   };
 
@@ -123,9 +136,11 @@ const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({ spec, index 
 
   return (
     <article
-      className="relative overflow-hidden rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex flex-col justify-between
-                 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group"
-      style={bgStyle}
+      className="rounded-xl p-4 sm:p-6 md:p-8 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group relative overflow-hidden"
+      style={{
+        background: getGradientStyle(),
+        boxShadow: getShadowStyle(),
+      }}
       onMouseEnter={handleServiceHover}
       onMouseLeave={handleServiceLeave}
       onClick={handleServiceClick}
@@ -133,7 +148,7 @@ const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({ spec, index 
       <Pattern variant={pattern} accentColor={accentColor} />
 
       {/* Hover overlay effect */}
-      <div 
+      <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
           background: `radial-gradient(circle at 50% 50%, ${accentColor}20 0%, transparent 70%)`,
@@ -145,14 +160,21 @@ const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({ spec, index 
       </h3>
 
       <div className="relative z-10 mt-4 sm:mt-6 md:mt-8 flex items-center justify-between">
-        <p className={`${isDarkCard ? 'text-white/90' : 'text-white/95'} text-xs sm:text-sm md:text-[15px]`}>
+        <p
+          className={`${
+            isDarkCard ? "text-white/90" : "text-white/95"
+          } text-xs sm:text-sm md:text-[15px]`}
+        >
           {subtitle}
         </p>
-        <span 
-          className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full backdrop-blur-[1px] border transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+        <span
+          className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 border"
           style={{
-            backgroundColor: isHovered ? `${accentColor}30` : 'rgba(255, 255, 255, 0.15)',
-            borderColor: isHovered ? accentColor : 'rgba(255, 255, 255, 0.2)',
+            backgroundColor: isHovered
+              ? `${accentColor}30`
+              : "rgba(255, 255, 255, 0.15)",
+            borderColor: isHovered ? accentColor : "rgba(255, 255, 255, 0.2)",
+            backdropFilter: "blur(1px)",
           }}
         >
           <FiArrowUpRight className="text-white text-sm sm:text-[16px]" />
@@ -162,15 +184,18 @@ const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({ spec, index 
   );
 };
 
-const Pattern: React.FC<{ variant: Pattern; accentColor?: string }> = ({ variant, accentColor = '#4DC8E8' }) => {
+const Pattern: React.FC<{ variant: Pattern; accentColor?: string }> = ({
+  variant,
+  accentColor = "#4DC8E8",
+}) => {
   if (variant === "rings-right" || variant === "rings-right-strong") {
     return (
       <>
         <div
-          className="absolute -right-12 top-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+          className="absolute -right-8 top-1/2 -translate-y-1/2 rounded-full pointer-events-none"
           style={{
-            width: 360,
-            height: 360,
+            width: 280,
+            height: 280,
             backgroundImage:
               "radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 48%, rgba(0,0,0,0) 52%)",
             filter: variant === "rings-right-strong" ? "brightness(1.05)" : "",
@@ -179,10 +204,10 @@ const Pattern: React.FC<{ variant: Pattern; accentColor?: string }> = ({ variant
           }}
         />
         <div
-          className="absolute -right-[72px] top-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+          className="absolute -right-12 top-1/2 -translate-y-1/2 rounded-full pointer-events-none"
           style={{
-            width: 220,
-            height: 220,
+            width: 180,
+            height: 180,
             backgroundImage:
               "radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.12) 58%, rgba(0,0,0,0) 62%)",
             opacity: 0.9,
@@ -212,7 +237,7 @@ const Pattern: React.FC<{ variant: Pattern; accentColor?: string }> = ({ variant
           }}
         />
         <div
-          className="absolute right-[-40px] top-[-30px] w-[240px] h-[240px] rounded-lg rotate-45 pointer-events-none group-hover:rotate-[50deg] transition-transform duration-500"
+          className="absolute right-[-20px] top-[-15px] w-[180px] h-[180px] rounded-lg rotate-45 pointer-events-none group-hover:rotate-[50deg] transition-transform duration-500"
           style={{
             background:
               "linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.00))",
@@ -236,7 +261,7 @@ const Pattern: React.FC<{ variant: Pattern; accentColor?: string }> = ({ variant
           }}
         />
         <div
-          className="absolute -right-6 -bottom-10 w-[220px] h-[220px] rounded-full pointer-events-none group-hover:scale-110 transition-transform duration-500"
+          className="absolute -right-4 -bottom-8 w-[160px] h-[160px] rounded-full pointer-events-none group-hover:scale-110 transition-transform duration-500"
           style={{
             backgroundImage:
               "radial-gradient(circle at center, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.10) 56%, rgba(0,0,0,0) 60%)",

@@ -224,9 +224,13 @@ const FeaturedStories: React.FC = () => {
   const translateX = -(hIndex * (slideWidth + gapPx));
 
   return (
-    <section className="relative w-full overflow-hidden" style={{
-        background: "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)"
-      }}>
+    <section
+      className="relative w-full overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)",
+      }}
+    >
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16 z-10">
         {/* ===== TITLE ===== */}
         <h2 className="text-gray-800 text-3xl md:text-[40px] font-bold tracking-tight">
@@ -237,7 +241,8 @@ const FeaturedStories: React.FC = () => {
         <div
           className="mt-6 rounded p-3 sm:p-4 shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
           style={{
-            background: "linear-gradient(135deg, rgba(255, 247, 232, 0.95) 0%, rgba(236, 253, 255, 0.95) 100%)"
+            background:
+              "linear-gradient(135deg, rgba(255, 247, 232, 0.95) 0%, rgba(236, 253, 255, 0.95) 100%)",
           }}
           onMouseEnter={stopAuto}
           onMouseLeave={startAuto}
@@ -256,7 +261,8 @@ const FeaturedStories: React.FC = () => {
                       className="w-full rounded-full"
                       style={{
                         height: "100%",
-                        background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                        background:
+                          "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
                         animation: `progress-fill-${vIndex} ${AUTOPLAY_MS}ms linear`,
                       }}
                     />
@@ -294,17 +300,21 @@ const FeaturedStories: React.FC = () => {
 
                               <a
                                 href={story.href || "#"}
-                                className="mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white hover:scale-105 transition-all duration-300"
-                                style={{
-                                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                                  boxShadow: "0 4px 12px rgba(255, 165, 0, 0.2)"
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
-                                }}
+                                className="hero-title-cyan mt-5 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white hover:scale-105 transition-all duration-300"
+                                // style={{
+                                //   background:
+                                //     "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                                //   boxShadow:
+                                //     "0 4px 12px rgba(255, 165, 0, 0.2)",
+                                // }}
+                                // onMouseEnter={(e) => {
+                                //   e.currentTarget.style.background =
+                                //     "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
+                                // }}
+                                // onMouseLeave={(e) => {
+                                //   e.currentTarget.style.background =
+                                //     "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
+                                // }}
                               >
                                 Read More{" "}
                                 <span className="translate-y-[1px]">↗</span>
@@ -388,8 +398,9 @@ const FeaturedStories: React.FC = () => {
                 aria-label="Previous"
                 className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full shadow hover:scale-[1.03] transition -ml-20 min-h-[44px] min-w-[44px]"
                 style={{
-                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                  color: "white"
+                  background:
+                    "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                  color: "white",
                 }}
               >
                 <ArrowLeft strokeWidth={1.5} />
@@ -399,8 +410,9 @@ const FeaturedStories: React.FC = () => {
                 aria-label="Next"
                 className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full shadow hover:scale-[1.03] transition -mr-20 min-h-[44px] min-w-[44px]"
                 style={{
-                  background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                  color: "white"
+                  background:
+                    "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                  color: "white",
                 }}
               >
                 <ArrowRight strokeWidth={1.5} />
@@ -424,15 +436,23 @@ const FeaturedStories: React.FC = () => {
                       lg:basis-1/3
                     "
                   >
-                    <div className="rounded p-3 h-full" style={{
-                      background: "linear-gradient(135deg, rgba(255, 247, 232, 0.8) 0%, rgba(236, 253, 255, 0.8) 100%)",
-                      border: "1px solid rgba(255, 165, 0, 0.1)"
-                    }}>
+                    <div
+                      className="rounded p-3 h-full"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(255, 247, 232, 0.8) 0%, rgba(236, 253, 255, 0.8) 100%)",
+                        border: "1px solid rgba(255, 165, 0, 0.1)",
+                      }}
+                    >
                       <div className="relative rounded p-5 h-full">
                         {/* badge */}
-                        <span className="inline-block rounded-md px-3 py-1 text-[12px] font-semibold text-white" style={{
-                          background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)"
-                        }}>
+                        <span
+                          className="inline-block rounded-md px-3 py-1 text-[12px] font-semibold text-white"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
+                          }}
+                        >
                           {p.badge}
                         </span>
 
@@ -470,7 +490,8 @@ const FeaturedStories: React.FC = () => {
                               href={p.cta.href}
                               className="rounded-full px-4 py-2 text-sm font-semibold text-white shadow hover:shadow-md transition"
                               style={{
-                                background: "linear-gradient(135deg, #4DC8E8 0%, #5BC0DE 100%)"
+                                background:
+                                  "linear-gradient(135deg, #4DC8E8 0%, #5BC0DE 100%)",
                               }}
                             >
                               {p.cta.label}
@@ -480,7 +501,8 @@ const FeaturedStories: React.FC = () => {
                               aria-label="Open"
                               className="grid h-9 w-9 place-items-center rounded-full text-white shadow hover:shadow-md transition mr-[24px]"
                               style={{
-                                background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)"
+                                background:
+                                  "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
                               }}
                             >
                               ↗
@@ -504,12 +526,13 @@ const FeaturedStories: React.FC = () => {
                     setHIndex(i);
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === hIndex
-                      ? "scale-125"
-                      : "bg-white/30 hover:bg-white/50"
+                    i === hIndex ? "scale-125" : "bg-white/30 hover:bg-white/50"
                   }`}
                   style={{
-                    background: i === hIndex ? "linear-gradient(90deg, #FFA500 0%, #4DC8E8 100%)" : undefined
+                    background:
+                      i === hIndex
+                        ? "linear-gradient(90deg, #FFA500 0%, #4DC8E8 100%)"
+                        : undefined,
                   }}
                   aria-label={`Go to slide ${i + 1}`}
                 />

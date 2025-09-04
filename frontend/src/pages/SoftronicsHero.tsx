@@ -4,6 +4,7 @@ import mixpanel from "mixpanel-browser";
 import Services from "../components/sections/Services";
 import Testimonials from "../components/sections/Testimonials";
 import ContactForm from "../components/sections/ContactForm";
+import softCircle from "../../src/assets/images/soft-logo2.webp";
 
 type PillarKey = "delivery" | "solutions" | "expertise";
 
@@ -64,25 +65,26 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
   };
 
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-[#2b0054] text-white">
+    <main className="bg-hero relative min-h-screen w-full overflow-hidden text-brand-gray-dark">
       {/* ======= HERO ======= */}
       <section className="relative mx-auto max-w-[1200px] px-6 pt-24 pb-20 md:px-10 lg:px-12 lg:pt-28">
-        {/* Right artwork placeholder (you will replace src) */}
+        {/* Right artwork placeholder */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-y-0 right-0 hidden w-[690px] md:block"
         >
           <img
-            src="https://www.simform.com/wp-content/uploads/2024/12/offer-banner-1.webp"
+            // src="https://www.simform.com/wp-content/uploads/2024/12/offer-banner-1.webp"
+            src={softCircle}
             alt=""
             className="absolute right-[-120px] top-[-40px] h-[720px] w-[720px] object-contain opacity-90"
           />
-          <div className="absolute right-[-140px] top-[-60px] h-[780px] w-[780px] rounded-full bg-[radial-gradient(closest-side,_rgba(178,119,255,0.22),_rgba(43,0,84,0))]" />
+          <div className="absolute right-[-140px] top-[-60px] h-[780px] w-[780px] rounded-full bg-[radial-gradient(closest-side,_rgba(255,167,40,0.22),_rgba(255,94,0,0))]" />
         </div>
 
         {/* Copy block */}
         <div className="max-w-xl">
-          <h1 className="leading-tight text-[34px] font-semibold tracking-[-0.01em] sm:text-[40px] md:text-[44px]">
+          <h1 className="leading-tight text-[34px] font-semibold tracking-[-0.01em] sm:text-[40px] md:text-[44px] text-brand-gray-dark">
             The Right Engineering
             <br />
             Partner for Modern
@@ -90,29 +92,31 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
             Enterprises
           </h1>
 
-          <p className="mt-5 text-[15.5px] leading-7 text-[#E7D9FF]/90 md:mt-6">
+          <p className="mt-5 text-[15.5px] leading-7 md:mt-6 text-brand-gray-dark">
             True innovation in engineering stems from seamless collaboration,
             powered by experimentation, and driven by exceptional talent. At{" "}
-            <strong>Softronics</strong>, we’ve architected our entire approach
-            around these foundational pillars to deliver impactful solutions for
-            modern enterprises.
+            <strong className="text-brand-gray-dark">Softronics</strong>, we’ve
+            architected our entire approach around these foundational pillars to
+            deliver impactful solutions for modern enterprises.
           </p>
 
           <button
             onClick={handleCTA}
-            className="mt-7 inline-flex h-[44px] items-center rounded-md px-5 text-[14px] font-semibold text-white transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-[1px]"
+            className="mt-7 inline-flex h-[44px] items-center rounded-md px-5 text-[14px] font-semibold transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-[1px] text-white"
             type="button"
             style={{
-              background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-              boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+              background: "#4ECCEF",
+              boxShadow: "0 4px 15px rgba(78, 204, 239, 0.3)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
-              e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+              e.currentTarget.style.background = "#3DB8E0";
+              e.currentTarget.style.boxShadow =
+                "0 8px 25px rgba(78, 204, 239, 0.4)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
-              e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+              e.currentTarget.style.background = "#4ECCEF";
+              e.currentTarget.style.boxShadow =
+                "0 4px 15px rgba(78, 204, 239, 0.3)";
             }}
           >
             Get Free Consultation
@@ -120,23 +124,18 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
         </div>
       </section>
 
-      {/* Divider */}
-      {/* <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12">
-        <div className="h-px w-full bg-white/10" />
-      </div> */}
-
       {/* ======= PILLARS ======= */}
-      <section className="relative mx-auto max-w-[1200px] px-6 py-14 md:px-10 lg:px-12 lg:py-16">
-        <h2 className="mb-6 text-[28px] font-semibold tracking-tight sm:text-[32px]">
+      <section className="relative mx-auto max-w-[1200px] px-6 py-14 md:px-10 lg:px-12 lg:py-16 text-brand-gray-dark">
+        <h2 className="mb-6 text-[28px] font-semibold tracking-tight sm:text-[32px] text-brand-gray-dark">
           Softronics’{" "}
-          <span className="underline decoration-white/30">
+          <span className="underline decoration-black/20 underline-offset-2">
             foundational pillars
           </span>
         </h2>
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[360px_minmax(0,1fr)] md:items-start">
           {/* Left tabs */}
-          <div className="rounded-lg bg_white_5 p-2 ring-1 ring-white/10 [background-color:rgba(255,255,255,0.05)]">
+          <div className="rounded-lg p-2 ring-1 ring-black/10 bg-white/50">
             <TabButton
               labelTop="The right delivery model:"
               label="Co-engineering"
@@ -158,7 +157,7 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
           </div>
 
           {/* Right panel */}
-          <div className="relative rounded-xl bg-white/5 p-6 ring-1 ring-white/10 md:p-8">
+          <div className="relative rounded-xl bg-white/70 p-6 ring-1 ring-black/10 md:p-8 text-brand-gray-dark">
             {active === "delivery" && (
               <Panel
                 title="The right delivery model: Co-engineering"
@@ -189,7 +188,7 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
 
             <a
               href="#"
-              className="mt-5 inline-block text-sm font-semibold text-[#D9C3FF] underline decoration-transparent underline-offset-4 transition hover:decoration-[#D9C3FF]"
+              className="mt-5 inline-block text-sm font-semibold underline decoration-transparent underline-offset-4 transition hover:decoration-current text-brand-gray-dark"
               onClick={() =>
                 token &&
                 mixpanel.track("Learn More Click", {
@@ -204,6 +203,7 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
           </div>
         </div>
       </section>
+
       <Services />
       <Testimonials />
       <ContactForm />
@@ -224,20 +224,26 @@ const TabButton: React.FC<{
   <button
     onClick={onClick}
     className={[
-      "group flex w-full items-center justify-between rounded-md px-4 py-4 text-left transition",
+      // base
+      "group flex w-full items-center justify-between rounded-md px-4 py-4 text-left transition text-brand-gray-dark ring-1 ring-black/10",
+      // bg behavior
       active
-        ? "bg-[#3a0a73] text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"
-        : "hover:bg-white/5 text-white/90",
+        ? "service-card-gradient-3 shadow-sm"
+        : "bg-transparent hover:service-card-gradient-3",
     ].join(" ")}
   >
     <div>
-      <div className="text-[14px] leading-5 text-white/80">{labelTop}</div>
-      <div className="mt-0.5 text-[16px] font-semibold leading-6">{label}</div>
+      <div className="text-[14px] leading-5 text-brand-gray-dark">
+        {labelTop}
+      </div>
+      <div className="mt-0.5 text-[16px] font-semibold leading-6 text-brand-gray-dark">
+        {label}
+      </div>
     </div>
     <span
       className={[
         "ml-4 inline-grid h-6 w-6 place-items-center rounded-full text-xs transition",
-        active ? "bg-white/20" : "bg-white/10 group-hover:bg-white/15",
+        active ? "bg-white/50" : "bg-black/5 group-hover:bg-white/40",
       ].join(" ")}
     >
       ▸
@@ -249,12 +255,12 @@ const Panel: React.FC<{ title: string; body: string[] }> = ({
   title,
   body,
 }) => (
-  <div>
-    <h3 className="text-[22px] font-semibold leading-7 sm:text-[24px]">
+  <div className="text-brand-gray-dark">
+    <h3 className="text-[22px] font-semibold leading-7 sm:text-[24px] text-brand-gray-dark">
       {title}
     </h3>
     {body.map((p, i) => (
-      <p key={i} className="mt-3 text-[15.5px] leading-7 text-[#E7D9FF]/90">
+      <p key={i} className="mt-3 text-[15.5px] leading-7 text-brand-gray-dark">
         {p}
       </p>
     ))}

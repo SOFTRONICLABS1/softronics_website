@@ -48,28 +48,28 @@ export const navigationItems: NavItem[] = [
         {
           title: "Development Services",
           items: [
-            { label: "Digital Product Engineering", href: "#digital-product" },
-            { label: "Cloud & DevOps Engineering", href: "#cloud-devops" },
-            { label: "Data Engineering", href: "#data-engineering" },
+            { label: "Digital Product Engineering", href: "/services" },
+            { label: "Cloud & DevOps Engineering", href: "/services" },
+            { label: "Data Engineering", href: "/services" },
           ],
         },
         {
           title: "Advanced Technologies",
           items: [
-            { label: "AI/ML Engineering", href: "#ai-ml" },
+            { label: "AI/ML Engineering", href: "/services" },
             {
               label: "Digital & Experience Engineering",
-              href: "#digital-experience",
+              href: "/services",
             },
-            { label: "Blockchain Development", href: "#blockchain" },
+            { label: "Blockchain Development", href: "/services" },
           ],
         },
         {
           title: "Consulting",
           items: [
-            { label: "Digital Transformation", href: "#digital-transform" },
-            { label: "Technology Consulting", href: "#tech-consulting" },
-            { label: "Product Strategy", href: "#product-strategy" },
+            { label: "Digital Transformation", href: "/services" },
+            { label: "Technology Consulting", href: "/services" },
+            { label: "Product Strategy", href: "/services" },
           ],
         },
       ],
@@ -88,25 +88,25 @@ export const navigationItems: NavItem[] = [
         {
           title: "Healthcare & Life Sciences",
           items: [
-            { label: "Healthcare Solutions", href: "#healthcare" },
-            { label: "Telemedicine Platforms", href: "#telemedicine" },
-            { label: "Medical Device Integration", href: "#medical-device" },
+            { label: "Healthcare Solutions", href: "/industries" },
+            { label: "Telemedicine Platforms", href: "/industries" },
+            { label: "Medical Device Integration", href: "/industries" },
           ],
         },
         {
           title: "Financial Services",
           items: [
-            { label: "Banking Solutions", href: "#banking" },
-            { label: "Insurance Tech", href: "#insurance" },
-            { label: "Fintech Innovations", href: "#fintech" },
+            { label: "Banking Solutions", href: "/industries" },
+            { label: "Insurance Tech", href: "/industries" },
+            { label: "Fintech Innovations", href: "/industries" },
           ],
         },
         {
           title: "Retail & Manufacturing",
           items: [
-            { label: "E-commerce Platforms", href: "#ecommerce" },
-            { label: "Supply Chain Management", href: "#supply-chain" },
-            { label: "Industry 4.0", href: "#industry4" },
+            { label: "E-commerce Platforms", href: "/industries" },
+            { label: "Supply Chain Management", href: "/industries" },
+            { label: "Industry 4.0", href: "/industries" },
           ],
         },
       ],
@@ -163,19 +163,19 @@ export const navigationItems: NavItem[] = [
         {
           title: "Our Approach",
           items: [
-            { label: "Agile Methodology", href: "#agile" },
-            { label: "Co-Engineering", href: "#co-engineering" },
-            { label: "Innovation Lab", href: "#innovation" },
-            { label: "TalentOps", href: "#talent" },
+            { label: "Agile Methodology", href: "/why-softroniclabs" },
+            { label: "Co-Engineering", href: "/why-softroniclabs" },
+            { label: "Innovation Lab", href: "/why-softroniclabs" },
+            { label: "TalentOps", href: "/why-softroniclabs" },
           ],
         },
         {
           title: "Our Partnerships",
           items: [
-            { label: "Microsoft Partner", href: "#microsoft" },
-            { label: "AWS Partner", href: "#aws" },
-            { label: "Google Cloud Partner", href: "#gcp" },
-            { label: "Databricks Partner", href: "#databricks" },
+            { label: "Microsoft Partner", href: "/why-softroniclabs" },
+            { label: "AWS Partner", href: "/why-softroniclabs" },
+            { label: "Google Cloud Partner", href: "/why-softroniclabs" },
+            { label: "Databricks Partner", href: "/why-softroniclabs" },
           ],
         },
       ],

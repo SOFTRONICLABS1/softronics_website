@@ -111,9 +111,7 @@ const CaseStudies = () => {
   };
 
   return (
-    <section className="relative py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden" style={{
-        background: "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)",
-      }}>
+    <section className="relative py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden bg-services">
       {/* Animated Vertical Stripes - Left Side */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-[120px] sm:w-[140px] md:w-[180px] overflow-hidden z-0 hidden sm:block">
         {[...Array(12)].map((_, i) => (
@@ -157,29 +155,43 @@ const CaseStudies = () => {
           <div className="absolute inset-y-0 left-0 right-0 items-center justify-between pointer-events-none z-10 hidden lg:flex">
             <button
               onClick={prevSlide}
-              className="pointer-events-auto flex items-center justify-center rounded-lg w-8 h-6 sm:w-9 sm:h-7 md:w-10 md:h-8 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105 min-h-[24px] min-w-[32px] ml-[-40px] sm:ml-[-60px]"
-              style={{ backgroundColor: "#FFA500" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#FFB84D";
+              className="pointer-events-auto ml-[-40px] sm:ml-[-60px] w-6 h-6 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5"
+              style={{
+                // backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                // borderColor: 'var(--brand-cyan)',
+                color: 'var(--brand-cyan)',
+                // boxShadow: '0 4px 12px rgba(78, 204, 239, 0.2)'
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#FFA500";
-              }}
+              // onMouseEnter={(e) => {
+              //   e.currentTarget.style.backgroundColor = 'var(--brand-cyan)';
+              //   e.currentTarget.style.color = 'white';
+              // }}
+              // onMouseLeave={(e) => {
+              //   e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+              //   e.currentTarget.style.color = 'var(--brand-cyan)';
+              // }}
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
+              <ChevronLeft className="w-2 h-2 sm:w-5 sm:h-5" strokeWidth={2} />
             </button>
             
             <button
               onClick={nextSlide}
-              className="pointer-events-auto flex items-center justify-center rounded-lg w-8 h-6 sm:w-9 sm:h-7 md:w-10 md:h-8 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105 min-h-[24px] min-w-[32px] mr-[-40px] sm:mr-[-60px]"
-              style={{ backgroundColor: "#FFA500" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#FFB84D";
+              className="pointer-events-auto mr-[-40px] sm:mr-[-60px] w-6 h-6 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5"
+              style={{
+                // backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                // borderColor: 'var(--brand-cyan)',
+                color: 'var(--brand-cyan)',
+                // boxShadow: '0 4px 12px rgba(78, 204, 239, 0.2)'
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#FFA500";
-              }}
+              // onMouseEnter={(e) => {
+              //   // e.currentTarget.style.backgroundColor = 'var(--brand-cyan)';
+              //   e.currentTarget.style.color = 'white';
+              // }}
+              // onMouseLeave={(e) => {
+              //   // e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+              //   e.currentTarget.style.color = 'var(--brand-cyan)';
+              // }}
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
@@ -187,12 +199,9 @@ const CaseStudies = () => {
           </div>
 
           {/* Card */}
-          <div
-            className="overflow-hidden shadow-2xl rounded w-full"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255, 247, 232, 0.95) 0%, rgba(236, 253, 255, 0.95) 100%)",
-            }}
+          <div 
+            className="w-full rounded-xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+            style={{ backgroundColor: 'white' }}
           >
             <div className="flex flex-col lg:flex-row">
               {/* Left Content */}
@@ -227,7 +236,18 @@ const CaseStudies = () => {
                 </div>
 
                 {/* Read More Link */}
-                <button className="inline-flex items-center text-orange-600 hover:text-cyan-600 font-medium text-xs sm:text-sm md:text-base group min-h-[44px]">
+                <button 
+                  className="inline-flex items-center font-medium text-xs sm:text-sm md:text-base group min-h-[44px] transition-all duration-300"
+                  style={{
+                    color: 'var(--brand-cyan)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--brand-button-hover)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--brand-cyan)';
+                  }}
+                >
                   Read More
                   <ArrowUpRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
@@ -254,13 +274,11 @@ const CaseStudies = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`transition-all duration-300 ${
-                index === currentSlide
-                  ? "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full"
-                  : "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400/50 hover:bg-gray-400 rounded-full"
-              }`}
+              className="w-2 h-2 sm:w-3 sm:h-3 rounded-full border-2 transition-all duration-300 hover:scale-125"
               style={{
-                background: index === currentSlide ? "linear-gradient(90deg, #FFA500 0%, #4DC8E8 100%)" : undefined
+                backgroundColor: index === currentSlide ? 'var(--brand-orange)' : 'transparent',
+                borderColor: 'var(--brand-orange)',
+                opacity: index === currentSlide ? 1 : 0.6
               }}
               aria-label={`Go to slide ${index + 1}`}
             />

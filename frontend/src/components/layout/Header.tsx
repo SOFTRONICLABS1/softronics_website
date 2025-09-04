@@ -132,14 +132,14 @@ const Header = () => {
           transform: translateY(-1px);
         }
 
-        .logo-container {
-          transition: all 0.5s var(--ease-spring);
-          will-change: transform;
-        }
-        .logo-container:hover {
-          transform: scale(1.08) rotate(1deg);
-          filter: drop-shadow(0 4px 12px rgba(255, 165, 0, 0.3));
-        }
+        // .logo-container {
+        //   transition: all 0.5s var(--ease-spring);
+        //   will-change: transform;
+        // }
+        // .logo-container:hover {
+        //   transform: scale(1.08) rotate(1deg);
+        //   filter: drop-shadow(0 4px 12px rgba(255, 165, 0, 0.3));
+        // }
 
         .chevron-elegant {
           transition: all 0.3s var(--ease-spring);
@@ -319,23 +319,22 @@ const Header = () => {
             <div className="hidden lg:block">
               <button
                 onClick={handleContactClick}
-                className="cta-button text-white px-6 py-2.5 rounded-lg text-sm font-medium shadow-lg focus-ring transition-all duration-300 hover:shadow-xl transform hover:-translate-y-0.5"
+                className="px-4 py-2 rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] relative overflow-hidden focus-ring"
                 style={{
-                  background: '#4ECCEF',
-                    // "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                  boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)",
+                  background: "var(--brand-button-primary)",
+                  boxShadow: "0 4px 15px rgba(78, 204, 239, 0.3)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background =
-                    "linear-gradient(135deg, #4ECCEF 0%, #4ECCEF 100%)";
+                    "var(--brand-button-hover)";
                   e.currentTarget.style.boxShadow =
-                    "0 8px 25px rgba(255, 165, 0, 0.4)";
+                    "0 8px 25px rgba(78, 204, 239, 0.4)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
-                    "linear-gradient(135deg, #4ECCEF 0%, #4ECCEF 100%)";
+                    "var(--brand-button-primary)";
                   e.currentTarget.style.boxShadow =
-                    "0 4px 15px rgba(255, 165, 0, 0.3)";
+                    "0 4px 15px rgba(78, 204, 239, 0.3)";
                 }}
               >
                 <span className="relative z-10 font-semibold">Contact Us</span>
@@ -369,7 +368,7 @@ const Header = () => {
           .map((item) => (
             <div
               key={`mega-${item.label}`}
-              className="mega-menu absolute left-0 right-0 bg-white border-t-2"
+              className="mega-menu absolute left-0 right-0 bg-white border-t-2 overflow-x-hidden"
               data-open={
                 activeDropdown === item.label
               } /* ⬅️ NEW: CSS drives animation */
@@ -476,7 +475,7 @@ const Header = () => {
         {/* Mobile Navigation */}
         <div
           id="mobile-menu"
-          className={`mobile-menu lg:hidden z-50 ${
+          className={`mobile-menu lg:hidden z-50 overflow-x-hidden ${
             isMobileMenuOpen
               ? "max-h-[85vh] opacity-100 overflow-y-auto"
               : "max-h-0 opacity-0 overflow-hidden"
@@ -599,24 +598,20 @@ const Header = () => {
             <div className="px-3 pt-6 pb-2">
               <button
                 onClick={handleContactClick}
-                className="cta-button w-full text-white px-4 py-3 rounded-lg text-sm font-semibold shadow-lg min-h-[44px] touch-manipulation focus-ring transition-all duration-300 hover:shadow-xl transform hover:-translate-y-0.5"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                  boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background =
-                    "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 25px rgba(255, 165, 0, 0.4)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background =
-                    "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 15px rgba(255, 165, 0, 0.3)";
-                }}
+                className="px-3 py-2 rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 w-full min-h-[44px] focus-ring touch-manipulation"
+                // style={{
+                //   background: 'var(--brand-button-primary)',
+                //   boxShadow: '0 4px 15px rgba(78, 204, 239, 0.3)'
+                // }}
+                // onMouseEnter={(e) => {
+                //   e.currentTarget.style.background = 'var(--brand-button-hover)';
+                //   e.currentTarget.style.boxShadow = '0 8px 25px rgba(78, 204, 239, 0.4)';
+                // }}
+                // onMouseLeave={(e) => {
+                //   e.currentTarget.style.background = 'var(--brand-button-primary)';
+                //   e.currentTarget.style.boxShadow = '0 4px 15px rgba(78, 204, 239, 0.3)';
+                // }}
+                style={{ background: "var(--brand-cyan)" }}
               >
                 <span className="relative z-10">Contact Us</span>
               </button>

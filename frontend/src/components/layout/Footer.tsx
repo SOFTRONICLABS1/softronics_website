@@ -4,8 +4,7 @@ import softLogo from "../../assets/images/soft-logo.png";
 
 const Footer: FC = () => {
   return (
-    <footer className="border-t relative overflow-hidden" style={{
-        background: "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)",
+    <footer className="border-t relative overflow-hidden bg-footer" style={{
         boxShadow: "0 -10px 30px rgba(255, 165, 0, 0.1)",
         borderTopColor: "rgba(255, 165, 0, 0.2)"
       }}>
@@ -31,16 +30,88 @@ const Footer: FC = () => {
             />
           </a>
           <div className="flex gap-3 sm:gap-4 mt-3 sm:mt-4">
-            <a href="#" className="text-orange-500 hover:text-cyan-500 transition-all duration-300 hover:scale-110 p-1 rounded-full hover:bg-orange-50">
+            <a 
+              href="#" 
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hover:rotate-12"
+              style={{
+                color: 'var(--brand-cyan)',
+                backgroundColor: 'rgba(78, 204, 239, 0.1)',
+                boxShadow: '0 2px 8px rgba(78, 204, 239, 0.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--brand-cyan)';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(78, 204, 239, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(78, 204, 239, 0.1)';
+                e.currentTarget.style.color = 'var(--brand-cyan)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(78, 204, 239, 0.1)';
+              }}
+            >
               <Linkedin size={18} className="sm:w-5 sm:h-5" />
             </a>
-            <a href="#" className="text-orange-500 hover:text-cyan-500 transition-all duration-300 hover:scale-110 p-1 rounded-full hover:bg-orange-50">
+            <a 
+              href="#" 
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hover:rotate-12"
+              style={{
+                color: 'var(--brand-cyan)',
+                backgroundColor: 'rgba(78, 204, 239, 0.1)',
+                boxShadow: '0 2px 8px rgba(78, 204, 239, 0.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--brand-cyan)';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(78, 204, 239, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(78, 204, 239, 0.1)';
+                e.currentTarget.style.color = 'var(--brand-cyan)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(78, 204, 239, 0.1)';
+              }}
+            >
               <Twitter size={18} className="sm:w-5 sm:h-5" />
             </a>
-            <a href="#" className="text-orange-500 hover:text-cyan-500 transition-all duration-300 hover:scale-110 p-1 rounded-full hover:bg-orange-50">
+            <a 
+              href="#" 
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hover:rotate-12"
+              style={{
+                color: 'var(--brand-cyan)',
+                backgroundColor: 'rgba(78, 204, 239, 0.1)',
+                boxShadow: '0 2px 8px rgba(78, 204, 239, 0.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--brand-cyan)';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(78, 204, 239, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(78, 204, 239, 0.1)';
+                e.currentTarget.style.color = 'var(--brand-cyan)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(78, 204, 239, 0.1)';
+              }}
+            >
               <Youtube size={18} className="sm:w-5 sm:h-5" />
             </a>
-            <a href="#" className="text-orange-500 hover:text-cyan-500 transition-all duration-300 hover:scale-110 p-1 rounded-full hover:bg-orange-50">
+            <a 
+              href="#" 
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hover:rotate-12"
+              style={{
+                color: 'var(--brand-cyan)',
+                backgroundColor: 'rgba(78, 204, 239, 0.1)',
+                boxShadow: '0 2px 8px rgba(78, 204, 239, 0.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--brand-cyan)';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(78, 204, 239, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(78, 204, 239, 0.1)';
+                e.currentTarget.style.color = 'var(--brand-cyan)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(78, 204, 239, 0.1)';
+              }}
+            >
               <Facebook size={18} className="sm:w-5 sm:h-5" />
             </a>
           </div>
@@ -155,12 +226,16 @@ const Footer: FC = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="text-white text-center py-3 sm:py-4 text-xs sm:text-sm relative overflow-hidden" style={{
-        background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)"
-      }}>
+      <div 
+        className="relative border-t py-2 sm:py-3 text-xs sm:text-sm text-center"
+        style={{
+          background: 'linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-light) 50%, var(--brand-orange) 100%)',
+          borderTopColor: 'rgba(255, 165, 0, 0.3)'
+        }}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse"></div>
         <div className="relative z-10">
-          <p className="font-medium">
+          <p className="font-medium text-white">
             Copyright © {new Date().getFullYear()} Softroniclabs. All Rights Reserved.
           </p>
         </div>

@@ -110,16 +110,16 @@ const Industries = () => {
                     <button 
                       className="opacity-0 group-hover:opacity-100 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
                       style={{
-                        background: "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                        boxShadow: "0 4px 15px rgba(255, 165, 0, 0.3)"
+                        background: "#4ECCEF",
+                        boxShadow: "0 4px 15px rgba(78, 204, 239, 0.3)"
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "linear-gradient(135deg, #FFB84D 0%, #FFA500 100%)";
-                        e.currentTarget.style.boxShadow = "0 8px 25px rgba(255, 165, 0, 0.4)";
+                        e.currentTarget.style.background = "#3DB8E0";
+                        e.currentTarget.style.boxShadow = "0 8px 25px rgba(78, 204, 239, 0.4)";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)";
-                        e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 165, 0, 0.3)";
+                        e.currentTarget.style.background = "#4ECCEF";
+                        e.currentTarget.style.boxShadow = "0 4px 15px rgba(78, 204, 239, 0.3)";
                       }}
                     >
                       View Projects
