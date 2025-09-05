@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FiMenu, FiX, FiChevronDown, FiChevronRight } from "react-icons/fi";
+import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { navigationItems, iconMap } from "../../utils/constants";
 import { useAnalytics } from "../../hooks/useAnalytics";
 import softLogo from "../../assets/images/soft-logo.png";
@@ -11,6 +11,7 @@ const Header = () => {
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<
     string | null
   >(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // ⬇️ NEW: separate timers for open/close to avoid hover flicker
   const openTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -92,12 +93,37 @@ const Header = () => {
     navigate("/contact");
   };
 
+  // Scroll detection for enhanced sticky behavior
   useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          const shouldBeScrolled = scrollTop > 10;
+          
+          if (shouldBeScrolled !== isScrolled) {
+            setIsScrolled(shouldBeScrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Add event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Check initial scroll position
+    handleScroll();
+
     return () => {
       clearTimers();
+      window.removeEventListener('scroll', handleScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isScrolled]);
 
   return (
     <>
@@ -245,17 +271,88 @@ const Header = () => {
           box-shadow: 0 0 0 4px rgba(77, 200, 232, 0.2);
         }
 
+        /* Hamburger Icon Animation */
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 24px;
+          height: 18px;
+          cursor: pointer;
+          transition: all 0.3s var(--ease-elegant);
+        }
+        
+        .hamburger:hover {
+          transform: scale(1.05);
+        }
+        
+        .hamburger-bar {
+          width: 100%;
+          height: 2px;
+          background-color: #374151;
+          border-radius: 2px;
+          transition: all 0.3s var(--ease-elegant);
+          transform-origin: center;
+        }
+        
+        .hamburger.active .hamburger-bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+        
+        .hamburger.active .hamburger-bar:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        
+        .hamburger.active .hamburger-bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Fixed Header Styles - Simple and Reliable */
+        .navbar-fixed {
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 9999;
+          width: 100%;
+          transition: all 0.3s var(--ease-elegant);
+          will-change: background, box-shadow, backdrop-filter;
+        }
+        
+        .navbar-scrolled {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(12px);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .navbar-not-scrolled {
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(8px);
+          box-shadow: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* iOS Safari safe area support */
+        @supports (padding: max(0px)) {
+          .navbar-fixed {
+            padding-top: env(safe-area-inset-top);
+          }
+        }
+
         /* Accessibility: user pref */
         @media (prefers-reduced-motion: reduce) {
-          .mega-menu, .menu-item-stagger, .mobile-menu, .cta-button, .nav-item, .logo-container, .chevron-elegant {
+          .mega-menu, .menu-item-stagger, .mobile-menu, .cta-button, .nav-item, .logo-container, .chevron-elegant, .hamburger, .hamburger-bar, .navbar-fixed {
             transition: none !important;
           }
         }
       `}</style>
 
       <header
-        className="bg-white/98 sticky top-0 z-50 border-b border-gray-100/50"
-        style={{ backdropFilter: "blur(8px)" }}
+        className={`navbar-fixed ${
+          isScrolled ? 'navbar-scrolled' : 'navbar-not-scrolled'
+        }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -347,18 +444,18 @@ const Header = () => {
             <div className="lg:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="text-gray-700 hover:text-gray-900 p-2"
+                className="text-gray-700 hover:text-gray-900 p-2 focus-ring"
                 aria-expanded={isMobileMenuOpen}
                 aria-label={
                   isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"
                 }
                 aria-controls="mobile-menu"
               >
-                {isMobileMenuOpen ? (
-                  <FiX className="h-6 w-6" />
-                ) : (
-                  <FiMenu className="h-6 w-6" />
-                )}
+                <div className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}>
+                  <span className="hamburger-bar"></span>
+                  <span className="hamburger-bar"></span>
+                  <span className="hamburger-bar"></span>
+                </div>
               </button>
             </div>
           </div>

@@ -10,7 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main>{children}</main>
+      <main style={{ paddingTop: '64px' }}>{children}</main>
       <Footer />
     </div>
   );
