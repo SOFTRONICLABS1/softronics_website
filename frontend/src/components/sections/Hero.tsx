@@ -52,43 +52,36 @@ const Hero = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit z-10">
-        {/* Mobile Layout - Logo as background with content on top */}
-        <div className="lg:hidden relative">
-          {/* Hero Image - Background positioned behind content */}
+        {/* Mobile Layout - Centered overlay with background image */}
+        <div className="lg:hidden relative min-h-[70vh] flex items-center justify-center">
+          {/* Background Image */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
             <img
               src={softCircle}
               alt="Engineering Excellence"
-              className="w-full h-auto
-       max-w-[280px] xs:max-w-[340px] sm:max-w-[380px] md:max-w-[420px]
-       scale-[1.3] xs:scale-[1.85] sm:scale-[1.85] md:scale-100
-       origin-center opacity-30"
+              className="w-full h-auto max-w-[320px] xs:max-w-[380px] sm:max-w-[420px] md:max-w-[460px] opacity-40 scale-110"
             />
           </div>
 
-          {/* Content - Positioned on top of background image */}
-          <div className="relative z-10 max-w-2xl text-center mx-auto py-16 sm:py-20">
-            <h1
-              className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-[700] leading-tight mb-4 sm:mb-6 text-gray-900"
-              style={{ textShadow: "0 2px 6px rgba(0,0,0,0.25)" }}
-            >
+          {/* Content Overlay */}
+          <div className="relative z-10 max-w-2xl text-center mx-auto px-4 py-12">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-[800] leading-tight mb-4 sm:mb-6 text-gray-900"
+                style={{ textShadow: "0 2px 8px rgba(255,255,255,0.8)" }}>
               <span className="hero-title-cyan">Engineering </span>{" "}
               <span className="hero-title-gray">next best thing</span>{" "}
               <span className="hero-title-orange">for the </span>
               <span className="hero-title-orange">digital world</span>
             </h1>
 
-            <p
-              className="text-base sm:text-lg md:text-xl text-gray-800 mb-4 sm:mb-6 leading-relaxed font-medium"
-              style={{ textShadow: "0 1px 4px rgba(0,0,0,0.2)" }}
-            >
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-800 mb-6 sm:mb-8 leading-relaxed font-bold"
+               style={{ textShadow: "0 1px 6px rgba(255,255,255,0.8)" }}>
               Agile in mind, spirit, and speed
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center">
               <button
                 onClick={handleConsultationClick}
-                className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 min-h-[44px] w-auto group"
+                className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 min-h-[44px] w-auto group shadow-lg"
                 style={{
                   background: "var(--brand-cyan)",
                   boxShadow: "0 4px 15px var(--shadow-orange)",
@@ -149,7 +142,7 @@ const Hero = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="mt-8 sm:-mt-40 md:-mt-40 lg:mt-2">
+        <div className="-mt-4 sm:mt-3 lg:mt-1">
           <ServicesGrid />
         </div>
       </div>

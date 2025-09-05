@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu, FiX, FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { navigationItems, iconMap } from "../../utils/constants";
 import { useAnalytics } from "../../hooks/useAnalytics";
@@ -18,6 +18,7 @@ const Header = () => {
 
   const { trackNavigation, trackCTAClick } = useAnalytics();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -88,6 +89,7 @@ const Header = () => {
 
   const handleContactClick = () => {
     trackCTAClick("Contact Us", "header", "primary", { section: "header" });
+    navigate("/contact");
   };
 
   useEffect(() => {
@@ -319,7 +321,7 @@ const Header = () => {
             <div className="hidden lg:block">
               <button
                 onClick={handleContactClick}
-                className="px-4 py-2 rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] relative overflow-hidden focus-ring"
+                className="px-3 py-2 rounded-lg text-sm font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] relative overflow-hidden focus-ring"
                 style={{
                   background: "var(--brand-button-primary)",
                   boxShadow: "0 4px 15px rgba(78, 204, 239, 0.3)",
@@ -487,22 +489,34 @@ const Header = () => {
             {navigationItems.map((item) => (
               <div key={item.label}>
                 {item.megaMenu ? (
-                  <button
-                    className="mobile-item text-gray-700 hover:bg-orange-50 hover:text-gray-700 px-3 py-3 text-base font-medium w-full text-left flex items-center justify-between rounded-md min-h-[44px] touch-manipulation focus-ring"
-                    onClick={() => handleMobileDropdownToggle(item.label)}
-                    aria-expanded={mobileActiveDropdown === item.label}
-                    aria-controls={`mobile-dropdown-${item.label
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                    aria-label={`${item.label} submenu`}
-                  >
-                    <span className="font-semibold">{item.label}</span>
-                    <FiChevronDown
-                      className={`w-4 h-4 chevron-elegant ${
-                        mobileActiveDropdown === item.label ? "rotated" : ""
-                      }`}
-                    />
-                  </button>
+                  <div className="flex items-center w-full">
+                    <Link
+                      to={item.href}
+                      className="mobile-item text-gray-700 hover:bg-orange-50 hover:text-gray-700 px-3 py-3 text-base font-medium flex-1 text-left rounded-md min-h-[44px] touch-manipulation focus-ring"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setMobileActiveDropdown(null);
+                        handleNavClick(item.label, item.href);
+                      }}
+                    >
+                      <span className="font-semibold">{item.label}</span>
+                    </Link>
+                    <button
+                      className="mobile-item text-gray-700 hover:bg-orange-50 hover:text-gray-700 px-3 py-3 text-base font-medium rounded-md min-h-[44px] touch-manipulation focus-ring"
+                      onClick={() => handleMobileDropdownToggle(item.label)}
+                      aria-expanded={mobileActiveDropdown === item.label}
+                      aria-controls={`mobile-dropdown-${item.label
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
+                      aria-label={`Toggle ${item.label} submenu`}
+                    >
+                      <FiChevronDown
+                        className={`w-4 h-4 chevron-elegant ${
+                          mobileActiveDropdown === item.label ? "rotated" : ""
+                        }`}
+                      />
+                    </button>
+                  </div>
                 ) : (
                   <Link
                     to={item.href}
@@ -597,24 +611,12 @@ const Header = () => {
 
             <div className="px-3 pt-6 pb-2">
               <button
-                onClick={handleContactClick}
-                className="px-3 py-2 rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 w-full min-h-[44px] focus-ring touch-manipulation"
-                // style={{
-                //   background: 'var(--brand-button-primary)',
-                //   boxShadow: '0 4px 15px rgba(78, 204, 239, 0.3)'
-                // }}
-                // onMouseEnter={(e) => {
-                //   e.currentTarget.style.background = 'var(--brand-button-hover)';
-                //   e.currentTarget.style.boxShadow = '0 8px 25px rgba(78, 204, 239, 0.4)';
-                // }}
-                // onMouseLeave={(e) => {
-                //   e.currentTarget.style.background = 'var(--brand-button-primary)';
-                //   e.currentTarget.style.boxShadow = '0 4px 15px rgba(78, 204, 239, 0.3)';
-                // }}
-                style={{ background: "var(--brand-cyan)" }}
-              >
-                <span className="relative z-10">Contact Us</span>
-              </button>
+  onClick={handleContactClick}
+  className="px-3 py-1.5 rounded-lg text-sm font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 w-full min-h-[40px] focus-ring touch-manipulation"
+  style={{ background: "var(--brand-cyan)" }}
+>
+  <span className="relative z-10 text-sm">Contact Us</span>
+</button>
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import About from './pages/About';
 import ServiceDetail from './pages/ServiceDetail';
 import CaseStudiesWithPagination from './pages/CaseStudiesWithPagination';
 import NotFound from './pages/NotFound';
+import ContactForm from './components/sections/ContactForm';
 import mixpanelService from './services/mixpanel';
 import SoftronicsHero from './pages/SoftronicsHero';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/case-studies" element={<CaseStudiesWithPagination />} />
         <Route path="/about" element={<About />} />
         <Route path="/why-softroniclabs" element={<SoftronicsHero />} />
+        <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

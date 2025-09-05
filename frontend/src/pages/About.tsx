@@ -1,9 +1,11 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAnalytics } from "../hooks/useAnalytics";
 import { FiCpu, FiServer, FiActivity } from "react-icons/fi";
 import softLogo from "../assets/images/soft-logo2.webp";
 const About: React.FC = () => {
   const { trackPageView } = useAnalytics();
+  const navigate = useNavigate();
 
   useEffect(() => {
     trackPageView("About Us - SoftronicLabs Portfolio", {
@@ -12,13 +14,17 @@ const About: React.FC = () => {
     });
   }, [trackPageView]);
 
+  const handleGetInTouchClick = () => {
+    navigate("/contact");
+  };
+
   return (
     <div className="min-h-screen bg-hero">
       <section className="relative overflow-hidden">
         {/* brand background */}
         <div className="bg-hero">
           <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-40 items-center py-12 md:py-24 lg:py-28">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-16 lg:gap-40 items-center py-12 md:py-24 lg:py-28">
               {/* Left copy */}
               <div className="text-brand-gray-dark">
                 <h1 className="text-[28px] leading-[1.15] sm:text-[34px] md:text-[40px] lg:text-[44px] font-extrabold tracking-tight">
@@ -39,6 +45,7 @@ const About: React.FC = () => {
                 </p>
 
                 <button
+                  onClick={handleGetInTouchClick}
                   className="mt-6 inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold text-white transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none"
                   style={{
                     background: "var(--brand-orange)",
@@ -61,7 +68,7 @@ const About: React.FC = () => {
               </div>
 
               {/* Right visual (replace src)dd */}
-              <div className="relative mt-8 lg:-mt-24">
+              <div className="relative mt-2 lg:-mt-24">
                 {/* This preserves the "diamond" area and spacing */}
                 <img
                   src={softLogo}
@@ -89,7 +96,7 @@ const About: React.FC = () => {
             </span>
           </h2>
 
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
             {/* Left list */}
             <div className="lg:col-span-7">
               <ul className="space-y-6 md:space-y-10">
@@ -154,9 +161,10 @@ const About: React.FC = () => {
             {/* Right pyramid image (placeholder) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <img
-                src="https://www.simform.com/wp-content/uploads/2025/06/deliver-thumb-desktop-img.svg"
+                // src="https://www.simform.com/wp-content/uploads/2025/06/deliver-thumb-desktop-img.svg"
+                src={softLogo}
                 alt="Pyramid Graphic"
-                className="w-[360px] max-w-full select-none pointer-events-none"
+                className="w-[320px] sm:w-[380px] md:w-[420px] lg:w-[460px] max-w-full select-none pointer-events-none scale-125 sm:scale-110 lg:scale-100"
               />
             </div>
           </div>

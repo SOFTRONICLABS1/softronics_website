@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '../hooks/useAnalytics';
 import { services } from '../utils/constants';
 import { FiArrowLeft, FiCheck, FiArrowUpRight, FiCode, FiCloud, FiDatabase, FiSmartphone } from 'react-icons/fi';
@@ -16,6 +16,7 @@ const ServiceDetail = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const { trackPageView, trackCustomEvent } = useAnalytics();
   const [service, setService] = useState<any>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (serviceId) {
@@ -38,6 +39,15 @@ const ServiceDetail = () => {
       service: service?.title,
       page: 'service_detail'
     });
+  };
+
+  const handleContactClick = () => {
+    trackCustomEvent('Contact Us Click', {
+      cta_type: 'contact',
+      service: service?.title,
+      page: 'service_detail'
+    });
+    navigate("/contact");
   };
 
   if (!service) {
@@ -249,12 +259,12 @@ const ServiceDetail = () => {
                 <p className="text-gray-600 mb-6">
                   Let's discuss how we can help transform your business with {service.title.toLowerCase()}.
                 </p>
-                <Link
-                  to="/#contact"
-                  className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-300 text-center block"
+                <button
+                  onClick={handleContactClick}
+                  className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-300 text-center"
                 >
                   Contact Us Today
-                </Link>
+                </button>
               </div>
 
               {/* Related Services */}

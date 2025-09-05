@@ -1,5 +1,6 @@
 // src/components/SoftronicsHero.tsx
 import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import mixpanel from "mixpanel-browser";
 import Services from "../components/sections/Services";
 import Testimonials from "../components/sections/Testimonials";
@@ -16,6 +17,7 @@ type Props = {
 const MIXPANEL_PROJECT = import.meta.env.VITE_MIXPANEL_TOKEN;
 
 const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
+  const navigate = useNavigate();
   const token = useMemo(
     () => mixpanelToken || MIXPANEL_PROJECT,
     [mixpanelToken]
@@ -57,11 +59,12 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
   const handleCTA = () => {
     if (token) {
       mixpanel.track("CTA Click", {
-        cta: "Get Free Consultation",
+        cta: "Book a Consultation Call",
         page: "Softronics Hero",
         ts: Date.now(),
       });
     }
+    navigate("/contact");
   };
 
   return (
@@ -119,7 +122,7 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
                 "0 4px 15px rgba(78, 204, 239, 0.3)";
             }}
           >
-            Get Free Consultation
+            Book a Consultation Call
           </button>
         </div>
       </section>

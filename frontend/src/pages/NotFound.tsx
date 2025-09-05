@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAnalytics } from '../hooks/useAnalytics';
 import { FiHome, FiArrowRight, FiSearch } from 'react-icons/fi';
 
 const NotFound = () => {
   const { trackPageView, trackCustomEvent } = useAnalytics();
+  const navigate = useNavigate();
 
   useEffect(() => {
     trackPageView('404 Not Found - SoftronicLabs Portfolio', {
@@ -18,6 +19,14 @@ const NotFound = () => {
       link_type: linkType,
       page: '404'
     });
+  };
+
+  const handleContactClick = () => {
+    trackCustomEvent('404 Navigation', {
+      link_type: 'contact',
+      page: '404'
+    });
+    navigate("/contact");
   };
 
   return (
@@ -120,14 +129,13 @@ const NotFound = () => {
           <p className="text-gray-600 mb-4">
             Still can't find what you're looking for?
           </p>
-          <Link
-            to="/#contact"
-            onClick={() => handleLinkClick('contact')}
+          <button
+            onClick={handleContactClick}
             className="inline-flex items-center bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-300 group"
           >
             Contact Us
             <FiArrowRight className="ml-2 w-5 h-5 group-hover:transform group-hover:translate-x-1 transition-all duration-300" />
-          </Link>
+          </button>
         </div>
 
         {/* Decorative Elements */}
