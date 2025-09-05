@@ -50,28 +50,28 @@ export const navigationItems: NavItem[] = [
           items: [
             { label: "Product Strategy", href: "/product-strategy" },
             { label: "Quality Engineering", href: "/quality-engineering" },
-            { label: "Data Engineering", href: "/services" },
+            { label: "Data Engineering", href: "/data-engg" },
           ],
         },
         {
           title: "Advanced Technologies",
           items: [
-            { label: "AI/ML Engineering", href: "/services" },
+            { label: "AI/ML Engineering", href: "/ai-ml" },
             {
               label: "Digital & Experience Engineering",
-              href: "/services",
+              href: "/digi-exp",
             },
-            { label: "Blockchain Development", href: "/services" },
+            { label: "Msw Development", href: "msw-dev" },
           ],
         },
-        {
-          title: "Consulting",
-          items: [
-            { label: "Digital Transformation", href: "/services" },
-            { label: "Technology Consulting", href: "/services" },
-            { label: "Product Strategy", href: "/product-strategy" },
-          ],
-        },
+        // {
+        //   title: "Consulting",
+        //   items: [
+        //     { label: "Digital Transformation", href: "/services" },
+        //     { label: "Technology Consulting", href: "/services" },
+        //     { label: "Product Strategy", href: "/product-strategy" },
+        //   ],
+        // },
       ],
       image:
         "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop",
