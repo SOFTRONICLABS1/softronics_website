@@ -11,6 +11,8 @@ import NotFound from './pages/NotFound';
 import ContactForm from './components/sections/ContactForm';
 import mixpanelService from './services/mixpanel';
 import SoftronicsHero from './pages/SoftronicsHero';
+import ProductStrategy from './pages/ProductStrategy';
+import QualityEngineering from './pages/QualityEngineering';
 
 function App() {
   useEffect(() => {
@@ -27,6 +29,8 @@ function App() {
         <Route path="/case-studies" element={<CaseStudiesWithPagination />} />
         <Route path="/about" element={<About />} />
         <Route path="/why-softroniclabs" element={<SoftronicsHero />} />
+        <Route path="/product-strategy" element={<ProductStrategy />} />
+        <Route path="/quality-engineering" element={<QualityEngineering />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

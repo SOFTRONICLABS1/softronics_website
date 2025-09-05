@@ -21,8 +21,8 @@ import {
 
 // Icon mapping for menu items
 export const iconMap: Record<string, React.ComponentType<any>> = {
-  "Digital Product Engineering": FiCode,
-  "Cloud & DevOps Engineering": FiCloud,
+  "Product Strategy": FiCode,
+  "Quality Engineering": FiCloud,
   "Data Engineering": FiDatabase,
   "AI/ML Engineering": FiCpu,
   "Digital & Experience Engineering": FiSmartphone,
@@ -48,8 +48,8 @@ export const navigationItems: NavItem[] = [
         {
           title: "Development Services",
           items: [
-            { label: "Digital Product Engineering", href: "/services" },
-            { label: "Cloud & DevOps Engineering", href: "/services" },
+            { label: "Product Strategy", href: "/product-strategy" },
+            { label: "Quality Engineering", href: "/quality-engineering" },
             { label: "Data Engineering", href: "/services" },
           ],
         },
@@ -69,7 +69,7 @@ export const navigationItems: NavItem[] = [
           items: [
             { label: "Digital Transformation", href: "/services" },
             { label: "Technology Consulting", href: "/services" },
-            { label: "Product Strategy", href: "/services" },
+            { label: "Product Strategy", href: "/product-strategy" },
           ],
         },
       ],
@@ -190,7 +190,7 @@ export const navigationItems: NavItem[] = [
 export const services: ServiceCard[] = [
   {
     id: "1",
-    title: "Digital Product Engineering",
+    title: "Product Strategy",
     description:
       "End-to-end product development from ideation to deployment with modern technologies and best practices.",
     icon: "FiCode",
@@ -203,7 +203,7 @@ export const services: ServiceCard[] = [
   },
   {
     id: "2",
-    title: "Cloud & DevOps Engineering",
+    title: "Quality Engineering",
     description:
       "Scalable cloud infrastructure and automated deployment pipelines for faster time-to-market.",
     icon: "FiCloud",
