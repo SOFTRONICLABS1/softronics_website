@@ -1,68 +1,68 @@
 import ServicePageTemplate from "../components/templates/ServicePageTemplate";
 import ProductStrategyFeatures from "../components/sections/ProductStrategyFeatures";
+import AIMLContent from "../components/sections/AIMLContent";
 import type { ServicePageConfig, ServiceMenuItem } from "../types/ServicePage";
 
 const Ai_Ml = () => {
   const pageConfig: ServicePageConfig = {
-    tag: "Data science consulting",
-    title: "Turn complex data into actionable business insights",
+    tag: "AI/ML Engineering",
+    title: "Bring intelligence into your business functions with AI-led solutions that scale",
     description:
-      "Our data scientists transform your raw data into powerful visualizations and predictive models, for informed decision-making across your organization.",
+      "Your organization generates valuable data every day. We help you transform it into actionable insights and automated solutions that optimize operations, improve customer experiences, and drive sustainable growth.",
     analytics: {
-      pageTitle: "Product Strategy - SoftronicLabs Portfolio",
-      page: "product-strategy",
-      ctaEventName: "product_strategy_hero",
+      pageTitle: "AI/ML Engineering - SoftronicLabs Portfolio",
+      page: "ai-ml-engineering",
+      ctaEventName: "ai_ml_hero",
       ctaSection: "hero",
     },
   };
 
   const menuItems: ServiceMenuItem[] = [
     {
-      id: "Data strategy consulting",
-      title: "Data strategy consulting",
+      id: "Generative AI",
+      title: "Generative AI",
       content: {
         description:
-          "Get a precise strategy to transform your data into business value, with a clear roadmap prioritizing high-impact initiatives and measurable outcomes.",
+          "Your business has immense potential for automation and innovation, but implementing AI solutions can be complex and resource-intensive. We help you leverage generative AI from strategic planning to deployment and deliver custom solutions that improve productivity and drive competitive advantage.",
         details:
-          "Our team analyzes your data maturity and business objectives to recommend priority data initiatives, implementation milestones, and capability requirements. We also help you design optimal data architecture that can continuously scale as your needs evolve.",
+          "Our approach includes strategic AI roadmap development, custom AI solution development, and autonomous agent implementation. We guide you through the entire process from ideation to production deployment, ensuring your AI solutions are scalable, reliable, and aligned with your business objectives.",
       },
     },
     {
-      id: "Data management",
-      title: "Data management",
+      id: "Data science",
+      title: "Data science",
       content: {
         description:
-          "Build a reliable data foundation that eliminates inconsistencies and ensures data quality at every step of your data journey.",
+          "Transform your raw data into powerful insights and predictive models that drive informed decision-making across your organization.",
         details:
-          "Our data engineers help you select relevant data sources and create efficient data pipelines that handle diverse data sources and complex transformations at scale. We also guide you on unifying datasets through advanced entity resolution and normalization for utmost integrity.",
+          "Our data scientists help you extract meaningful patterns from complex datasets, build predictive models, and create data-driven solutions. We specialize in statistical analysis, machine learning model development, and advanced analytics that turn your data into a competitive advantage.",
       },
     },
     {
-      id: "Predictive modeling and refinement",
-      title: "Predictive modeling and refinement",
+      id: "Machine learning",
+      title: "Machine learning",
       content: {
         description:
-          "Transform your historical data into accurate forecasts that reduce business uncertainty and drive data-powered decision making across your organization.",
+          "Build intelligent systems that learn from data and improve over time, automating complex decision-making processes and enhancing operational efficiency.",
         details:
-          "Our data scientists guide you in selecting optimal modeling approaches, from ensemble learning to deep belief networks for your specific needs. We also help you establish processes for continuous model validation and improvement across diverse business use cases.",
+          "We develop custom machine learning solutions including supervised and unsupervised learning models, deep learning systems, and reinforcement learning applications. Our ML solutions are designed for scalability, performance, and seamless integration with your existing infrastructure.",
       },
     },
     {
-      id: "AI and ML integration",
-      title: "AI and ML integration",
+      id: "MLOps",
+      title: "MLOps",
       content: {
         description:
-          "Optimize your data science lifecycle with advanced AI and ML capabilities to automate everything from data preparation and exploration to building, deploying, and monitoring models.",
+          "Streamline your machine learning lifecycle with robust MLOps practices that ensure reliable model deployment, monitoring, and continuous improvement.",
         details:
-          "We evaluate your organization’s AI readiness, identify high-impact use cases across your data science processes, and guide you on selecting the right automation algorithms and validation approaches for seamless integration.",
+          "Our MLOps services include CI/CD pipeline setup for ML models, automated model training and deployment, performance monitoring, model versioning, and governance frameworks. We help you establish best practices for managing ML models at scale in production environments.",
       },
     },
   ];
 
   const sectionTitle = (
     <>
-      <span className="text-brand-cyan">SoftronicLabs'</span>{' '}
-      <span className="text-brand-gray-dark">QA engineering capabilities</span>
+      <span className="text-brand-cyan">Our AI/ML services</span>
     </>
   );
 
@@ -72,6 +72,7 @@ const Ai_Ml = () => {
       menuItems={menuItems}
       sectionTitle={sectionTitle}
       additionalSections={[
+        <AIMLContent key="aiml-content" />,
         <ProductStrategyFeatures key="product-strategy-features" />,
       ]}
     />

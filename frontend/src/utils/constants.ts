@@ -85,14 +85,14 @@ export const navigationItems: NavItem[] = [
       title: "Industries",
       description: "Industry-specific solutions tailored to your needs",
       columns: [
-        {
-          title: "Healthcare & Life Sciences",
-          items: [
-            { label: "Healthcare Solutions", href: "/industries" },
-            { label: "Telemedicine Platforms", href: "/industries" },
-            { label: "Medical Device Integration", href: "/industries" },
-          ],
-        },
+        // {
+        //   title: "Healthcare & Life Sciences",
+        //   items: [
+        //     { label: "Healthcare Solutions", href: "/industries" },
+        //     { label: "Telemedicine Platforms", href: "/industries" },
+        //     { label: "Medical Device Integration", href: "/industries" },
+        //   ],
+        // },
         {
           title: "Financial Services",
           items: [

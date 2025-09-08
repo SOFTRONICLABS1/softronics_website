@@ -14,6 +14,7 @@ import SoftronicsHero from "./pages/SoftronicsHero";
 import ProductStrategy from "./pages/ProductStrategy";
 import QualityEngineering from "./pages/QualityEngineering";
 import DataEngenieering from "./pages/DataEngenieering";
+import Ai_Ml from "./pages/Ai_Ml";
 
 function App() {
   useEffect(() => {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/product-strategy" element={<ProductStrategy />} />
         <Route path="/quality-engineering" element={<QualityEngineering />} />
         <Route path="/data-engg" element={<DataEngenieering />} />
+        <Route path="/ai-ml" element={<Ai_Ml />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
