@@ -4,10 +4,11 @@ import softCircle from '../../assets/images/soft-logo2.webp';
 import Testimonials from '../sections/Testimonials';
 import CaseStudies from '../sections/CaseStudies';
 import ContactForm from '../sections/ContactForm';
+import '../sections/HeroStripes.css';
 import type { ServicePageProps } from '../../types/ServicePage';
 
 const ServicePageTemplate = ({ 
-  pageConfig, 
+pageConfig, 
   menuItems, 
   sectionTitle, 
   additionalSections = [] 
@@ -34,66 +35,49 @@ const ServicePageTemplate = ({
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex flex-col justify-center pt-16 sm:pt-20 pb-12 sm:pb-20">
-        {/* Background */}
-        <div className="absolute inset-0 z-0 bg-hero"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          {/* Mobile Layout - Centered overlay with background logo */}
-          <div className="lg:hidden relative min-h-[70vh] flex items-center justify-center">
-            {/* Background Logo */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-              <img
-                src={softCircle}
-                alt="SoftronicLabs Logo"
-                className="w-full h-auto max-w-[280px] xs:max-w-[340px] sm:max-w-[380px] md:max-w-[420px] opacity-30 scale-110"
+      <section 
+        className="relative overflow-hidden min-h-screen flex flex-col justify-center pt-4 sm:pt-20 md:pt-24 lg:pt-28 pb-4 sm:pb-16 md:pb-20 lg:pb-28"
+        style={{ background: "var(--bg-hero)" }}
+      >
+        {/* Animated Vertical Stripes */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden z-0">
+          <div className="w-[80px] sm:w-[120px] md:w-[140px] lg:w-[180px] h-full relative">
+            {[...Array(10)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute h-full vl-fade hero-stripe"
+                style={{
+                  left: `${i * 12}px`,
+                  animationDuration: `${3 + i * 0.2}s`,
+                  animationDelay: `${i * 0.05}s`,
+                }}
               />
-            </div>
-
-            {/* Content Overlay */}
-            <div className="relative z-10 max-w-2xl text-center mx-auto px-4 py-12">
-              {/* Tag */}
-              <div className="mb-6 sm:mb-8">
-                <span 
-                  className="inline-block px-4 py-2 sm:px-6 sm:py-3 rounded text-white font-semibold text-xs sm:text-sm tracking-wide"
-                  style={{ backgroundColor: 'var(--brand-orange)' }}
-                >
-                  {pageConfig.tag}
-                </span>
-              </div>
-
-              {/* Main heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-gray-dark mb-4 sm:mb-6 leading-tight"
-                  style={{ textShadow: "0 2px 8px rgba(255,255,255,0.8)" }}>
-                {pageConfig.title}
-              </h1>
-
-              {/* Description */}
-              <p className="text-lg sm:text-xl text-brand-gray-dark mb-6 sm:mb-8 leading-relaxed"
-                 style={{ textShadow: "0 1px 6px rgba(255,255,255,0.8)" }}>
-                {pageConfig.description}
-              </p>
-
-              {/* CTA Button */}
-              <button
-                onClick={handleCTAClick}
-                className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl text-white w-full sm:w-auto"
-                style={{
-                  backgroundColor: 'var(--brand-button-primary)',
-                  boxShadow: '0 4px 15px var(--shadow-cyan)'
-                }}
-              >
-                I'd Like To Know More!
-              </button>
-            </div>
+            ))}
           </div>
+        </div>
 
-          {/* Desktop Layout - Side by side */}
-          <div className="hidden lg:grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-10 lg:gap-12 items-center lg:items-center">
+        {/* Background Blobs */}
+        <div className="absolute inset-0 opacity-20 overflow-hidden">
+          {/* Orange Blob */}
+          <div className="absolute -top-32 -left-32 w-[36rem] h-[36rem] bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          
+          {/* Cyan Blob */}
+          <div className="absolute top-1/4 -right-40 w-[34rem] h-[34rem] bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          
+          {/* Orange-Pink Blob */}
+          <div className="absolute bottom-0 left-1/3 w-[34rem] h-[34rem] bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit z-10">
+          <div 
+            className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-10 lg:gap-12 
+                  items-center justify-center text-center 
+                  lg:justify-between lg:text-left"
+          >
             {/* Content */}
-            <div className="max-w-4xl">
+            <div className="max-w-2xl mt-10 text-center lg:text-left mx-auto lg:mx-0">
               {/* Tag */}
-              <div className="mb-6 sm:mb-8">
+              <div className="mb-4 sm:mb-6">
                 <span 
                   className="inline-block px-4 py-2 sm:px-6 sm:py-3 rounded text-white font-semibold text-xs sm:text-sm tracking-wide"
                   style={{ backgroundColor: 'var(--brand-orange)' }}
@@ -103,34 +87,48 @@ const ServicePageTemplate = ({
               </div>
 
               {/* Main heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold text-brand-gray-dark mb-4 sm:mb-6 leading-tight">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-[700] leading-tight mb-4 sm:mb-6">
                 {pageConfig.title}
               </h1>
 
               {/* Description */}
-              <p className="text-lg sm:text-xl lg:text-[22px] text-brand-gray-dark mb-6 sm:mb-8 leading-relaxed max-w-3xl">
+              <p className="text-base sm:text-lg md:text-xl lg:text-[22px] text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                 {pageConfig.description}
               </p>
 
               {/* CTA Button */}
-              <button
-                onClick={handleCTAClick}
-                className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl text-white w-full sm:w-auto"
-                style={{
-                  backgroundColor: 'var(--brand-button-primary)',
-                  boxShadow: '0 4px 15px var(--shadow-cyan)'
-                }}
-              >
-                I'd Like To Know More!
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
+                <button
+                  onClick={handleCTAClick}
+                  className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 min-h-[44px] w-full sm:w-auto group"
+                  style={{
+                    background: "var(--brand-cyan)",
+                    boxShadow: "0 4px 15px var(--shadow-orange)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "var(--brand-cyan)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "var(--brand-cyan)";
+                  }}
+                >
+                  <span>I'd Like To Know More!</span>
+                </button>
+              </div>
             </div>
 
             {/* Hero Logo */}
-            <div className="relative lg:-mt-16 xl:-mt-24 flex justify-end">
+            <div 
+              className="relative mt-4 sm:mt-6 lg:-mt-16 xl:-mt-24
+            flex justify-center lg:justify-end order-last lg:order-last"
+            >
               <img
                 src={softCircle}
                 alt="SoftronicLabs Logo"
-                className="relative z-1 w-full h-auto max-w-lg scale-[1.8] origin-center ml-60"
+                className="relative z-1 w-full h-auto
+               max-w-[280px] xs:max-w-[340px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-lg
+               scale-[1.3] xs:scale-[1.85] sm:scale-[1.85] md:scale-100 lg:scale-[1.8]
+               origin-center mx-auto lg:mx-0 lg:ml-60"
               />
             </div>
           </div>

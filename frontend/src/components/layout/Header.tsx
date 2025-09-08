@@ -90,6 +90,8 @@ const Header = () => {
 
   const handleContactClick = () => {
     trackCTAClick("Contact Us", "header", "primary", { section: "header" });
+    setIsMobileMenuOpen(false);
+    setMobileActiveDropdown(null);
     navigate("/contact");
   };
 

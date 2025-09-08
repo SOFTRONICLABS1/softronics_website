@@ -227,15 +227,15 @@ const Footer: FC = () => {
 
       {/* Bottom Bar */}
       <div 
-        className="relative border-t py-2 sm:py-3 text-xs sm:text-sm text-center"
-        style={{
-          background: 'linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-light) 50%, var(--brand-orange) 100%)',
-          borderTopColor: 'rgba(255, 165, 0, 0.3)'
-        }}
+        className="relative border-t border-t-zinc-200 py-2 sm:py-3 text-xs sm:text-sm text-center"
+        // style={{
+        //   background: 'linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-light) 50%, var(--brand-orange) 100%)',
+        //   borderTopColor: 'rgba(255, 165, 0, 0.3)'
+        // }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse"></div>
         <div className="relative z-10">
-          <p className="font-medium text-white">
+          <p className="text-brand-gray-dark font-medium">
             Copyright © {new Date().getFullYear()} Softroniclabs. All Rights Reserved.
           </p>
         </div>

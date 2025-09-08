@@ -26,7 +26,7 @@ const CARDS: CardSpec[] = [
     title: "Adopt, optimize, modernize, and build on the cloud",
     subtitle: "Cloud and DevOps Engineering",
     from: "#66e0ff",
-    to: "#99ecff",
+    to: "#66e0ff",
     pattern: "quads",
     accentColor: "#0099cc",
   },
@@ -34,7 +34,7 @@ const CARDS: CardSpec[] = [
     title: "Build AI-ready data and analytics platforms",
     subtitle: "Data Engineering",
     from: "#66e0ff",
-    to: "#b3f3ff",
+    to: "#66e0ff",
     pattern: "rings-right-strong",
     accentColor: "#33d6ff",
   },
@@ -50,7 +50,7 @@ const CARDS: CardSpec[] = [
     title: "Transform experiences and applications with UX-led engineering",
     subtitle: "Digital and Experience Engineering",
     from: "#66e0ff",
-    to: "#99ecff",
+    to: "#66e0ff",
     pattern: "rings-right",
     accentColor: "#00bcd4",
   },
@@ -95,13 +95,13 @@ const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({
 
   // Get the appropriate gradient style based on the from/to colors
   const getGradientStyle = () => {
-    if (from === "#66e0ff" && to === "#ccf7ff")
-      return "linear-gradient(135deg, #66e0ff 0%, #ccf7ff 100%)";
-    if (from === "#66e0ff" && to === "#99ecff")
-      return "linear-gradient(135deg, #66e0ff 0%, #99ecff 100%)";
-    if (from === "#66e0ff" && to === "#b3f3ff")
-      return "linear-gradient(135deg, #66e0ff 0%, #b3f3ff 100%)";
-    return "linear-gradient(135deg, #66e0ff 0%, #ccf7ff 100%)"; // default cyan
+    if (from === "#66e0ff" && to === "#66e0ff")
+      return "linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)";
+    if (from === "#66e0ff" && to === "#66e0ff")
+      return "linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)";
+    if (from === "#66e0ff" && to === "#66e0ff")
+      return "linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)";
+    return "linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)"; // default cyan
   };
 
   const getShadowStyle = () => {

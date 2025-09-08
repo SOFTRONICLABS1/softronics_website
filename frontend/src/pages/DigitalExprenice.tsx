@@ -2,7 +2,7 @@ import ServicePageTemplate from "../components/templates/ServicePageTemplate";
 import ProductStrategyFeatures from "../components/sections/ProductStrategyFeatures";
 import type { ServicePageConfig, ServiceMenuItem } from "../types/ServicePage";
 
-const DataEngenieering = () => {
+const DigitalExpericnce = () => {
   const pageConfig: ServicePageConfig = {
     tag: "Data science consulting",
     title: "Turn complex data into actionable business insights",
@@ -62,7 +62,7 @@ const DataEngenieering = () => {
   const sectionTitle = (
     <>
       <span className="text-brand-cyan">SoftronicLabs'</span>{' '}
-      <span className="text-brand-gray-dark">capabilities</span>
+      <span className="text-brand-gray-dark">QA engineering capabilities</span>
     </>
   );
 
@@ -78,4 +78,4 @@ const DataEngenieering = () => {
   );
 };
 
-export default DataEngenieering;
+export default DigitalExpericnce;

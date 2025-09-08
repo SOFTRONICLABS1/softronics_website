@@ -335,7 +335,7 @@ const FeaturedStories: React.FC = () => {
                                     }`;
                                   }}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-orange-900/50 via-cyan-900/30 to-transparent" />
                               </div>
                             </div>
                           </div>
@@ -369,7 +369,7 @@ const FeaturedStories: React.FC = () => {
                       }`;
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-orange-900/50 via-cyan-900/30 to-transparent" />
                 </div>
               ))}
             </div>

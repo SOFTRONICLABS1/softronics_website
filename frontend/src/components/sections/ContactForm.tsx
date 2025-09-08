@@ -165,7 +165,7 @@ const ContactForm: FC = () => {
         ))}
       </div>
       
-      <div className="rounded-lg sm:rounded-xl shadow-xl flex flex-col md:flex-row w-[95%] sm:w-[90%] max-w-5xl overflow-hidden relative z-10" style={{
+      <div className="rounded-lg sm:rounded-xl shadow-xl flex flex-col-reverse md:flex-row w-[95%] sm:w-[90%] max-w-5xl overflow-hidden relative z-10" style={{
         background: "linear-gradient(135deg, rgba(255, 247, 232, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%)",
         border: "2px solid rgba(255, 165, 0, 0.2)",
         boxShadow: "0 20px 40px rgba(255, 165, 0, 0.15)"
@@ -271,10 +271,10 @@ const ContactForm: FC = () => {
             organization.
           </p>
 
-          <div className="mt-3 sm:mt-4 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold text-white">
+          {/* <div className="mt-3 sm:mt-4 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold text-white">
             <Phone size={14} className="sm:w-4 sm:h-4" />
             <span>CALL US NOW</span>
-          </div>
+          </div> */}
           </div>
         </div>
       </div>

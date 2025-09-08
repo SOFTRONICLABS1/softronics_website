@@ -40,6 +40,13 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Background Pattern - Updated with new colors */}
+      {/* <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+      </div> */}
+
       <div className="absolute inset-0 opacity-20 overflow-hidden">
         {/* Orange Blob */}
         <div className="absolute -top-32 -left-32 w-[36rem] h-[36rem] bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -52,51 +59,13 @@ const Hero = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit z-10">
-        {/* Mobile Layout - Centered overlay with background image */}
-        <div className="lg:hidden relative min-h-[70vh] flex items-center justify-center">
-          {/* Background Image */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-            <img
-              src={softCircle}
-              alt="Engineering Excellence"
-              className="w-full h-auto max-w-[320px] xs:max-w-[380px] sm:max-w-[420px] md:max-w-[460px] opacity-40 scale-110"
-            />
-          </div>
-
-          {/* Content Overlay */}
-          <div className="relative z-10 max-w-2xl text-center mx-auto px-4 py-12">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-[800] leading-tight mb-4 sm:mb-6 text-gray-900"
-                style={{ textShadow: "0 2px 8px rgba(255,255,255,0.8)" }}>
-              <span className="hero-title-cyan">Engineering </span>{" "}
-              <span className="hero-title-gray">next best thing</span>{" "}
-              <span className="hero-title-orange">for the </span>
-              <span className="hero-title-orange">digital world</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-800 mb-6 sm:mb-8 leading-relaxed font-bold"
-               style={{ textShadow: "0 1px 6px rgba(255,255,255,0.8)" }}>
-              Agile in mind, spirit, and speed
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center">
-              <button
-                onClick={handleConsultationClick}
-                className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 min-h-[44px] w-auto group shadow-lg"
-                style={{
-                  background: "var(--brand-cyan)",
-                  boxShadow: "0 4px 15px var(--shadow-orange)",
-                }}
-              >
-                <span>Book a Consultation Call</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop Layout - Side by side */}
-        <div className="hidden lg:grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-10 lg:gap-12 items-center lg:items-center">
+        <div
+          className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-10 lg:gap-12 
+                items-center justify-center text-center 
+                lg:justify-between lg:text-left"
+        >
           {/* Content */}
-          <div className="max-w-2xl text-left">
+          <div className="max-w-2xl mt-10 text-center lg:text-left mx-auto lg:mx-0">
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-[700] leading-tight mb-4 sm:mb-6">
               <span className="hero-title-cyan">Engineering </span>{" "}
               <span className="hero-title-gray">next best thing</span>{" "}
@@ -108,7 +77,7 @@ const Hero = () => {
               Agile in mind, spirit, and speed
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
               <button
                 onClick={handleConsultationClick}
                 className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 min-h-[44px] w-full sm:w-auto group"
@@ -129,20 +98,23 @@ const Hero = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="relative lg:-mt-16 xl:-mt-24 flex justify-end">
+          <div
+            className="relative mt-4 sm:mt-6 lg:-mt-16 xl:-mt-24
+      flex justify-center lg:justify-end order-last lg:order-last"
+          >
             <img
               src={softCircle}
               alt="Engineering Excellence"
               className="relative z-1 w-full h-auto
-               max-w-lg
-               scale-[1.8]
-               origin-center ml-60"
+             max-w-[280px] xs:max-w-[340px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-lg
+             scale-[1.3] xs:scale-[1.85] sm:scale-[1.85] md:scale-100 lg:scale-[1.8]
+             origin-center mx-auto lg:mx-0 lg:ml-60"
             />
           </div>
         </div>
-
-        {/* Services Grid */}
-        <div className="-mt-4 sm:mt-3 lg:mt-1">
+        {/* <ServicesGrid />
+         */}
+        <div className="mt-6 md:-mt-28 lg:mt-2">
           <ServicesGrid />
         </div>
       </div>
