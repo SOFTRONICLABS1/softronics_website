@@ -61,7 +61,7 @@ export const navigationItems: NavItem[] = [
               label: "Digital & Experience Engineering",
               href: "/digi-exp",
             },
-            { label: "Msw Development", href: "msw-dev" },
+            { label: "MSW Development", href: "/msw-dev" },
           ],
         },
         // {
@@ -85,28 +85,20 @@ export const navigationItems: NavItem[] = [
       title: "Industries",
       description: "Industry-specific solutions tailored to your needs",
       columns: [
-        // {
-        //   title: "Healthcare & Life Sciences",
-        //   items: [
-        //     { label: "Healthcare Solutions", href: "/industries" },
-        //     { label: "Telemedicine Platforms", href: "/industries" },
-        //     { label: "Medical Device Integration", href: "/industries" },
-        //   ],
-        // },
         {
           title: "Financial Services",
           items: [
-            { label: "Banking Solutions", href: "/industries" },
-            { label: "Insurance Tech", href: "/industries" },
-            { label: "Fintech Innovations", href: "/industries" },
+            { label: "Banking Solutions", href: "/financial-services" },
+            { label: "Insurance Tech", href: "/insurance-tech" },
+            { label: "Fintech Innovations", href: "/fintech-innovations" },
           ],
         },
         {
           title: "Retail & Manufacturing",
           items: [
-            { label: "E-commerce Platforms", href: "/industries" },
-            { label: "Supply Chain Management", href: "/industries" },
-            { label: "Industry 4.0", href: "/industries" },
+            { label: "E-commerce Platforms", href: "/e-commerce-platforms" },
+            { label: "Supply Chain Management", href: "/supply-chain-management" },
+            { label: "Industry 4.0", href: "/industry-4-0" },
           ],
         },
       ],
@@ -153,37 +145,38 @@ export const navigationItems: NavItem[] = [
   //     imageAlt: "Resources",
   //   },
   // },
-  {
-    label: "Why SoftronicLabs",
-    href: "/why-softroniclabs",
-    megaMenu: {
-      title: "Why Softroniclabs",
-      description: "Discover what makes us your ideal technology partner",
-      columns: [
-        {
-          title: "Our Approach",
-          items: [
-            { label: "Agile Methodology", href: "/why-softroniclabs" },
-            { label: "Co-Engineering", href: "/why-softroniclabs" },
-            { label: "Innovation Lab", href: "/why-softroniclabs" },
-            { label: "TalentOps", href: "/why-softroniclabs" },
-          ],
-        },
-        {
-          title: "Our Partnerships",
-          items: [
-            { label: "Microsoft Partner", href: "/why-softroniclabs" },
-            { label: "AWS Partner", href: "/why-softroniclabs" },
-            { label: "Google Cloud Partner", href: "/why-softroniclabs" },
-            { label: "Databricks Partner", href: "/why-softroniclabs" },
-          ],
-        },
-      ],
-      image:
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop",
-      imageAlt: "Why Softroniclabs",
-    },
-  },
+  // {
+  //   label: "Why SoftronicLabs",
+  //   href: "/why-softroniclabs",
+  //   megaMenu: {
+  //     title: "Why Softroniclabs",
+  //     description: "Discover what makes us your ideal technology partner",
+  //     columns: [
+  //       {
+  //         title: "Our Approach",
+  //         items: [
+  //           { label: "Agile Methodology", href: "/why-softroniclabs" },
+  //           { label: "Co-Engineering", href: "/why-softroniclabs" },
+  //           { label: "Innovation Lab", href: "/why-softroniclabs" },
+  //           { label: "TalentOps", href: "/why-softroniclabs" },
+  //         ],
+  //       },
+  //       {
+  //         title: "Our Partnerships",
+  //         items: [
+  //           { label: "Microsoft Partner", href: "/why-softroniclabs" },
+  //           { label: "AWS Partner", href: "/why-softroniclabs" },
+  //           { label: "Google Cloud Partner", href: "/why-softroniclabs" },
+  //           { label: "Databricks Partner", href: "/why-softroniclabs" },
+  //         ],
+  //       },
+  //     ],
+  //     image:
+  //       "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop",
+  //     imageAlt: "Why Softroniclabs",
+  //   },
+  // },
+  { label: "Why SoftronicLabs", href: "/why-softroniclabs" },
   { label: "About Us", href: "/about" },
 ];
 

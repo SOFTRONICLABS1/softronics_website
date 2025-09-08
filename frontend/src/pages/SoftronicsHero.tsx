@@ -82,7 +82,7 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
             alt=""
             className="absolute right-[-120px] top-[-40px] h-[720px] w-[720px] object-contain opacity-90"
           />
-          <div className="absolute right-[-140px] top-[-60px] h-[780px] w-[780px] rounded-full bg-[radial-gradient(closest-side,_rgba(255,167,40,0.22),_rgba(255,94,0,0))]" />
+          <div className="absolute right-[-140px] top-[-60px] h-[780px] w-[780px] rounded-full " />
         </div>
 
         {/* Copy block */}

@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <section
       className="relative overflow-hidden min-h-screen flex flex-col justify-center pt-4 sm:pt-20 md:pt-24 lg:pt-28 pb-4 sm:pb-16 md:pb-20 lg:pb-28"
-      style={{ background: "var(--bg-hero)" }}
+      // style={{ background: "var(--bg-hero)" }}
     >
       <div className="pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden z-0 hidden sm:block">
         <div className="w-[120px] sm:w-[140px] md:w-[180px] h-full relative">
@@ -49,7 +49,7 @@ const Hero = () => {
 
       <div className="absolute inset-0 opacity-20 overflow-hidden">
         {/* Orange Blob */}
-        <div className="absolute -top-32 -left-32 w-[36rem] h-[36rem] bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-28 -left-32 w-[36rem] h-[36rem] bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
 
         {/* Cyan Blob */}
         <div className="absolute top-1/4 -right-40 w-[34rem] h-[34rem] bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>

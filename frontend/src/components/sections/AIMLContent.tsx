@@ -9,7 +9,7 @@ const AIMLContent = () => {
           
           <div className="max-w-4xl mx-auto space-y-6 text-left">
             <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-              SoftronicLabs's human-centric digital product engineering approach with the best industry expertise and experience support you create products that empower users, deliver business value and make a societal impact. Our team is proficient in conceptualizing, designing, prototyping, developing, and delivering new digital products.
+              SoftronicLab's human-centric digital product engineering approach with the best industry expertise and experience support you create products that empower users, deliver business value and make a societal impact. Our team is proficient in conceptualizing, designing, prototyping, developing, and delivering new digital products.
             </p>
             
             <p className="text-base sm:text-lg text-gray-800 leading-relaxed">

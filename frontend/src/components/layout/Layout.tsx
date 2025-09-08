@@ -8,7 +8,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-hero">
       <Header />
       <main style={{ paddingTop: '64px' }}>{children}</main>
       <Footer />

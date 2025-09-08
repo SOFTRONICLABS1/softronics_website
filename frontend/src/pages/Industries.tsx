@@ -17,6 +17,16 @@ const Industries = () => {
   // Find the industries menu data
   const industriesMenu = navigationItems.find(item => item.label === 'Industries')?.megaMenu;
 
+  // Healthcare section that should only appear on Industries page, not in navbar
+  const healthcareColumn = {
+    title: "Healthcare & Life Sciences",
+    items: [
+      { label: "Healthcare Solutions", href: "/industries" },
+      { label: "Telemedicine Platforms", href: "/industries" },
+      { label: "Medical Device Integration", href: "/industries" },
+    ],
+  };
+
   const handleIndustryClick = (industryName: string) => {
     trackCustomEvent('Industry Click', {
       industry: industryName,
@@ -50,9 +60,48 @@ const Industries = () => {
         <div className="max-w-7xl mx-auto">
           {industriesMenu && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {/* Healthcare column first */}
+              <div className="space-y-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-brand-gray-dark mb-6 sm:mb-8 text-center bg-white/60 backdrop-blur-sm rounded-lg py-3 px-4 shadow-sm relative z-10">
+                  {healthcareColumn.title}
+                </h2>
+                
+                <div className="space-y-3 sm:space-y-4">
+                  {healthcareColumn.items.map((industry) => {
+                    const Icon = iconMap[industry.label] || FiChevronRight;
+                    
+                    return (
+                      <div
+                        key={industry.label}
+                        className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 cursor-pointer group"
+                        onClick={() => handleIndustryClick(industry.label)}
+                      >
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-center space-x-3 sm:space-x-4">
+                            <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 service-card-gradient-1 rounded-lg group-hover:service-card-gradient-2 transition-colors flex-shrink-0">
+                              <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                            </div>
+                            <div>
+                              <h3 className="text-base sm:text-lg font-semibold text-brand-gray-dark group-hover:text-brand-orange transition-colors leading-tight">
+                                {industry.label}
+                              </h3>
+                              <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed">
+                                Innovative solutions tailored for your industry
+                              </p>
+                            </div>
+                          </div>
+                          <FiArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-brand-orange group-hover:text-brand-cyan group-hover:transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0" />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              {/* Navbar columns */}
               {industriesMenu.columns.map((column, columnIndex) => (
                 <div key={columnIndex} className="space-y-6">
-                  <h2 className="text-xl sm:text-2xl font-bold text-brand-gray-dark mb-6 sm:mb-8 text-center">
+                  <h2 className="text-xl sm:text-2xl font-bold text-brand-gray-dark mb-6 sm:mb-8 text-center bg-white/60 backdrop-blur-sm rounded-lg py-3 px-4 shadow-sm relative z-10">
                     {column.title}
                   </h2>
                   

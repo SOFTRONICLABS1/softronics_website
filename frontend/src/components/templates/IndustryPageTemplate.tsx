@@ -4,17 +4,19 @@ import softCircle from '../../assets/images/soft-logo2.webp';
 import Testimonials from '../sections/Testimonials';
 import CaseStudies from '../sections/CaseStudies';
 import ContactForm from '../sections/ContactForm';
+import IndustryServicesGrid from '../sections/IndustryServicesGrid';
 import '../sections/HeroStripes.css';
-import type { ServicePageProps } from '../../types/ServicePage';
+import type { IndustryPageProps } from '../../types/IndustryPage';
 
-const ServicePageTemplate = ({ 
-pageConfig, 
-  menuItems, 
+const IndustryPageTemplate = ({ 
+  pageConfig, 
+  capabilities, 
+  serviceCards,
   sectionTitle, 
   additionalSections = [] 
-}: ServicePageProps) => {
+}: IndustryPageProps) => {
   const { trackPageView, trackCTAClick } = useAnalytics();
-  const [activeMenuItem, setActiveMenuItem] = useState(menuItems[0]?.id || '');
+  const [activeCapability, setActiveCapability] = useState(capabilities[0]?.id || '');
 
   useEffect(() => {
     trackPageView(pageConfig.analytics.pageTitle, {
@@ -30,7 +32,7 @@ pageConfig,
     });
   };
 
-  const activeItem = menuItems.find(item => item.id === activeMenuItem) || menuItems[0];
+  const activeItem = capabilities.find(item => item.id === activeCapability) || capabilities[0];
 
   return (
     <div className="min-h-screen">
@@ -135,7 +137,7 @@ pageConfig,
         </div>
       </section>
 
-      {/* Interactive Section */}
+      {/* Interactive Capabilities Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 sm:mb-12 lg:mb-16">
@@ -146,16 +148,16 @@ pageConfig,
 
           {/* Mobile: Stacked Layout */}
           <div className="lg:hidden space-y-6">
-            {menuItems.map((item) => (
+            {capabilities.map((item) => (
               <div key={item.id} className="border border-gray-200 rounded-xl overflow-hidden">
                 <button
-                  onClick={() => setActiveMenuItem(activeMenuItem === item.id ? '' : item.id)}
+                  onClick={() => setActiveCapability(activeCapability === item.id ? '' : item.id)}
                   className="w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
                   <span className="font-semibold text-lg text-gray-900">{item.title}</span>
                   <svg
                     className={`w-5 h-5 transition-transform duration-300 text-gray-600 ${
-                      activeMenuItem === item.id ? 'rotate-90' : ''
+                      activeCapability === item.id ? 'rotate-90' : ''
                     }`}
                     fill="none"
                     stroke="currentColor"
@@ -165,7 +167,7 @@ pageConfig,
                   </svg>
                 </button>
                 
-                {activeMenuItem === item.id && (
+                {activeCapability === item.id && (
                   <div className="px-4 pb-6 pt-2 bg-gray-50">
                     <p className="text-base mb-4 leading-relaxed text-brand-gray-dark">
                       {item.content.description}
@@ -183,23 +185,23 @@ pageConfig,
           <div className="hidden lg:grid lg:grid-cols-2 gap-12">
             {/* Left Navigation Menu */}
             <div className="space-y-4">
-              {menuItems.map((item) => (
+              {capabilities.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => setActiveMenuItem(item.id)}
+                  onClick={() => setActiveCapability(item.id)}
                   className={`w-full text-left px-6 py-4 rounded-lg transition-all duration-300 flex items-center justify-between group ${
-                    activeMenuItem === item.id
+                    activeCapability === item.id
                       ? 'text-white shadow-lg'
                       : 'text-gray-700 hover:bg-gray-50'
                   }`}
                   style={{
-                    backgroundColor: activeMenuItem === item.id ? 'var(--brand-cyan)' : 'transparent'
+                    backgroundColor: activeCapability === item.id ? 'var(--brand-cyan)' : 'transparent'
                   }}
                 >
                   <span className="font-semibold text-lg">{item.title}</span>
                   <svg
                     className={`w-5 h-5 transition-transform duration-300 ${
-                      activeMenuItem === item.id ? 'rotate-90' : ''
+                      activeCapability === item.id ? 'rotate-90' : ''
                     }`}
                     fill="none"
                     stroke="currentColor"
@@ -231,6 +233,13 @@ pageConfig,
         </div>
       </section>
 
+      {/* Services Grid Section */}
+      <IndustryServicesGrid
+        title="Your edge in BFSI innovation"
+        subtitle="Simform has comprehensive engineering experience that spans across diverse segments of the financial services industry, helping businesses navigate complex challenges and capitalize on opportunities for growth and innovation."
+        cards={serviceCards}
+      />
+
       {/* Additional Sections */}
       {additionalSections.map((section, index) => (
         <div key={index}>{section}</div>
@@ -244,4 +253,4 @@ pageConfig,
   );
 };
 
-export default ServicePageTemplate;
+export default IndustryPageTemplate;

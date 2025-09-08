@@ -15,6 +15,14 @@ import ProductStrategy from "./pages/ProductStrategy";
 import QualityEngineering from "./pages/QualityEngineering";
 import DataEngenieering from "./pages/DataEngenieering";
 import Ai_Ml from "./pages/Ai_Ml";
+import FinancialServices from "./pages/FinancialServices";
+import InsuranceTech from "./pages/InsuranceTech";
+import FintechInnovations from "./pages/FintechInnovations";
+import EcommercePlatforms from "./pages/EcommercePlatforms";
+import SupplyChainManagement from "./pages/SupplyChainManagement";
+import Industry40 from "./pages/Industry40";
+import MswDevelopment from "./pages/MswDevelopment";
+import DigitalExpericnce from "./pages/DigitalExprenice";
 
 function App() {
   useEffect(() => {
@@ -35,6 +43,14 @@ function App() {
         <Route path="/quality-engineering" element={<QualityEngineering />} />
         <Route path="/data-engg" element={<DataEngenieering />} />
         <Route path="/ai-ml" element={<Ai_Ml />} />
+        <Route path="/financial-services" element={<FinancialServices />} />
+        <Route path="/insurance-tech" element={<InsuranceTech />} />
+        <Route path="/fintech-innovations" element={<FintechInnovations />} />
+        <Route path="/e-commerce-platforms" element={<EcommercePlatforms />} />
+        <Route path="/supply-chain-management" element={<SupplyChainManagement />} />
+        <Route path="/industry-4-0" element={<Industry40 />} />
+        <Route path="/msw-dev" element={<MswDevelopment />} />
+        <Route path="/digi-exp" element={<DigitalExpericnce />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

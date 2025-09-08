@@ -61,7 +61,7 @@ const DataEngenieering = () => {
 
   const sectionTitle = (
     <>
-      <span className="text-brand-cyan">SoftronicLabs'</span>{' '}
+      <span className="text-brand-cyan">SoftronicLab's</span>{' '}
       <span className="text-brand-gray-dark">capabilities</span>
     </>
   );

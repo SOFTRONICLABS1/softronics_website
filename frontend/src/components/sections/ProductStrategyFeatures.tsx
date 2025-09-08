@@ -47,12 +47,12 @@ const ProductStrategyFeatures = () => {
   // Cyan gradient variations matching Services section
   const getCardGradient = (index: number) => {
     const gradients = [
-      'linear-gradient(135deg, #66e0ff 0%, #ccf7ff 100%)', // Card 1
-      'linear-gradient(135deg, #66e0ff 0%, #99ecff 100%)', // Card 2
-      'linear-gradient(135deg, #66e0ff 0%, #b3f3ff 100%)', // Card 3
-      'linear-gradient(135deg, #66e0ff 0%, #ccf7ff 100%)', // Card 4
-      'linear-gradient(135deg, #66e0ff 0%, #99ecff 100%)', // Card 5
-      'linear-gradient(135deg, #66e0ff 0%, #b3f3ff 100%)', // Card 6
+      'linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)', // Card 1
+      'linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)', // Card 2
+      'linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)', // Card 3
+      'linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)', // Card 4
+      'linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)', // Card 5
+      'linear-gradient(135deg, #66e0ff 0%, #66e0ff 100%)', // Card 6
     ];
     return gradients[index % gradients.length];
   };
@@ -72,7 +72,7 @@ const ProductStrategyFeatures = () => {
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-brand-cyan">
-            Accelerate product success with SoftronicLabs' digital engineering expertise
+            Accelerate product success with SoftronicLab's digital engineering expertise
           </h2>
           <p className="text-lg sm:text-xl text-brand-gray-dark max-w-4xl mx-auto leading-relaxed">
             With SoftronicLabs, you can put together a perfect solution that accommodates your business objectives. We'll help you realize the power of end-to-end performance testing, and achieve extraordinary success.

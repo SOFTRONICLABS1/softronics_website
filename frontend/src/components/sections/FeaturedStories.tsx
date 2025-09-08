@@ -42,7 +42,7 @@ const FeaturedStories: React.FC = () => {
         kicker: "Enterprise data fabric improves SLA adherence by 35%",
         title: "How platform thinking cuts cost of change in large orgs",
         summary:
-          "Clutch's 2025 rankings are in, and softroniclabs has been named the #1 AI services provider globally. The recognition emphasizes our strength in delivering AI expertise with measurable results. We break down how Clutch evaluated hundreds of vendors and why softroniclabs's focus on engineering-led delivery stood out. If you're researching vendors for your AI initiatives and want to understand what credibility looks like in this space, this article provides concise insights and clear considerations to make a decision.",
+          "Clutch's 2025 rankings are in, and softroniclabs has been named the #1 AI services provider globally. The recognition emphasizes our strength in delivering AI expertise with measurable results. We break down how Clutch evaluated hundreds of vendors and why softroniclab's focus on engineering-led delivery stood out. If you're researching vendors for your AI initiatives and want to understand what credibility looks like in this space, this article provides concise insights and clear considerations to make a decision.",
         image:
           "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
       },

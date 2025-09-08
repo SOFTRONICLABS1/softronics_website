@@ -316,24 +316,27 @@ const Header = () => {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 9999;
+          z-index: 999;
           width: 100%;
+
           transition: all 0.3s var(--ease-elegant);
-          will-change: background, box-shadow, backdrop-filter;
+          // will-change: background, box-shadow, backdrop-filter;
         }
         
         .navbar-scrolled {
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(12px);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          // background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(8px);
+          // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          // border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          background: transperant;
         }
         
         .navbar-not-scrolled {
-          background: rgba(255, 255, 255, 0.98);
+          // background: rgba(255, 255, 255, 0.98);
+          background: transperant;
           backdrop-filter: blur(8px);
           box-shadow: none;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          // border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         /* iOS Safari safe area support */
@@ -469,7 +472,7 @@ const Header = () => {
           .map((item) => (
             <div
               key={`mega-${item.label}`}
-              className="mega-menu absolute left-0 right-0 bg-white border-t-2 overflow-x-hidden"
+              className="mega-menu absolute left-0 right-0 bg-hero border-t-2 overflow-x-hidden"
               data-open={
                 activeDropdown === item.label
               } /* ⬅️ NEW: CSS drives animation */
