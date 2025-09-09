@@ -4,65 +4,65 @@ import type { ServicePageConfig, ServiceMenuItem } from "../types/ServicePage";
 
 const DataEngenieering = () => {
   const pageConfig: ServicePageConfig = {
-    tag: "Data science consulting",
-    title: "Turn complex data into actionable business insights",
+    tag: "Data Engineering",
+    title: "Build robust data infrastructure that scales with your business",
     description:
-      "Our data scientists transform your raw data into powerful visualizations and predictive models, for informed decision-making across your organization.",
+      "We design and implement scalable data pipelines, warehouses, and analytics platforms that transform raw data into valuable business assets through modern data engineering practices.",
     analytics: {
-      pageTitle: "Product Strategy - SoftronicLabs Portfolio",
-      page: "product-strategy",
-      ctaEventName: "product_strategy_hero",
+      pageTitle: "Data Engineering - SoftronicLabs Portfolio",
+      page: "data-engineering",
+      ctaEventName: "data_engineering_hero",
       ctaSection: "hero",
     },
   };
 
   const menuItems: ServiceMenuItem[] = [
     {
-      id: "Data strategy consulting",
-      title: "Data strategy consulting",
+      id: "data-pipelines",
+      title: "Data Pipeline Architecture",
       content: {
         description:
-          "Get a precise strategy to transform your data into business value, with a clear roadmap prioritizing high-impact initiatives and measurable outcomes.",
+          "Design and build robust, scalable data pipelines that efficiently process and transform data from multiple sources into actionable insights.",
         details:
-          "Our team analyzes your data maturity and business objectives to recommend priority data initiatives, implementation milestones, and capability requirements. We also help you design optimal data architecture that can continuously scale as your needs evolve.",
+          "We implement real-time and batch processing pipelines using modern tools like Apache Airflow, Kafka, and cloud-native services. Our pipelines handle data ingestion, transformation, validation, and distribution with built-in monitoring, error handling, and automatic recovery mechanisms.",
       },
     },
     {
-      id: "Data management",
-      title: "Data management",
+      id: "data-warehousing",
+      title: "Data Warehousing & Analytics",
       content: {
         description:
-          "Build a reliable data foundation that eliminates inconsistencies and ensures data quality at every step of your data journey.",
+          "Build modern data warehouses and analytics platforms that support complex queries, reporting, and business intelligence at scale.",
         details:
-          "Our data engineers help you select relevant data sources and create efficient data pipelines that handle diverse data sources and complex transformations at scale. We also guide you on unifying datasets through advanced entity resolution and normalization for utmost integrity.",
+          "Our data warehousing solutions leverage cloud platforms like Snowflake, BigQuery, and Redshift. We design optimized schemas, implement data modeling best practices, and create performant analytics layers that enable fast, reliable business reporting and decision-making.",
       },
     },
     {
-      id: "Predictive modeling and refinement",
-      title: "Predictive modeling and refinement",
+      id: "data-quality",
+      title: "Data Quality & Governance",
       content: {
         description:
-          "Transform your historical data into accurate forecasts that reduce business uncertainty and drive data-powered decision making across your organization.",
+          "Ensure data accuracy, consistency, and compliance through comprehensive data quality frameworks and governance policies.",
         details:
-          "Our data scientists guide you in selecting optimal modeling approaches, from ensemble learning to deep belief networks for your specific needs. We also help you establish processes for continuous model validation and improvement across diverse business use cases.",
+          "We implement automated data quality checks, lineage tracking, and governance frameworks that maintain data integrity across your organization. Our solutions include data cataloging, privacy compliance, access controls, and quality monitoring dashboards.",
       },
     },
     {
-      id: "AI and ML integration",
-      title: "AI and ML integration",
+      id: "cloud-migration",
+      title: "Cloud Data Migration",
       content: {
         description:
-          "Optimize your data science lifecycle with advanced AI and ML capabilities to automate everything from data preparation and exploration to building, deploying, and monitoring models.",
+          "Seamlessly migrate your data infrastructure to the cloud with minimal downtime and maximum performance optimization.",
         details:
-          "We evaluate your organization’s AI readiness, identify high-impact use cases across your data science processes, and guide you on selecting the right automation algorithms and validation approaches for seamless integration.",
+          "We provide end-to-end cloud migration services including infrastructure assessment, migration strategy, data transfer optimization, and performance tuning. Our expertise spans AWS, Azure, and GCP with focus on cost optimization and security best practices.",
       },
     },
   ];
 
   const sectionTitle = (
     <>
-      <span className="text-brand-cyan">SoftronicLab's</span>{' '}
-      <span className="text-brand-gray-dark">capabilities</span>
+      <span className="text-brand-cyan">SoftronicLabs</span>{' '}
+      <span className="text-brand-gray-dark">data engineering capabilities</span>
     </>
   );
 

@@ -1,78 +1,85 @@
 :root {
-  /* Updated with orange and cyan gradient */
-  --stripe-top: rgba(255, 165, 0, 0); /* Orange transparent at top */
-  --stripe-mid: rgba(77, 200, 232, 0.35); /* Cyan at 50% opacity */
-  --stripe-bottom: rgba(255, 184, 77, 0.3); /* Light orange at 80% */
+  /* stronger defaults so stripes are visible over many hero backgrounds */
+  --stripe-top: rgba(255, 165, 0, 0.06);   /* faint top */
+  --stripe-mid: rgba(77, 200, 232, 0.55);  /* stronger mid cyan */
+  --stripe-bottom: rgba(255, 184, 77, 0.45);/* stronger bottom orange */
 
-  /* Additional color variables for consistency */
+  /* stripe sizing & spacing */
+  --stripe-width: 12px;    /* wider so they're visible */
+  --stripe-gap: 16px;      /* space between stripes (JS lays them out using left) */
+
   --primary-orange: #ffa500;
-  --primary-orange-light: #ffb84d;
   --primary-cyan: #4dc8e8;
-  --primary-cyan-dark: #5bc0de;
-  --neutral-gray: #707070;
-  --neutral-gray-dark: #404040;
-  --neutral-gray-light: #f5f5f5;
+
+  --brand-cyan: var(--primary-cyan);
+  --brand-orange: var(--primary-orange);
+  --brand-button-hover: #ff8c00;
 }
 
-.will-change-transform {
-  will-change: transform;
+/* container */
+.stripes-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 140px; /* keep same as your JSX sm/wide choices */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0; /* behind content which has z-10 in your JSX */
 }
 
-/* optional: give stripes a slow vertical shimmer */
+/* stripe base */
+.stripe {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: var(--stripe-width);
+  border-radius: 6px;
+  /* fallback solid color to ensure visibility on very light/very dark backgrounds */
+  background-color: rgba(77, 200, 232, 0.22);
+  /* real gradient uses css vars (JS also sets gradient inline) */
+  background-image: linear-gradient(
+    to bottom,
+    var(--stripe-top) 0%,
+    var(--stripe-mid) 48%,
+    var(--stripe-bottom) 82%,
+    rgba(255,255,255,0) 100%
+  );
+
+  will-change: transform, opacity;
+  pointer-events: none;
+
+  /* make edges visible against similar backgrounds */
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06), inset 0 0 18px rgba(255,255,255,0.02);
+  border-left: 1px solid rgba(255,255,255,0.04);
+  border-right: 1px solid rgba(0,0,0,0.02);
+
+  /* blend mode — choose what looks best on your hero background */
+  mix-blend-mode: screen; /* try 'multiply' if your hero is dark */
+  opacity: 0.98;
+  transform-origin: center;
+}
+
+/* animation (single canonical definition) */
 @keyframes vlFade {
-  0% {
-    opacity: 0.08;
-    transform: translateY(-8%);
-  }
-  50% {
-    opacity: 0.22;
-    transform: translateY(4%);
-  }
-  100% {
-    opacity: 0.08;
-    transform: translateY(-8%);
-  }
+  0%   { opacity: 0.12; transform: translateY(-8%) rotate(-0.5deg); }
+  50%  { opacity: 0.36; transform: translateY(4%)  rotate(0.2deg); }
+  100% { opacity: 0.12; transform: translateY(-8%) rotate(-0.5deg); }
 }
 
 .vl-fade {
   animation-name: vlFade;
+  animation-duration: 3.6s; /* overridden inline per stripe for variety */
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
 
-.vl-fade {
-  animation: vl-fade 3s ease-in-out infinite;
-}
+/* optional: slightly diagonal stripes (uncomment in JSX if you want) */
+/* .stripe.diagonal { transform: rotate(-6deg); width: 18px; } */
 
-/* Additional utility classes for the new color scheme */
-.text-primary-orange {
-  color: var(--primary-orange);
-}
-
-.text-primary-cyan {
-  color: var(--primary-cyan);
-}
-
-.bg-primary-orange {
-  background-color: var(--primary-orange);
-}
-
-.bg-primary-cyan {
-  background-color: var(--primary-cyan);
-}
-
-.gradient-orange-cyan {
-  background: linear-gradient(
-    135deg,
-    var(--primary-orange) 0%,
-    var(--primary-cyan) 100%
-  );
-}
-
-.gradient-cyan-orange {
-  background: linear-gradient(
-    135deg,
-    var(--primary-cyan) 0%,
-    var(--primary-orange) 100%
-  );
+/* responsiveness */
+@media (max-width: 640px) {
+  .stripes-container { display: none; } /* keep mobile clean */
 }

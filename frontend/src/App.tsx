@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Industries from "./pages/Industries";
@@ -23,6 +24,10 @@ import SupplyChainManagement from "./pages/SupplyChainManagement";
 import Industry40 from "./pages/Industry40";
 import MswDevelopment from "./pages/MswDevelopment";
 import DigitalExpericnce from "./pages/DigitalExprenice";
+import CoEngineering from "./pages/CoEngineering";
+import InnovationLab from "./pages/InnovationLab";
+import TalentOps from "./pages/TalentOps";
+import Blog from "./pages/Blog";
 
 function App() {
   useEffect(() => {
@@ -31,6 +36,7 @@ function App() {
 
   return (
     <Layout>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -51,6 +57,10 @@ function App() {
         <Route path="/industry-4-0" element={<Industry40 />} />
         <Route path="/msw-dev" element={<MswDevelopment />} />
         <Route path="/digi-exp" element={<DigitalExpericnce />} />
+        <Route path="/co-engineering" element={<CoEngineering />} />
+        <Route path="/innovation-lab" element={<InnovationLab />} />
+        <Route path="/talent-ops" element={<TalentOps />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

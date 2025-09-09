@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { Link } from "react-router-dom";
 import { Facebook, Linkedin, Youtube, Twitter } from "lucide-react";
 import softLogo from "../../assets/images/soft-logo.png";
 
@@ -13,7 +14,7 @@ const Footer: FC = () => {
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-cyan-100 to-transparent rounded-full opacity-40 translate-y-12 -translate-x-12"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 relative z-10">
         <div>
-          <a href="/" className="block transition-transform hover:scale-105">
+          <Link to="/" className="block transition-transform hover:scale-105">
             <img
               src={softLogo}
               alt="Softroniclabs"
@@ -28,7 +29,7 @@ const Footer: FC = () => {
                 target.parentNode?.insertBefore(fallback, target);
               }}
             />
-          </a>
+          </Link>
           <div className="flex gap-3 sm:gap-4 mt-3 sm:mt-4">
             <a 
               href="#" 
@@ -140,14 +141,14 @@ const Footer: FC = () => {
           </h3>
           <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/about" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/why-softroniclabs" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Why Softroniclabs
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
@@ -155,9 +156,9 @@ const Footer: FC = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Contact us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -171,29 +172,29 @@ const Footer: FC = () => {
           </h3>
           <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/product-strategy" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Digital Product Engineering
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/quality-engineering" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Cloud and DevOps Engineering
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/data-engg" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Data Engineering
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/ai-ml" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 AI/ML Engineering
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/digi-exp" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Digital and Experience Engineering
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -207,9 +208,9 @@ const Footer: FC = () => {
           </h3>
           <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/blog" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Blog
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
@@ -217,9 +218,9 @@ const Footer: FC = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/case-studies" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Case Studies
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
