@@ -78,30 +78,65 @@ export const navigationItems: NavItem[] = [
       imageAlt: "Services",
     },
   },
+  // {
+  //   label: "Industries",
+  //   href: "/industries",
+  //   megaMenu: {
+  //     title: "Industries",
+  //     description: "Industry-specific solutions tailored to your needs",
+  //     columns: [
+  //       {
+  //         title: "Financial Services",
+  //         items: [
+  //           { label: "Banking Solutions", href: "/financial-services" },
+  //           { label: "Insurance Tech", href: "/insurance-tech" },
+  //           { label: "Fintech Innovations", href: "/fintech-innovations" },
+  //         ],
+  //       },
+  //       {
+  //         title: "Retail & Manufacturing",
+  //         items: [
+  //           { label: "E-commerce Platforms", href: "/e-commerce-platforms" },
+  //           {
+  //             label: "Supply Chain Management",
+  //             href: "/supply-chain-management",
+  //           },
+  //           { label: "Industry 4.0", href: "/industry-4-0" },
+  //         ],
+  //       },
+  //     ],
+  //     image:
+  //       "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=300&fit=crop",
+  //     imageAlt: "Industries",
+  //   },
+  // },
+
   {
-    label: "Industries",
-    href: "/industries",
+    label: "Products",
+    href: "/products",
     megaMenu: {
-      title: "Industries",
-      description: "Industry-specific solutions tailored to your needs",
+      title: "Products",
+      description: "Explore our innovative product offerings",
       columns: [
         {
-          title: "Financial Services",
+          title: "Our Products",
           items: [
-            { label: "Banking Solutions", href: "/financial-services" },
-            { label: "Insurance Tech", href: "/insurance-tech" },
-            { label: "Fintech Innovations", href: "/fintech-innovations" },
+            { label: "DDP Dissection Platform", href: "/ddp-platform" },
+            { label: "Analytics Solutions", href: "/analytics-solutions" },
+            { label: "Low Energy Computing", href: "/low-energy-computing" },
           ],
         },
         {
-          title: "Retail & Manufacturing",
+          title: "Gamification",
           items: [
-            { label: "E-commerce Platforms", href: "/e-commerce-platforms" },
             {
-              label: "Supply Chain Management",
-              href: "/supply-chain-management",
+              label: "Gamification in Pedagogy",
+              href: "/gamification-in-pedagogy",
             },
-            { label: "Industry 4.0", href: "/industry-4-0" },
+            {
+              label: "Internet of Things & farming",
+              href: "/iot-solutions",
+            },
           ],
         },
       ],
@@ -111,72 +146,9 @@ export const navigationItems: NavItem[] = [
     },
   },
   { label: "Case Studies", href: "/case-studies" },
-  // {
-  //   label: "Resources",
-  //   href: "#resources",
-  //   megaMenu: {
-  //     title: "Resources",
-  //     description: "Explore our knowledge hub and learning materials",
-  //     columns: [
-  //       {
-  //         title: "Knowledge Hub",
-  //         items: [
-  //           { label: "Blog", href: "#blog" },
-  //           { label: "Whitepapers", href: "#whitepapers" },
-  //           { label: "Case Studies", href: "#case-studies" },
-  //         ],
-  //       },
-  //       {
-  //         title: "Learning",
-  //         items: [
-  //           { label: "Webinars", href: "#webinars" },
-  //           { label: "Tech Talks", href: "#tech-talks" },
-  //           { label: "Documentation", href: "#docs" },
-  //         ],
-  //       },
-  //       {
-  //         title: "Community",
-  //         items: [
-  //           { label: "Developer Forum", href: "#forum" },
-  //           { label: "Newsletter", href: "#newsletter" },
-  //           { label: "Events", href: "#events" },
-  //         ],
-  //       },
-  //     ],
-  //     image:
-  //       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop",
-  //     imageAlt: "Resources",
-  //   },
-  // },
   {
     label: "Why SoftronicLabs",
     href: "/why-softroniclabs",
-    megaMenu: {
-      title: "Why Softroniclabs",
-      description: "Discover what makes us your ideal technology partner",
-      columns: [
-        {
-          title: "Our Approach",
-          items: [
-            { label: "Co-Engineering", href: "/co-engineering" },
-            { label: "Innovation Lab", href: "/innovation-lab" },
-            { label: "TalentOps", href: "/talent-ops" },
-          ],
-        },
-        // {
-        //   title: "Our Partnerships",
-        //   items: [
-        //     { label: "Microsoft Partner", href: "/why-softroniclabs" },
-        //     { label: "AWS Partner", href: "/why-softroniclabs" },
-        //     { label: "Google Cloud Partner", href: "/why-softroniclabs" },
-        //     { label: "Databricks Partner", href: "/why-softroniclabs" },
-        //   ],
-        // },
-      ],
-      image:
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop",
-      imageAlt: "Why Softroniclabs",
-    },
   },
   // { label: "Why SoftronicLabs", href: "/why-softroniclabs" },
   { label: "About Us", href: "/about" },

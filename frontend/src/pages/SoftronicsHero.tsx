@@ -88,19 +88,19 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
         {/* Copy block */}
         <div className="max-w-xl">
           <h1 className="leading-tight text-[34px] font-semibold tracking-[-0.01em] sm:text-[40px] md:text-[44px] text-brand-gray-dark">
-            The Right Engineering
+            Your Trusted Technology
             <br />
-            Partner for Modern
+            Partner for Digital
             <br />
-            Enterprises
+            Innovation
           </h1>
 
           <p className="mt-5 text-[15.5px] leading-7 md:mt-6 text-brand-gray-dark">
-            True innovation in engineering stems from seamless collaboration,
-            powered by experimentation, and driven by exceptional talent. At{" "}
-            <strong className="text-brand-gray-dark">Softronics</strong>, we’ve
-            architected our entire approach around these foundational pillars to
-            deliver impactful solutions for modern enterprises.
+            We believe in engineering solutions that matter. Our passion for technology
+            combined with deep industry expertise allows us to create innovative solutions
+            that drive your business forward. At{" "}
+            <strong className="text-brand-gray-dark">SofTronicLabs</strong>, we transform
+            complex challenges into elegant, scalable solutions.
           </p>
 
           <button
@@ -130,61 +130,61 @@ const SoftronicsHero: React.FC<Props> = ({ mixpanelToken, userId }) => {
       {/* ======= PILLARS ======= */}
       <section className="relative mx-auto max-w-[1200px] px-6 py-14 md:px-10 lg:px-12 lg:py-16 text-brand-gray-dark">
         <h2 className="mb-6 text-[28px] font-semibold tracking-tight sm:text-[32px] text-brand-gray-dark">
-          Softronics’{" "}
+          Why Choose{" "}
           <span className="underline decoration-black/20 underline-offset-2">
-            foundational pillars
+            SofTronicLabs?
           </span>
         </h2>
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[360px_minmax(0,1fr)] md:items-start">
           {/* Left tabs */}
-          <div className="rounded-lg p-2 ring-1 ring-black/10 bg-white/50">
+          <div className="rounded-lg p-2 ring-1 ring-black/10">
             <TabButton
-              labelTop="The right delivery model:"
-              label="Co-engineering"
+              labelTop="Our Approach:"
+              label="Listen, Discuss, Advise & Develop"
               active={active === "delivery"}
               onClick={() => handleTab("delivery")}
             />
             <TabButton
-              labelTop="The right solutions:"
-              label="Innovation lab"
+              labelTop="Our Products:"
+              label="Feature-rich Professional Solutions"
               active={active === "solutions"}
               onClick={() => handleTab("solutions")}
             />
             <TabButton
-              labelTop="The right expertise:"
-              label="TalentOps"
+              labelTop="Our Philosophy:"
+              label="Latest Technologies & Learning"
               active={active === "expertise"}
               onClick={() => handleTab("expertise")}
             />
           </div>
 
           {/* Right panel */}
-          <div className="relative rounded-xl bg-white/70 p-6 ring-1 ring-black/10 md:p-8 text-brand-gray-dark">
+          <div className="relative rounded-xl p-6 ring-1 ring-black/10 md:p-8 text-brand-gray-dark">
             {active === "delivery" && (
               <Panel
-                title="The right delivery model: Co-engineering"
+                title="We listen, we discuss, we advise and develop"
                 body={[
-                  "Softronics’ co-engineering model accelerates product development by integrating our expert teams with yours for smooth collaboration and rapid execution.",
-                  "With Core-Flexi resourcing, we scale engineering capabilities to match your needs, driving speed, flexibility, and ROI.",
+                  "At SofTronicLabs we have a talent pool that has a great sense of understanding of technology, this enables us to understand the pulse of our clients for predictive solution design and development. We are highly proactive in advising the right solution to meet a win-win situation for every stakeholder achieving a business goal.",
+                  "We have an Industrial proven standard process of development for conceptualizing the end results at ultra-high speed. We believe in open-source technology and are also passionate about giving more than we take as knowledge.",
                 ]}
               />
             )}
             {active === "solutions" && (
               <Panel
-                title="The right solutions: Innovation lab"
+                title="Offering feature-rich, professional products"
                 body={[
-                  "Our Innovation Lab turns ideas into validated prototypes through structured experimentation, rapid PoCs, and measurable pilots.",
-                  "From architecture spikes to sandboxed AI experiments, we help you ship what matters—faster.",
+                  "Our offerings provide feature-rich and professional products as we anticipate every engineering aspect during the development process, though it may be functional, performance, or security requirements. We believe in modern test technologies for Continuous Integration and Continuous Delivery (CICD) of the product with high ROI on investment in testing services.",
+                  "We are true believers in the Agile methodology of the development process and are very agile to adapt ourselves to the changing world.",
                 ]}
               />
             )}
             {active === "expertise" && (
               <Panel
-                title="The right expertise: TalentOps"
+                title="We love to learn and use the latest technologies"
                 body={[
-                  "TalentOps aligns seniority mix, domain knowledge, and delivery discipline with your roadmap using proven practices and quality gates.",
-                  "You get predictable delivery and the flexibility to scale without compromising outcomes.",
+                  "We understand that learning is the only tool that will equip every individual or organization to adapt themselves to a rapidly changing world. In the aspect of learning, we are self-motivated to learn new technologies and provide the latest technology solutions to our clients.",
+                  "We are focused on identifying advanced engineered solutions provided by the open-source community and believe in saving the efforts of reinventing the wheel.",
                 ]}
               />
             )}

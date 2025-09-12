@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Hero from '../components/sections/Hero';
 import Services from '../components/sections/Services';
+import WhyChooseUs from '../components/sections/WhyChooseUs';
 import FeaturedStories from "../components/sections/FeaturedStories"
 // import Industries from '../components/sections/Industries';
 import CaseStudies from '../components/sections/CaseStudies';
@@ -23,6 +24,7 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <WhyChooseUs />
       <Testimonials /> 
       <CaseStudies />
       <Services />

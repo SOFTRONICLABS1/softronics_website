@@ -7,6 +7,8 @@ export interface BlogPost {
   date: string;
   slug: string;
   image?: string;
+  fullContent?: string;
+  readingTime?: number;
 }
 
 export type BlogCategory = 

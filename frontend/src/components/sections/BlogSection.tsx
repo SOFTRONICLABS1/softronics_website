@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { Search, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, ArrowUpRight, Clock } from 'lucide-react';
 import type { BlogCategory } from '../../types/blog';
 import { blogPosts, blogCategories } from '../../data/blogData';
 import "./HeroStripes.css";
@@ -25,17 +26,17 @@ const BlogSection = () => {
   const getCategoryDescription = (category: BlogCategory) => {
     switch (category) {
       case "Product Engineering":
-        return "Product engineering is our craft. It's what we do and how we think. Learn more about how we integrate design, business, and technology to build great software together.";
+        return "Comprehensive technology services spanning diverse industries from automotive to agriculture. Our expertise includes software development, maintenance, independent validation services, and technology consulting with proven experience across multiple sectors.";
       case "Cloud and DevOps":
-        return "Discover best practices, tools, and strategies for cloud infrastructure, DevOps automation, and scalable deployment solutions.";
+        return "Discover best practices, tools, and strategies for cloud infrastructure, DevOps automation, and scalable deployment solutions using modern CICD methodologies.";
       case "Data Engineering":
-        return "Explore data pipeline architectures, analytics platforms, and modern approaches to managing and processing large-scale data systems.";
+        return "Advanced analytics solutions with feature-rich user dashboards, DDP Dissection Platform for data insights, and expertise in big data processing using Python and open-source technologies for cost-effective, secure data management.";
       case "AI and ML":
-        return "Stay updated with the latest in artificial intelligence, machine learning models, and practical implementations for business solutions.";
+        return "Cutting-edge artificial intelligence and machine learning solutions including decision tree optimization, Named Entity Recognition with SpaCy, and practical AI implementations for business automation and predictive analytics.";
       case "Digital & Experience Engineering":
-        return "Learn about user experience design, frontend development, and creating engaging digital experiences that drive business value.";
+        return "Specialists in embedded systems, IoT applications, and innovative platforms. From ARM Cortex-A processors to Internet of Farming solutions, gamification in pedagogy, and sustainable clustered applications for home automation and sensor networks.";
       case "News & Insights":
-        return "Get the latest updates, industry insights, and company news from Softroniclabs and the broader technology landscape.";
+        return "Latest updates from SofTronicLabs including our engineering philosophy, leadership insights, and company developments. Founded in 2017 by passionate engineers committed to solving complex technology challenges.";
       default:
         return "";
     }
@@ -79,9 +80,10 @@ const BlogSection = () => {
         <div className="mb-12 sm:mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {blogPosts.slice(0, 3).map((post) => (
-              <article
+              <Link
                 key={`featured-${post.id}`}
-                className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group relative"
+                to={`/blog/${post.slug}`}
+                className="block bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group relative"
               >
                 <div className="p-6 sm:p-7">
                   {/* Category Tag */}
@@ -103,24 +105,26 @@ const BlogSection = () => {
 
                   {/* Meta Information */}
                   <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 mb-4">
-                    <span>By {post.author}</span>
-                    <span>{post.date}</span>
+                    <div className="flex items-center space-x-3">
+                      <span>By {post.author}</span>
+                      <span>{post.date}</span>
+                      {post.readingTime && (
+                        <div className="flex items-center">
+                          <Clock className="w-3 h-3 mr-1" />
+                          <span>{post.readingTime} min</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   {/* Read More Button */}
-                  <button 
+                  <div 
                     className="inline-flex items-center font-medium text-sm group-hover:translate-x-1 transition-all duration-300"
                     style={{ color: 'var(--brand-cyan)' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'var(--brand-button-hover)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'var(--brand-cyan)';
-                    }}
                   >
                     Read More
                     <ArrowUpRight className="ml-1 w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </button>
+                  </div>
                 </div>
 
                 {/* Arrow Icon - Top Right */}
@@ -130,7 +134,7 @@ const BlogSection = () => {
                     style={{ color: 'var(--brand-orange)' }}
                   />
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
@@ -192,9 +196,10 @@ const BlogSection = () => {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredPosts.map((post) => (
-            <article
+            <Link
               key={post.id}
-              className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group relative"
+              to={`/blog/${post.slug}`}
+              className="block bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group relative"
             >
               <div className="p-6 sm:p-7">
                 {/* Category Tag */}
@@ -216,24 +221,26 @@ const BlogSection = () => {
 
                 {/* Meta Information */}
                 <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 mb-4">
-                  <span>By {post.author}</span>
-                  <span>{post.date}</span>
+                  <div className="flex items-center space-x-3">
+                    <span>By {post.author}</span>
+                    <span>{post.date}</span>
+                    {post.readingTime && (
+                      <div className="flex items-center">
+                        <Clock className="w-3 h-3 mr-1" />
+                        <span>{post.readingTime} min</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Read More Button */}
-                <button 
+                <div 
                   className="inline-flex items-center font-medium text-sm group-hover:translate-x-1 transition-all duration-300"
                   style={{ color: 'var(--brand-cyan)' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--brand-button-hover)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'var(--brand-cyan)';
-                  }}
                 >
                   Read More
                   <ArrowUpRight className="ml-1 w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
+                </div>
               </div>
 
               {/* Arrow Icon - Top Right */}
@@ -243,7 +250,7 @@ const BlogSection = () => {
                   style={{ color: 'var(--brand-orange)' }}
                 />
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 

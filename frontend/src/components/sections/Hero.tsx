@@ -73,10 +73,6 @@ const Hero = () => {
               <span className="hero-title-orange">digital world</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl lg:text-[22px] text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-              Agile in mind, spirit, and speed
-            </p>
-
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
               <button
                 onClick={handleConsultationClick}

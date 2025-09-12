@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import softCircle from "../../assets/images/soft-logo2.webp";
 
-// const RIGHT_IMG =
-//   "https://www.simform.com/wp-content/uploads/2024/12/hm-hero-image.svg";
 const RIGHT_IMG = softCircle;
 
 const Testimonials = () => {
@@ -12,20 +10,20 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      id: 1,
+      id: 3,
       content:
-        "Unlike many firms, they approach the work with a sense of ownership and urgency, making them feel like an extension of our team. Their wide-ranging technical capabilities and reliability gave us the confidence to trust them with critical parts of our product.",
-      name: "Robel Yemane",
-      position: "Head of Engineering, Privilee",
-      company: "Privilee",
+        "I have known Chethan since 2011 when I joined L&T. Chethan's passion for getting it right every-time and all the time was very noticeable. His expertise and quest for excellence in the area of testing, automation and achieving the highest quality was very much appreciated by everybody he worked with. The innovations and improvements done by Chethan has helped us in making this a very successful test lab for our customers.",
+      name: "Chetan G",
+      position: "Founder & CEO",
+      company: "SoftronicLabs",
     },
     {
-      id: 2,
+      id: 4,
       content:
-        "Softroniclabs delivered our application, including an MVP, within the agreed timeline. Their expertise and dedication really impress as they develop, test, and maintain the application. Their remarkable partner in software development.",
-      name: "Abhilash Kumar",
-      position: "Technical Product Manager",
-      company: "AUDIENCEX",
+        "Tejashree is a young enthusiast who brings passion for business development and social engagement to SofTronicLabs. She believes in social engagement for business success, creative marketing strategies, and building strong business relationships with innovative approaches to business development.",
+      name: "Tejashree S Sankangoudar",
+      position: "Co-Founder & Former CFO",
+      company: "SofTronicLabs",
     },
   ];
 
@@ -244,7 +242,10 @@ const Testimonials = () => {
                                   .join("")}
                               </div>
                               <div>
-                                <h4 className="font-bold text-xs sm:text-sm md:text-base lg:text-lg" style={{ color: "#0095BB" }}>
+                                <h4
+                                  className="font-bold text-xs sm:text-sm md:text-base lg:text-lg"
+                                  style={{ color: "#0095BB" }}
+                                >
                                   {testimonial.name}
                                 </h4>
                                 <p className="text-gray-600 text-[10px] sm:text-xs md:text-sm">

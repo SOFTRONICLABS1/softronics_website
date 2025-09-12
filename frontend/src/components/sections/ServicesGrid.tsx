@@ -15,48 +15,49 @@ interface CardSpec {
 
 const CARDS: CardSpec[] = [
   {
-    title: "Accelerate product roadmaps with a Co-Engineering CoE",
-    subtitle: "Digital Product Engineering",
+    title: "Consulting services in the Technology space for digitization",
+    subtitle: "Technology Consulting",
     from: "#66e0ff",
     to: "#ccf7ff",
     pattern: "rings-right",
     accentColor: "#00bcd4",
   },
   {
-    title: "Adopt, optimize, modernize, and build on the cloud",
-    subtitle: "Cloud and DevOps Engineering",
+    title: "Vast experience in IT infrastructure management and Services",
+    subtitle: "IT Services",
     from: "#66e0ff",
     to: "#66e0ff",
     pattern: "quads",
     accentColor: "#0099cc",
   },
   {
-    title: "Build AI-ready data and analytics platforms",
-    subtitle: "Data Engineering",
+    title: "Dedicated team constantly providing continuous support for success",
+    subtitle: "Continuous Support",
     from: "#66e0ff",
     to: "#66e0ff",
     pattern: "rings-right-strong",
     accentColor: "#33d6ff",
   },
   {
-    title: "Innovate with Gen-AI and custom ML development",
-    subtitle: "AI/ML Engineering",
+    title: "Design Engineering and Development solutions for web applications",
+    subtitle: "Web Application Design & Development",
     from: "#66e0ff",
     to: "#ccf7ff",
     pattern: "diagonals",
     accentColor: "#00bcd4",
   },
   {
-    title: "Transform experiences and applications with UX-led engineering",
-    subtitle: "Digital and Experience Engineering",
+    title:
+      "Software Development, Maintenance, and Independent Validation Services",
+    subtitle: "Software Development",
     from: "#66e0ff",
     to: "#66e0ff",
     pattern: "rings-right",
     accentColor: "#00bcd4",
   },
   {
-    title: "Co-innovate, optimize delivery, and scale with product thinking",
-    subtitle: "Product & Delivery",
+    title: "Cloud Services and scalable infrastructure solutions",
+    subtitle: "Cloud Services",
     from: "#66e0ff",
     to: "#ccf7ff",
     pattern: "quads",
@@ -167,18 +168,6 @@ const ServiceCard: React.FC<{ spec: CardSpec; index: number }> = ({
         >
           {subtitle}
         </p>
-        <span
-          className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 border"
-          style={{
-            backgroundColor: isHovered
-              ? `${accentColor}30`
-              : "rgba(255, 255, 255, 0.15)",
-            borderColor: isHovered ? accentColor : "rgba(255, 255, 255, 0.2)",
-            backdropFilter: "blur(1px)",
-          }}
-        >
-          <FiArrowUpRight className="text-white text-sm sm:text-[16px]" />
-        </span>
       </div>
     </article>
   );

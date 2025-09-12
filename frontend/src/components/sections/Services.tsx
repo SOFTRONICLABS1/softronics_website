@@ -12,10 +12,10 @@ const Services = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            trackCustomEvent('Section View', {
-              section: 'services',
-              section_name: 'Microsoft Partnership Services',
-              page: 'home'
+            trackCustomEvent("Section View", {
+              section: "services",
+              section_name: "Microsoft Partnership Services",
+              page: "home",
             });
             observer.unobserve(entry.target);
           }
@@ -30,38 +30,13 @@ const Services = () => {
 
     return () => observer.disconnect();
   }, [trackCustomEvent]);
-  // const microsoftPartners = [
-  //   {
-  //     title: "Microsoft Solutions Partner",
-  //     subtitle: "Digital & App Innovation Azure",
-  //     specialties: [
-  //       "Kubernetes on Azure",
-  //       "DevOps with GitHub",
-  //       "App Modernization",
-  //       "AI and Machine Learning on Microsoft Azure",
-  //     ],
-  //   },
-  //   {
-  //     title: "Microsoft Solutions Partner",
-  //     subtitle: "Infrastructure Azure",
-  //     specialties: [
-  //       "Modernizing Platforms and Infrastructure on Microsoft Azure",
-  //     ],
-  //   },
-  //   {
-  //     title: "Microsoft Solutions Partner",
-  //     subtitle: "Data & AI Azure",
-  //     specialties: ["Build and deploy AI Apps on Azure"],
-  //   },
-  //   {
-  //     title: "Microsoft Solutions Partner",
-  //     subtitle: "Security",
-  //     specialties: [],
-  //   },
-  // ];
 
   return (
-    <section ref={sectionRef} id="services" className="relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="services"
+      className="relative overflow-hidden"
+    >
       {/* Light gradient background */}
       <div className="absolute inset-0 bg-services"></div>
 
@@ -93,11 +68,11 @@ const Services = () => {
           {/* Top Section — Microsoft Recognition + Right Image */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch mb-10">
             {/* LEFT: Microsoft recognition (single image) */}
-            <div 
+            <div
               className="rounded-lg p-5 sm:p-6 shadow-lg flex flex-col items-center justify-center h-auto lg:h-[280px] xl:h-[300px]"
               style={{
-                background: 'var(--gradient-orange-primary)',
-                boxShadow: '0 10px 30px rgba(255, 165, 0, 0.2)'
+                background: "var(--gradient-orange-primary)",
+                boxShadow: "0 10px 30px rgba(255, 165, 0, 0.2)",
               }}
             >
               <h3
@@ -118,11 +93,11 @@ const Services = () => {
             </div>
 
             {/* RIGHT: Partner badges (single image) */}
-            <div 
+            <div
               className="rounded-lg shadow-lg flex items-center justify-center p-4 sm:p-6 h-auto lg:h-[280px] xl:h-[300px]"
               style={{
-                background: 'var(--gradient-orange-primary)',
-                boxShadow: '0 10px 30px rgba(77, 200, 232, 0.2)'
+                background: "var(--gradient-orange-primary)",
+                boxShadow: "0 10px 30px rgba(77, 200, 232, 0.2)",
               }}
             >
               <img
@@ -157,15 +132,6 @@ const Services = () => {
 
             {/* Venn Diagram */}
             <div className="relative mt-6 sm:mt-8 lg:mt-0 flex flex-col items-center">
-              {/* <div className="text-center mb-6 sm:mb-8">
-                <div className="inline-block px-6 py-3 rounded-full text-sm font-semibold mb-4 text-white" style={{
-                  background: "linear-gradient(135deg, #FFA500 0%, #4DC8E8 100%)",
-                  boxShadow: "0 4px 12px rgba(255, 165, 0, 0.2)"
-                }}>
-                  Engineering Company Empowers you with
-                </div>
-              </div> */}
-
               <svg
                 viewBox="0 0 400 360"
                 className="w-full max-w-[300px] sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
@@ -207,117 +173,124 @@ const Services = () => {
                 />
 
                 {/* Labels */}
+                {/* Left Circle - Software Development */}
                 <text
                   x="100"
-                  y="100"
+                  y="80"
                   textAnchor="middle"
                   fill="#44444E"
-                  fontSize="12"
-                  fontWeight="700"
+                  fontSize="10"
+                  fontWeight="600"
                 >
-                  <tspan x="100" y="100">
-                    Modern
+                  <tspan x="100" y="80">
+                    Software
                   </tspan>
-                  <tspan x="100" y="115">
-                    Capabilities
+                  <tspan x="100" y="95">
+                    Development
                   </tspan>
                 </text>
 
+                {/* Right Circle - Independent Validation Services */}
                 <text
-                  x="300"
-                  y="100"
+                  x="320"
+                  y="75"
                   textAnchor="middle"
                   fill="#44444E"
-                  fontSize="12"
-                  fontWeight="700"
+                  fontSize="10"
+                  fontWeight="600"
                 >
-                  <tspan x="300" y="100">
-                    Engineering
+                  <tspan x="305" y="75">
+                    Independent
                   </tspan>
-                  <tspan x="300" y="115">
-                    Platform
+                  <tspan x="305" y="90">
+                    Validation
                   </tspan>
-                  <tspan x="300" y="130">
-                    Partnerships
+                  <tspan x="305" y="105">
+                    Services
                   </tspan>
                 </text>
 
+                {/* Left-Bottom Intersection - Cloud Services */}
+                <text
+                  x="140"
+                  y="195"
+                  textAnchor="middle"
+                  fill="#44444E"
+                  fontSize="10"
+                  fontWeight="600"
+                >
+                  <tspan x="120" y="195">
+                    Cloud
+                  </tspan>
+                  <tspan x="120" y="210">
+                    Services
+                  </tspan>
+                </text>
+
+                {/* Right-Bottom Intersection - Technology Consulting */}
+                <text
+                  x="260"
+                  y="195"
+                  textAnchor="middle"
+                  fill="#44444E"
+                  fontSize="10"
+                  fontWeight="600"
+                >
+                  <tspan x="260" y="195">
+                    Technology
+                  </tspan>
+                  <tspan x="260" y="210">
+                    Consulting
+                  </tspan>
+                </text>
+
+                {/* Bottom-Left Area - Software Maintenance */}
                 <text
                   x="130"
-                  y="180"
-                  textAnchor="middle"
-                  fill="#44444E"
-                  fontSize="11"
-                  fontWeight="600"
-                >
-                  <tspan x="120" y="180">
-                    CX
-                  </tspan>
-                  <tspan x="120" y="195">
-                    Agility
-                  </tspan>
-                </text>
-
-                <text
-                  x="270"
-                  y="180"
-                  textAnchor="middle"
-                  fill="#44444E"
-                  fontSize="11"
-                  fontWeight="600"
-                >
-                  <tspan x="260" y="180">
-                    Delivery Maturity
-                  </tspan>
-                  <tspan x="260" y="195">
-                    Scalability
-                  </tspan>
-                </text>
-
-                <text
-                  x="120"
-                  y="280"
-                  textAnchor="middle"
-                  fill="#44444E"
-                  fontSize="12"
-                  fontWeight="700"
-                >
-                  <tspan x="120" y="280">
-                    Agency
-                  </tspan>
-                  <tspan x="120" y="295">
-                    Focus
-                  </tspan>
-                </text>
-
-                <text
-                  x="200"
                   y="300"
                   textAnchor="middle"
                   fill="#44444E"
-                  fontSize="11"
+                  fontSize="10"
                   fontWeight="600"
                 >
-                  <tspan x="200" y="300">
+                  <tspan x="150" y="290">
+                    Software
+                  </tspan>
+                  <tspan x="150" y="305">
+                    Maintenance
+                  </tspan>
+                </text>
+
+                {/* Bottom Center - Customer Obsession */}
+                <text
+                  x="200"
+                  y="330"
+                  textAnchor="middle"
+                  fill="#44444E"
+                  fontSize="10"
+                  fontWeight="600"
+                >
+                  <tspan x="200" y="320">
                     Customer
                   </tspan>
-                  <tspan x="200" y="315">
+                  <tspan x="200" y="335">
                     Obsession
                   </tspan>
                 </text>
 
+                {/* Bottom-Right Area - Large SI Features */}
                 <text
-                  x="280"
-                  y="280"
+                  x="270"
+                  y="300"
                   textAnchor="middle"
                   fill="#44444E"
-                  fontSize="12"
-                  fontWeight="700"
+                  fontSize="10"
+                  fontWeight="600"
                 >
-                  <tspan x="270" y="280">
+                  <tspan x="270" y="290">
                     Large SI
                   </tspan>
-                  <tspan x="270" y="295">
+                  <tspan x="270" y="305">
                     Features
                   </tspan>
                 </text>

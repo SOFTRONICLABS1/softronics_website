@@ -32,7 +32,9 @@ const Footer: FC = () => {
           </Link>
           <div className="flex gap-3 sm:gap-4 mt-3 sm:mt-4">
             <a 
-              href="#" 
+              href="https://www.linkedin.com/company/softroniclabs" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hover:rotate-12"
               style={{
                 color: 'var(--brand-cyan)',
@@ -95,7 +97,9 @@ const Footer: FC = () => {
               <Youtube size={18} className="sm:w-5 sm:h-5" />
             </a>
             <a 
-              href="#" 
+              href="https://www.facebook.com/Softroniclabs-358316011228112/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hover:rotate-12"
               style={{
                 color: 'var(--brand-cyan)',
@@ -172,28 +176,28 @@ const Footer: FC = () => {
           </h3>
           <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
             <li>
-              <Link to="/product-strategy" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                Digital Product Engineering
+              <Link to="/technology-consulting" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                Technology Consulting
               </Link>
             </li>
             <li>
-              <Link to="/quality-engineering" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                Cloud and DevOps Engineering
+              <Link to="/it-services" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                IT Services
               </Link>
             </li>
             <li>
-              <Link to="/data-engg" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                Data Engineering
+              <Link to="/software-development" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                Software Development
               </Link>
             </li>
             <li>
-              <Link to="/ai-ml" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                AI/ML Engineering
+              <Link to="/web-development" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                Web Application Development
               </Link>
             </li>
             <li>
-              <Link to="/digi-exp" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                Digital and Experience Engineering
+              <Link to="/cloud-services" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                Cloud Services
               </Link>
             </li>
           </ul>
@@ -213,8 +217,8 @@ const Footer: FC = () => {
               </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                Ebooks
+              <a href="/leader-ship" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                Leadership
               </a>
             </li>
             <li>

@@ -28,6 +28,12 @@ import CoEngineering from "./pages/CoEngineering";
 import InnovationLab from "./pages/InnovationLab";
 import TalentOps from "./pages/TalentOps";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import DDPPlatform from "./pages/DDPPlatform";
+import AnalyticsSolutions from "./pages/AnalyticsSolutions";
+import IoTSolutions from "./pages/IoTSolutions";
+import GamificationPage from "./pages/GamificationPage";
+import Leadership from "./pages/Leadership";
 
 function App() {
   useEffect(() => {
@@ -61,6 +67,12 @@ function App() {
         <Route path="/innovation-lab" element={<InnovationLab />} />
         <Route path="/talent-ops" element={<TalentOps />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/ddp-platform" element={<DDPPlatform />} />
+        <Route path="/analytics-solutions" element={<AnalyticsSolutions />} />
+        <Route path="/iot-solutions" element={<IoTSolutions />} />
+        <Route path="/gamification-in-pedagogy" element={<GamificationPage />} />
+        <Route path="/leader-ship" element={<Leadership />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
