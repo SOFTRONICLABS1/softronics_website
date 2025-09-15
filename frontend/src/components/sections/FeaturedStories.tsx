@@ -30,30 +30,30 @@ const FeaturedStories: React.FC = () => {
     () => [
       {
         id: 1,
-        kicker: "Supply chain giant used AI to reduce shipment costs by 20%",
-        title: "Softronic Labs Ranks #1 in AI on Clutch 2025 Spring Edition",
+        kicker: "Three-layered architecture combining ETL, AI, and Visualization",
+        title: "DDP Dissection Platform: Transforming Data into Actionable Insights",
         summary:
-          "What does it take to cut shipment costs by 20% and speed up deliveries by 25%? This case study unpacks how a top supply chain operator partnered with softroniclabs to build a connected supply chain platform that fuses edge intelligence, IoT, and cloud-native architecture. From battery life gains to fewer connectivity disruptions, the results show what's possible when infrastructure and insight align. If you're exploring smarter operations, this succinct overview points toward actionable next steps.",
+          "The DDP Dissection Platform is a cutting-edge three-layered architecture solution that seamlessly combines Extract, Transform, Load (ETL), Artificial Intelligence (AI), and Visualization. It's your one-stop solution for unlocking insights from your data, making data-driven decisions, and achieving actionable results with advanced algorithms and customizable dashboards. Transform your raw data into strategic business intelligence.",
         image:
-          "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
       },
       {
         id: 2,
-        kicker: "Enterprise data fabric improves SLA adherence by 35%",
-        title: "How platform thinking cuts cost of change in large orgs",
+        kicker: "Customizable dashboards with Python processing on big data platforms",
+        title: "Analytics Solutions: Feature-Rich User Dashboards for Data-Driven Decisions",
         summary:
-          "Clutch's 2025 rankings are in, and softroniclabs has been named the #1 AI services provider globally. The recognition emphasizes our strength in delivering AI expertise with measurable results. We break down how Clutch evaluated hundreds of vendors and why softroniclab's focus on engineering-led delivery stood out. If you're researching vendors for your AI initiatives and want to understand what credibility looks like in this space, this article provides concise insights and clear considerations to make a decision.",
+          "Analytics solutions from SofTronicLabs concentrate on providing feature-rich user dashboards for underlying data. Our dashboards are highly customizable and configurable for user needs, with processing carried out using Python on big data platforms. We utilize open-source technologies to provide cost-effective solutions while maintaining strong security and user management features for comprehensive data analysis.",
         image:
-          "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
       },
       {
         id: 3,
-        kicker: "Fintech scales to 10M MAU with zero-downtime releases",
-        title: "Shipping faster with DevEx guardrails on Kubernetes",
+        kicker: "Single-point IoT platform for agriculture and embedded applications",
+        title: "Internet of Things & Internet of Farming: Revolutionizing Agriculture",
         summary:
-          "softroniclabs is now an Advanced Tier Partner in Datadog's global ecosystem. It showcases our ability to deliver full-stack observability for modern cloud-native systems. This post breaks down what the partnership level means, how it improves monitoring capabilities for our clients, and where it fits into broader platform engineering goals. If you're scaling distributed systems or seeking faster root-cause analysis across services, A quick look at how better visibility and response work in action.",
+          "Being specialists in designing and developing embedded applications, we focus on collating data from different units to a single platform. This gives rise to our single-point IoT platform designed to acquire data across different units into a common protocol IoT cloud. One key application is in agriculture, where we've pioneered customizing IoT platforms for the Internet of Farming, constantly researching plant growth and monitoring systems.",
         image:
-          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=1200&auto=format&fit=crop",
       },
     ],
     []
