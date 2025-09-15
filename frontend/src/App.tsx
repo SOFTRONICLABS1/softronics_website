@@ -34,6 +34,7 @@ import AnalyticsSolutions from "./pages/AnalyticsSolutions";
 import IoTSolutions from "./pages/IoTSolutions";
 import GamificationPage from "./pages/GamificationPage";
 import Leadership from "./pages/Leadership";
+import LowEnergyComputing from "./pages/LowEnergyComputing";
 
 function App() {
   useEffect(() => {
@@ -74,6 +75,7 @@ function App() {
         <Route path="/gamification-in-pedagogy" element={<GamificationPage />} />
         <Route path="/leader-ship" element={<Leadership />} />
         <Route path="/contact" element={<ContactForm />} />
+        <Route path="/low-energy-computing" element={<LowEnergyComputing />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

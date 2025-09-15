@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useAnalytics } from "../hooks/useAnalytics";
-import { FiTrendingUp, FiShield, FiUsers, FiTarget, FiDatabase, FiMonitor } from "react-icons/fi";
+import { FiTrendingUp, FiShield, FiUsers, FiTarget, FiDatabase, FiMonitor, FiWifi, FiSun } from "react-icons/fi";
+import analyticsImg from "../assets/images/Analytics.jpg";
+import iofImg from "../assets/images/IOF.png";
+import iotImg from "../assets/images/IOT.png";
 
 const AnalyticsSolutions: React.FC = () => {
   const { trackPageView } = useAnalytics();
@@ -97,14 +100,14 @@ const AnalyticsSolutions: React.FC = () => {
             </p>
           </div>
 
-          {/* Hero Image Placeholder */}
-          <div className="bg-white rounded-2xl p-8 shadow-2xl mb-16">
-            <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl aspect-video flex items-center justify-center">
-              <div className="text-center text-gray-600">
-                <FiTrendingUp className="w-24 h-24 mx-auto mb-4" />
-                <p className="text-xl font-semibold">Analytics Dashboard Preview</p>
-                <p className="text-sm mt-2">Real-time data visualization and insights</p>
-              </div>
+          {/* Hero Image */}
+          <div className="bg-white rounded-2xl p-4 shadow-2xl mb-16">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                src={analyticsImg}
+                alt="Analytics Dashboard - Real-time data visualization and insights"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>

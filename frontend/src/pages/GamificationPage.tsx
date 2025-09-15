@@ -133,7 +133,7 @@ const GamificationPage: React.FC = () => {
               Dimensions
             </span>
           </motion.h2>
-          <p className="text-[15.5px] leading-7 text-brand-gray-dark max-w-3xl text-center">
+          <p className="text-[15.5px]  leading-7 text-brand-gray-dark max-w-3xl text-center">
             Discover the key elements that power our gamified learning experience
           </p>
         </div>
@@ -298,12 +298,6 @@ const GamificationPage: React.FC = () => {
               >
                 Get Started
               </button>
-              <a
-                href="#"
-                className="inline-block h-[44px] flex items-center px-5 text-[14px] font-semibold underline decoration-transparent underline-offset-4 transition hover:decoration-current text-brand-gray-dark"
-              >
-                Learn More
-              </a>
             </div>
           </motion.div>
         </div>

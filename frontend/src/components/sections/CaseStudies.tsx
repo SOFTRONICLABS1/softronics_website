@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import "./HeroStripes.css";
+import iofImg from "../../assets/images/IOF.png";
+import iotImg from "../../assets/images/IOT.png";
 
 const CaseStudies = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,38 +11,34 @@ const CaseStudies = () => {
   const caseStudies = [
     {
       id: 1,
-      tags: ["Cloud and DevOps engineering", "Digital product engineering"],
-      title:
-        "Semiconductor Manufacturer Boosts Data Accuracy 80% with Automation",
+      tags: ["IoT", "Agriculture"],
+      title: "Internet of Farming",
       description:
-        "Build an enterprise application that eliminates hours of manual spreadsheet work. Solution processes thousands of daily orders through various sales channels and gives real-time visibility of inventory levels.",
+        "One of the applications where we use the IoT platform is in the field of agriculture. We have pioneered customizing the IoT platform to be useful on the Internet of Farming. We are constantly researching in the field of plant growth and monitoring.",
       highlight:
-        "Reduced the order fulfillment lead time by 70% and got visibility of inventory levels across 200+ fulfillment partners having 5000+ product SKUs.",
-      image:
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+        "Our unique system is an ergonomic solution for plant growth where it monitors different growth indexes of plants like nutrient absorption index and controls the inflow of nutrients to the plant for its healthy life.",
+      image: iofImg,
     },
     {
       id: 2,
-      tags: ["AI/ML Solutions", "Data Analytics"],
-      title:
-        "Retail Giant Transforms Customer Experience with AI-Powered Insights",
+      tags: ["IoT Platform", "Data Analytics"],
+      title: "Internet Of Things",
       description:
-        "Implemented advanced machine learning models to predict customer behavior and personalize shopping experiences across all digital touchpoints.",
+        "Being a specialist in designing and developing embedded applications we also focus on collating the data coming from different units to a single platform. This gives rise to our single-point IoT platform which is designed to acquire data across different units into a common protocol IoT cloud.",
       highlight:
-        "Increased customer retention by 45% and boosted average order value by 35% through personalized recommendations.",
-      image:
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+        "Our IoT cloud application uses our analytics solutions to perform backend processing and front-end rendering of the data for visualization.",
+      image: iotImg,
     },
     {
       id: 3,
-      tags: ["Mobile Development", "UX/UI Design"],
-      title: "Healthcare Platform Revolutionizes Patient Care Management",
+      tags: ["Web Development", "UX/UI Design"],
+      title: "Web Application Design & Development",
       description:
-        "Created a comprehensive mobile solution connecting patients, doctors, and healthcare providers for seamless care coordination.",
+        "Our talent pool loves to create the ultimate user experience with eye-catching designs. We provide reliable and functional solutions to improve business growth. We design, model, and test the software architecture for cost-effective functional solutions.",
       highlight:
-        "Achieved 90% patient satisfaction score and reduced appointment no-shows by 60% with automated reminders.",
+        "100% Responsive design to cater to different class of devices. We connect your customers to you digitizing all your business operations with aesthetic designs that elevate your brand name.",
       image:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
     },
   ];
 

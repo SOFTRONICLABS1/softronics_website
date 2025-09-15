@@ -19,10 +19,10 @@ const About: React.FC = () => {
   };
 
   return (
-    <div className="bg-hero min-h-screen bg-hero">
-      <section className="bg-hero relative overflow-hidden">
+    <div className="bg-hero min-h-screen">
+      <section className="relative overflow-hidden">
         {/* brand background */}
-        <div className="bg-hero">
+        <div>
           <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-16 lg:gap-40 items-center py-12 md:py-24 lg:py-28">
               {/* Left copy */}
