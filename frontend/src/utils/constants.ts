@@ -142,10 +142,13 @@ export const navigationItems: NavItem[] = [
       ],
       image:
         "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=300&fit=crop",
-      imageAlt: "Industries",
+      imageAlt: "Products",
     },
   },
   { label: "Case Studies", href: "/case-studies" },
+
+  { label: "Blog", href: "/blog" },
+
   {
     label: "Why SoftronicLabs",
     href: "/why-softroniclabs",

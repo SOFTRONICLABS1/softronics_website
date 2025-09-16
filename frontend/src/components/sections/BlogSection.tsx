@@ -1,25 +1,28 @@
-import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, ArrowUpRight, Clock } from 'lucide-react';
-import type { BlogCategory } from '../../types/blog';
-import { blogPosts, blogCategories } from '../../data/blogData';
+import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { Search, ArrowUpRight, Clock } from "lucide-react";
+import type { BlogCategory } from "../../types/blog";
+import { blogPosts, blogCategories } from "../../data/blogData";
 import "./HeroStripes.css";
 
 const BlogSection = () => {
-  const [activeCategory, setActiveCategory] = useState<BlogCategory>("Product Engineering");
+  const [activeCategory, setActiveCategory] = useState<BlogCategory>(
+    "Product Engineering"
+  );
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPosts = useMemo(() => {
-    let posts = blogPosts.filter(post => post.category === activeCategory);
-    
+    let posts = blogPosts.filter((post) => post.category === activeCategory);
+
     if (searchQuery) {
-      posts = posts.filter(post => 
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.author.toLowerCase().includes(searchQuery.toLowerCase())
+      posts = posts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          post.author.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-    
+
     return posts;
   }, [activeCategory, searchQuery]);
 
@@ -72,7 +75,8 @@ const BlogSection = () => {
             The Softroniclabs Blog
           </h1>
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto font-light">
-            Insights, best practices, and thought leadership from our engineering experts
+            Insights, best practices, and thought leadership from our
+            engineering experts
           </p>
         </div>
 
@@ -118,9 +122,9 @@ const BlogSection = () => {
                   </div>
 
                   {/* Read More Button */}
-                  <div 
+                  <div
                     className="inline-flex items-center font-medium text-sm group-hover:translate-x-1 transition-all duration-300"
-                    style={{ color: 'var(--brand-cyan)' }}
+                    style={{ color: "var(--brand-cyan)" }}
                   >
                     Read More
                     <ArrowUpRight className="ml-1 w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -129,9 +133,9 @@ const BlogSection = () => {
 
                 {/* Arrow Icon - Top Right */}
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ArrowUpRight 
+                  <ArrowUpRight
                     className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                    style={{ color: 'var(--brand-orange)' }}
+                    style={{ color: "var(--brand-orange)" }}
                   />
                 </div>
               </Link>
@@ -147,12 +151,18 @@ const BlogSection = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 hover:scale-105 ${
                 activeCategory === category.id
-                  ? 'text-white shadow-lg'
-                  : 'bg-white/80 text-gray-700 border border-gray-200 hover:border-orange-300'
+                  ? "text-white shadow-lg"
+                  : "bg-white/80 text-gray-700 border border-gray-200 hover:border-orange-300"
               }`}
               style={{
-                backgroundColor: activeCategory === category.id ? 'var(--brand-orange)' : undefined,
-                boxShadow: activeCategory === category.id ? '0 4px 12px rgba(255, 165, 0, 0.3)' : undefined
+                backgroundColor:
+                  activeCategory === category.id
+                    ? "var(--brand-orange)"
+                    : undefined,
+                boxShadow:
+                  activeCategory === category.id
+                    ? "0 4px 12px rgba(255, 165, 0, 0.3)"
+                    : undefined,
               }}
             >
               {category.label}
@@ -161,7 +171,7 @@ const BlogSection = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex justify-center mb-6 sm:mb-8">
+        {/* <div className="flex justify-center mb-6 sm:mb-8">
           <div className="relative max-w-md w-full">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Search className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
@@ -184,7 +194,7 @@ const BlogSection = () => {
               }}
             />
           </div>
-        </div>
+        </div> */}
 
         {/* Category Description */}
         <div className="text-center mb-8 sm:mb-10">
@@ -234,9 +244,9 @@ const BlogSection = () => {
                 </div>
 
                 {/* Read More Button */}
-                <div 
+                <div
                   className="inline-flex items-center font-medium text-sm group-hover:translate-x-1 transition-all duration-300"
-                  style={{ color: 'var(--brand-cyan)' }}
+                  style={{ color: "var(--brand-cyan)" }}
                 >
                   Read More
                   <ArrowUpRight className="ml-1 w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -245,9 +255,9 @@ const BlogSection = () => {
 
               {/* Arrow Icon - Top Right */}
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ArrowUpRight 
+                <ArrowUpRight
                   className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                  style={{ color: 'var(--brand-orange)' }}
+                  style={{ color: "var(--brand-orange)" }}
                 />
               </div>
             </Link>
@@ -257,7 +267,9 @@ const BlogSection = () => {
         {/* No Results Message */}
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No blog posts found for the current filter.</p>
+            <p className="text-gray-500 text-lg">
+              No blog posts found for the current filter.
+            </p>
             <button
               onClick={() => {
                 setSearchQuery("");

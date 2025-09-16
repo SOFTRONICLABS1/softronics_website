@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 
 const Leadership: React.FC = () => {
   return (
@@ -33,7 +34,7 @@ const Leadership: React.FC = () => {
               />
             </svg>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-dark">
+          <h1 className="text-2xl md:text-5xl font-bold text-brand-gray-dark">
             Leadership at <span className="text-[#4ECCEF]">SofTronicLabs</span>
           </h1>
           <div className="w-24 h-1 bg-[#4ECCEF] mx-auto"></div>
@@ -71,7 +72,7 @@ const Leadership: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-semibold text-[#4ECCEF]">
+                <h2 className="text-2xl whitespace-nowrap font-semibold text-[#4ECCEF]">
                   Leadership Approach
                 </h2>
               </div>
@@ -158,7 +159,7 @@ const Leadership: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-semibold text-[#4ECCEF]">
+                <h2 className="text-2xl whitespace-nowrap font-semibold text-[#4ECCEF]">
                   Leadership Philosophy
                 </h2>
               </div>
@@ -396,18 +397,21 @@ const Leadership: React.FC = () => {
                     <br />
                     <span className="text-brand-gray-dark/80">2017</span>
                   </p>
-                  <p>
-                    <strong className="text-brand-gray-dark">LinkedIn:</strong>
-                    <br />
+
+                  <div className="mt-4">
+                    <strong className="text-brand-gray-dark block mb-2">
+                      LinkedIn:
+                    </strong>
                     <a
                       href="https://www.linkedin.com/company/softroniclabs"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#4ECCEF] underline hover:text-brand-gray-dark transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#4ECCEF] text-[#4ECCEF] font-medium transition-all duration-300 hover:bg-[#4ECCEF] hover:text-white hover:shadow-md hover:scale-105"
                     >
-                      SofTronicLabs Company Page
+                      <Linkedin className="w-5 h-5" />
+                      <span>SofTronicLabs </span>
                     </a>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

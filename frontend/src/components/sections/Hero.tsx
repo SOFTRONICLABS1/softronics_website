@@ -2,6 +2,7 @@ import "./HeroStripes.css";
 import ServicesGrid from "./ServicesGrid";
 import { useAnalytics } from "../../hooks/useAnalytics";
 import softCircle from "../../assets/images/soft-logo2.webp";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const { trackCTAClick } = useAnalytics();
@@ -12,6 +13,8 @@ const Hero = () => {
       page: "home",
     });
   };
+
+  const navigate = useNavigate();
 
   return (
     <section
@@ -58,7 +61,7 @@ const Hero = () => {
         <div className="absolute bottom-0 left-1/3 w-[34rem] h-[34rem] bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-fit z-20">
         <div
           className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-10 lg:gap-12 
                 items-center justify-center text-center 
@@ -73,13 +76,17 @@ const Hero = () => {
               <span className="hero-title-orange">digital world</span>
             </h1>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start relative z-30">
               <button
-                onClick={handleConsultationClick}
-                className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 min-h-[44px] w-full sm:w-auto group"
+                onClick={() => {
+                  handleConsultationClick();
+                  navigate("/contact");
+                }}
+                className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-lg font-semibold text-white border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 min-h-[44px] w-auto sm:w-auto group relative z-40"
                 style={{
                   background: "var(--brand-cyan)",
                   boxShadow: "0 4px 15px var(--shadow-orange)",
+                  touchAction: "manipulation",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "var(--brand-cyan)";
@@ -101,7 +108,7 @@ const Hero = () => {
             <img
               src={softCircle}
               alt="Engineering Excellence"
-              className="relative z-1 w-full h-auto
+              className="relative z-10 w-full h-auto
              max-w-[280px] xs:max-w-[340px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-lg
              scale-[1.3] xs:scale-[1.85] sm:scale-[1.85] md:scale-100 lg:scale-[1.8]
              origin-center mx-auto lg:mx-0 lg:ml-60"
@@ -110,7 +117,7 @@ const Hero = () => {
         </div>
         {/* <ServicesGrid />
          */}
-        <div className="mt-6 md:-mt-28 lg:mt-2">
+        <div className="mt-8 sm:mt-12 md:mt-16 lg:mt-2 relative z-10">
           <ServicesGrid />
         </div>
       </div>

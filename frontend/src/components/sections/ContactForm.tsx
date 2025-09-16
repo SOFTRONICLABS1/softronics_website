@@ -9,6 +9,7 @@ import {
 import { Phone } from "lucide-react";
 import { useAnalytics } from "../../hooks/useAnalytics";
 import "./HeroStripes.css";
+import contactLogo from "../../assets/images/contact-logo.jpg";
 
 const ContactForm: FC = () => {
   const { trackFormView, trackFormInteraction, trackFormSubmission } =
@@ -295,14 +296,14 @@ const ContactForm: FC = () => {
 
           <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
             <div className="w-16 h-16 sm:w-20 sm:h-20 mb-3 sm:mb-4">
-              {!imageLoaded || imageError ? (
+              {/* {!imageLoaded || imageError ? (
                 <div className="w-full h-full rounded-full bg-gray-300 animate-pulse" />
-              ) : null}
+              ) : null} */}
 
               <img
-                src="https://via.placeholder.com/80"
+                src={contactLogo}
                 alt="Chetan G"
-                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white absolute transition-opacity duration-300 ${
+                className={`w-16 h-12 sm:w-20 sm:h-20 rounded-full border-2 border-white absolute transition-opacity duration-300 ${
                   imageLoaded ? "opacity-100" : "opacity-0"
                 }`}
                 onLoad={() => setImageLoaded(true)}

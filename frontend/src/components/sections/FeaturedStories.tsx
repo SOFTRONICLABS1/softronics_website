@@ -1,7 +1,6 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import softCircle from "../../assets/images/soft-logo2.webp";
-
+import IOT from "../../assets/images/IOT.png";
 type Story = {
   id: number;
   kicker: string;
@@ -30,8 +29,10 @@ const FeaturedStories: React.FC = () => {
     () => [
       {
         id: 1,
-        kicker: "Three-layered architecture combining ETL, AI, and Visualization",
-        title: "DDP Dissection Platform: Transforming Data into Actionable Insights",
+        kicker:
+          "Three-layered architecture combining ETL, AI, and Visualization",
+        title:
+          "DDP Dissection Platform: Transforming Data into Actionable Insights",
         summary:
           "The DDP Dissection Platform is a cutting-edge three-layered architecture solution that seamlessly combines Extract, Transform, Load (ETL), Artificial Intelligence (AI), and Visualization. It's your one-stop solution for unlocking insights from your data, making data-driven decisions, and achieving actionable results with advanced algorithms and customizable dashboards. Transform your raw data into strategic business intelligence.",
         image:
@@ -39,8 +40,10 @@ const FeaturedStories: React.FC = () => {
       },
       {
         id: 2,
-        kicker: "Customizable dashboards with Python processing on big data platforms",
-        title: "Analytics Solutions: Feature-Rich User Dashboards for Data-Driven Decisions",
+        kicker:
+          "Customizable dashboards with Python processing on big data platforms",
+        title:
+          "Analytics Solutions: Feature-Rich User Dashboards for Data-Driven Decisions",
         summary:
           "Analytics solutions from SofTronicLabs concentrate on providing feature-rich user dashboards for underlying data. Our dashboards are highly customizable and configurable for user needs, with processing carried out using Python on big data platforms. We utilize open-source technologies to provide cost-effective solutions while maintaining strong security and user management features for comprehensive data analysis.",
         image:
@@ -48,12 +51,13 @@ const FeaturedStories: React.FC = () => {
       },
       {
         id: 3,
-        kicker: "Single-point IoT platform for agriculture and embedded applications",
-        title: "Internet of Things & Internet of Farming: Revolutionizing Agriculture",
+        kicker:
+          "Single-point IoT platform for agriculture and embedded applications",
+        title:
+          "Internet of Things & Internet of Farming: Revolutionizing Agriculture",
         summary:
           "Being specialists in designing and developing embedded applications, we focus on collating data from different units to a single platform. This gives rise to our single-point IoT platform designed to acquire data across different units into a common protocol IoT cloud. One key application is in agriculture, where we've pioneered customizing IoT platforms for the Internet of Farming, constantly researching plant growth and monitoring systems.",
-        image:
-          "https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=1200&auto=format&fit=crop",
+        image: IOT,
       },
     ],
     []
@@ -231,15 +235,15 @@ const FeaturedStories: React.FC = () => {
           "linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 50%, #F0F0F0 100%)",
       }}
     >
-      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16 z-10">
+      <div className="relative mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 lg:py-16 z-10">
         {/* ===== TITLE ===== */}
-        <h2 className="text-gray-800 text-3xl md:text-[40px] font-bold tracking-tight">
+        <h2 className="text-gray-800 text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-bold tracking-tight leading-tight">
           Featured Stories
         </h2>
 
         {/* ===== VERTICAL CAROUSEL WITH IMAGES ===== */}
         <div
-          className="mt-6 rounded p-3 sm:p-4 shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
+          className="mt-4 sm:mt-6 rounded p-2 sm:p-3 md:p-4 shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
           style={{
             background:
               "linear-gradient(135deg, rgba(255, 247, 232, 0.95) 0%, rgba(236, 253, 255, 0.95) 100%)",
@@ -282,11 +286,11 @@ const FeaturedStories: React.FC = () => {
                   }`}
                 >
                   <div
-                    className="cursor-pointer bg-transparent p-4 sm:p-5"
+                    className="cursor-pointer bg-transparent p-3 sm:p-4 md:p-5"
                     onClick={() => setVIndex(index)}
                   >
                     <div className="flex flex-col">
-                      <h3 className="text-[18px] md:text-[20px] font-semibold text-gray-800">
+                      <h3 className="text-[16px] sm:text-[17px] md:text-[18px] lg:text-[20px] font-semibold text-gray-800 leading-tight">
                         {story.title}
                       </h3>
 
@@ -349,8 +353,8 @@ const FeaturedStories: React.FC = () => {
           </div>
 
           {/* Mobile image section - simplified horizontal rectangle */}
-          <div className="lg:hidden mt-4">
-            <div className="relative h-32 rounded overflow-hidden">
+          <div className="lg:hidden mt-3 sm:mt-4">
+            <div className="relative h-40 sm:h-48 md:h-52 rounded overflow-hidden">
               {stories.map((story, index) => (
                 <div
                   key={story.id}
@@ -371,171 +375,6 @@ const FeaturedStories: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-orange-900/50 via-cyan-900/30 to-transparent" />
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ===== OUR PERSPECTIVE (HORIZONTAL) ===== */}
-        <div className="mt-12 md:mt-16">
-          <h3 className="text-gray-800 text-2xl md:text-[32px] font-bold">
-            Our Perspective on{" "}
-            <span className="underline decoration-orange-400 underline-offset-4">
-              Product Engineering
-            </span>
-          </h3>
-
-          <div
-            className="relative mt-6"
-            onMouseEnter={handleHorizontalMouseEnter}
-            onMouseLeave={handleHorizontalMouseLeave}
-          >
-            {/* Navigation (desktop) */}
-            {/* Navigation (desktop) */}
-            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-10 sm:hidden lg:flex">
-              <button
-                onClick={goToPrevious}
-                aria-label="Previous"
-                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full shadow hover:scale-[1.03] transition -ml-20 min-h-[44px] min-w-[44px]"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                  color: "white",
-                }}
-              >
-                <ArrowLeft strokeWidth={1.5} />
-              </button>
-              <button
-                onClick={goToNext}
-                aria-label="Next"
-                className="pointer-events-auto grid h-11 w-11 place-items-center rounded-full shadow hover:scale-[1.03] transition -mr-20 min-h-[44px] min-w-[44px]"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                  color: "white",
-                }}
-              >
-                <ArrowRight strokeWidth={1.5} />
-              </button>
-            </div>
-
-            <div className="overflow-hidden px-2 sm:px-0">
-              <div
-                ref={trackRef}
-                className="flex gap-3 sm:gap-4 lg:gap-6 transition-transform duration-500 ease-out will-change-transform"
-                style={{ transform: `translateX(${translateX}px)` }}
-              >
-                {perspectives.map((p, idx) => (
-                  <article
-                    key={p.id}
-                    ref={idx === 0 ? firstSlideRef : undefined}
-                    className="
-                      flex-shrink-0
-                      basis-full
-                      sm:basis-1/2
-                      lg:basis-1/3
-                    "
-                  >
-                    <div
-                      className="rounded p-3 h-full"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, rgba(255, 247, 232, 0.8) 0%, rgba(236, 253, 255, 0.8) 100%)",
-                        border: "1px solid rgba(255, 165, 0, 0.1)",
-                      }}
-                    >
-                      <div className="relative rounded p-5 h-full">
-                        {/* badge */}
-                        <span
-                          className="inline-block rounded-md px-3 py-1 text-[12px] font-semibold text-white"
-                          style={{
-                            background:
-                              "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                          }}
-                        >
-                          {p.badge}
-                        </span>
-
-                        {/* optional cover (ebook card) */}
-                        {p.cover && (
-                          <div className="mt-4 overflow-hidden rounded-lg">
-                            <img
-                              src={p.cover}
-                              alt={p.title}
-                              className="h-44 w-full object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.src =
-                                  "https://via.placeholder.com/300x180/8B5CF6/FFFFFF?text=Ebook";
-                              }}
-                            />
-                          </div>
-                        )}
-
-                        <h4 className="mt-4 text-[18px] font-semibold text-gray-800 leading-snug">
-                          {p.title}
-                        </h4>
-                        <p className="mt-2 text-[14px] leading-6 text-gray-700">
-                          {p.blurb}
-                        </p>
-
-                        <div className="mt-5 flex items-center justify-between">
-                          <div className="text-[12px] text-gray-600">
-                            <div>By {p.by}</div>
-                            <div className="opacity-80">{p.date}</div>
-                          </div>
-
-                          {p.cta ? (
-                            <a
-                              href={p.cta.href}
-                              className="rounded-full px-4 py-2 text-sm font-semibold text-white shadow hover:shadow-md transition"
-                              style={{
-                                background:
-                                  "linear-gradient(135deg, #4DC8E8 0%, #5BC0DE 100%)",
-                              }}
-                            >
-                              {p.cta.label}
-                            </a>
-                          ) : (
-                            <button
-                              aria-label="Open"
-                              className="grid h-9 w-9 place-items-center rounded-full text-white shadow hover:shadow-md transition mr-[24px]"
-                              style={{
-                                background:
-                                  "linear-gradient(135deg, #FFA500 0%, #FFB84D 100%)",
-                              }}
-                            >
-                              ↗
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-
-            {/* mobile pagination dots */}
-            <div className="mt-4 flex items-center justify-center gap-2 lg:hidden">
-              {Array.from({ length: Math.max(1, maxIndex + 1) }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    stopHorizontalAuto();
-                    setHIndex(i);
-                  }}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === hIndex ? "scale-125" : "bg-white/30 hover:bg-white/50"
-                  }`}
-                  style={{
-                    background:
-                      i === hIndex
-                        ? "linear-gradient(90deg, #FFA500 0%, #4DC8E8 100%)"
-                        : undefined,
-                  }}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
               ))}
             </div>
           </div>

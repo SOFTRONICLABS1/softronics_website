@@ -3,7 +3,7 @@ import type { BlogCategoryTab } from '../types/blog';
 
 export const blogCategories: BlogCategoryTab[] = [
   { id: "Product Engineering", label: "Product Engineering", href: "product-engineering" },
-  { id: "Cloud and DevOps", label: "Cloud and DevOps", href: "cloud-devops" },
+  // { id: "Cloud and DevOps", label: "Cloud and DevOps", href: "cloud-devops" },
   { id: "Data Engineering", label: "Data Engineering", href: "data-engineering" },
   { id: "AI and ML", label: "AI and ML", href: "ai-ml" },
   { id: "Digital & Experience Engineering", label: "Digital & Experience Engineering", href: "digital-experience" },

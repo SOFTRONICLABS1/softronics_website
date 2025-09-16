@@ -35,6 +35,7 @@ import IoTSolutions from "./pages/IoTSolutions";
 import GamificationPage from "./pages/GamificationPage";
 import Leadership from "./pages/Leadership";
 import LowEnergyComputing from "./pages/LowEnergyComputing";
+import Products from "./pages/Products";
 
 function App() {
   useEffect(() => {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/case-studies" element={<CaseStudiesWithPagination />} />
         <Route path="/about" element={<About />} />

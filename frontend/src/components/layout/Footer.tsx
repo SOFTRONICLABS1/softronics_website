@@ -155,9 +155,9 @@ const Footer: FC = () => {
               </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Careers
-              </a>
+              </Link>
             </li>
             <li>
               <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
@@ -176,27 +176,27 @@ const Footer: FC = () => {
           </h3>
           <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
             <li>
-              <Link to="/technology-consulting" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Technology Consulting
               </Link>
             </li>
             <li>
-              <Link to="/it-services" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 IT Services
               </Link>
             </li>
             <li>
-              <Link to="/software-development" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                Software Development
+              <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                Software Development Services
               </Link>
             </li>
             <li>
-              <Link to="/web-development" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
-                Web Application Development
+              <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+                Web Application Development Services
               </Link>
             </li>
             <li>
-              <Link to="/cloud-services" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
+              <Link to="/contact" className="hover:text-orange-500 transition-all duration-300 hover:translate-x-1">
                 Cloud Services
               </Link>
             </li>
